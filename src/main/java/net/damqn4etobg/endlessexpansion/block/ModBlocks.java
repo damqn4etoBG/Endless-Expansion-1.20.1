@@ -4,6 +4,7 @@ import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.block.custom.*;
 import net.damqn4etobg.endlessexpansion.fluid.ModFluids;
 import net.damqn4etobg.endlessexpansion.item.ModItems;
+import net.damqn4etobg.endlessexpansion.sound.ModSounds;
 import net.damqn4etobg.endlessexpansion.util.ModWoodTypes;
 import net.damqn4etobg.endlessexpansion.worldgen.tree.ArborTreeGrower;
 import net.minecraft.core.BlockPos;
@@ -35,30 +36,26 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, EndlessExpansion.MODID);
     public static final RegistryObject<Block> URANIUM_BLOCK = registerBlock("uranium_block",
             () -> new UraniumBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
-
     public static final RegistryObject<Block> RADIOACTIVE_GENERATOR = registerBlock("radioactive_generator",
             () -> new RadioactiveGeneratorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion()));
-
     public static final RegistryObject<LiquidBlock> NUCLEAR_WASTE_BLOCK = BLOCKS.register("nuclear_waste_block",
             () -> new LiquidBlock(ModFluids.SOURCE_NUCLEAR_WASTE, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
     public static final RegistryObject<Block> ARBOR_LOG = registerBlock("arbor_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)
-                    .strength(2.5f)));
+                    .strength(2.5f).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> ARBOR_WOOD = registerBlock("arbor_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
-                    .strength(2.5f)));
+                    .strength(2.5f).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> STRIPPED_ARBOR_LOG = registerBlock("stripped_arbor_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)
-                    .strength(2.5f)));
+                    .strength(2.5f).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> STRIPPED_ARBOR_WOOD = registerBlock("stripped_arbor_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)
-                    .strength(2.5f)));
-
+                    .strength(2.5f).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> ARBOR_PLANKS = registerBlock("arbor_planks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
-                    .strength(2.5f)) {
+                    .strength(2.5f).sound(ModSounds.ARBOR_WOOD_SOUNDS)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
                     return true;
@@ -91,39 +88,33 @@ public class ModBlocks {
                     return 60;
                 }
             });
-
     public static final RegistryObject<Block> ARBOR_STAIRS = registerBlock("arbor_stairs",
             () -> new StairBlock(() -> ModBlocks.ARBOR_PLANKS.get().defaultBlockState(),
-                    BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
+                    BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> ARBOR_SLAB = registerBlock("arbor_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
-
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> ARBOR_BUTTON = registerBlock("arbor_button",
-            () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON),
+            () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON).sound(ModSounds.ARBOR_WOOD_SOUNDS),
                     BlockSetType.OAK, 20, true));
     public static final RegistryObject<Block> ARBOR_PRESSURE_PLATE = registerBlock("arbor_pressure_plate",
-            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE),
+            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).sound(ModSounds.ARBOR_WOOD_SOUNDS),
                     BlockSetType.OAK));
-
     public static final RegistryObject<Block> ARBOR_FENCE = registerBlock("arbor_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
+            () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).sound(ModSounds.ARBOR_WOOD_SOUNDS)));
     public static final RegistryObject<Block> ARBOR_FENCE_GATE = registerBlock("arbor_fence_gate",
             () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_DOOR_CLOSE));
-
     public static final RegistryObject<Block> ARBOR_DOOR = registerBlock("arbor_door",
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_DOOR).noOcclusion().mapColor(ARBOR_PLANKS.get().defaultMapColor()), BlockSetType.JUNGLE));
-
     public static final RegistryObject<Block> ARBOR_TRAPDOOR = registerBlock("arbor_trapdoor",
             () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_TRAPDOOR).noOcclusion().mapColor(ARBOR_PLANKS.get().defaultMapColor()), BlockSetType.JUNGLE));
-
     public static final RegistryObject<Block> ARBOR_SIGN = BLOCKS.register("arbor_sign",
-            () -> new ArborStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), ModWoodTypes.ARBOR));
+            () -> new ArborStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).sound(ModSounds.ARBOR_WOOD_SOUNDS), ModWoodTypes.ARBOR));
     public static final RegistryObject<Block> ARBOR_WALL_SIGN = BLOCKS.register("arbor_wall_sign",
-            () -> new ArborWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), ModWoodTypes.ARBOR));
+            () -> new ArborWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).sound(ModSounds.ARBOR_WOOD_SOUNDS), ModWoodTypes.ARBOR));
     public static final RegistryObject<Block> ARBOR_HANGING_SIGN = BLOCKS.register("arbor_hanging_sign",
-            () -> new ArborHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), ModWoodTypes.ARBOR));
+            () -> new ArborHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).sound(ModSounds.ARBOR_WOOD_SOUNDS), ModWoodTypes.ARBOR));
     public static final RegistryObject<Block> ARBOR_WALL_HANGING_SIGN = BLOCKS.register("arbor_wall_hanging_sign",
-            () -> new ArborWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), ModWoodTypes.ARBOR));
+            () -> new ArborWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).sound(ModSounds.ARBOR_WOOD_SOUNDS), ModWoodTypes.ARBOR));
 
     public static final RegistryObject<Block> TITANUM_SOIL = registerBlock("titanum_soil",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));

@@ -23,7 +23,7 @@ public class ModToolTiers {
             new ResourceLocation(EndlessExpansion.MODID, "celestial"), List.of(ModToolTiers.COBALT), List.of());
 
     public static final Tier SHADOWSTEEL = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 4000, 10f, 6f, 25,
+            new ForgeTier(5, 4000, 12f, 6f, 25,
                     ModTags.Blocks.NEEDS_SHADOWSTEEL_TOOL, () -> Ingredient.of(ModItems.SHADOWSTEEL_INGOT.get())),
             new ResourceLocation(EndlessExpansion.MODID, "shadowsteel"), List.of(ModToolTiers.CELESTIAL), List.of());
 }

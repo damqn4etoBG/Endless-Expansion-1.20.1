@@ -4,10 +4,7 @@ import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.damqn4etobg.endlessexpansion.entity.custom.ArborBoatEntity;
 import net.damqn4etobg.endlessexpansion.fluid.ModFluids;
-import net.damqn4etobg.endlessexpansion.item.custom.ArborBoatItem;
-import net.damqn4etobg.endlessexpansion.item.custom.FuelItem;
-import net.damqn4etobg.endlessexpansion.item.custom.LuminiteStaffItem;
-import net.damqn4etobg.endlessexpansion.item.custom.PaxelItem;
+import net.damqn4etobg.endlessexpansion.item.custom.*;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -161,6 +158,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> SHADOWSTEEL_BOOTS = ITEMS.register("shadowsteel_boots",
             () -> new ArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> FLAME_WAND = ITEMS.register("flame_wand",
+            () -> new FlameWandItem(new Item.Properties().stacksTo(1).durability(250)));
+    public static final RegistryObject<Item> ICE_WAND = ITEMS.register("ice_wand",
+            () -> new IceWandItem(new Item.Properties().stacksTo(1).durability(250)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

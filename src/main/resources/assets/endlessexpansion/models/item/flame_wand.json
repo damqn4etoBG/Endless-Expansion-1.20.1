@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "endlessexpansion:item/flame_wand_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "endlessexpansion:item/flame_wand_item"
+    },
+    "ground": {
+      "parent": "endlessexpansion:item/flame_wand_item"
+    },
+    "fixed": {
+      "parent": "endlessexpansion:item/flame_wand_item"
+    }
+  }
+}

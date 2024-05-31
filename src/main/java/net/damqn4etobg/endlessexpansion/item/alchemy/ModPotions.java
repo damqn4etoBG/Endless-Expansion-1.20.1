@@ -17,6 +17,9 @@ public class ModPotions {
                     new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2400, 1),
                     new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 1)));
 
+    public static final RegistryObject<Potion> GLOWING_POTION = POTIONS.register("glowing_potion",
+            () -> new Potion(new MobEffectInstance(MobEffects.GLOWING, 2400, 1)));
+
     public static void register(IEventBus eventBus) {
         POTIONS.register(eventBus);
     }

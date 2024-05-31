@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "endlessexpansion:mini_temple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 8749023890,
+    "spacing": 32,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

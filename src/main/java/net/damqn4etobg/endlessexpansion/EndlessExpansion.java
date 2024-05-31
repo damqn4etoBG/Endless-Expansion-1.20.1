@@ -17,6 +17,7 @@ import net.damqn4etobg.endlessexpansion.recipe.ModRecipes;
 import net.damqn4etobg.endlessexpansion.screen.InfuserScreen;
 import net.damqn4etobg.endlessexpansion.screen.ModMenuTypes;
 import net.damqn4etobg.endlessexpansion.screen.RadioactiveGeneratorScreen;
+import net.damqn4etobg.endlessexpansion.sound.ModSounds;
 import net.damqn4etobg.endlessexpansion.util.BetterBrewingRecipe;
 import net.damqn4etobg.endlessexpansion.util.ModWoodTypes;
 import net.damqn4etobg.endlessexpansion.worldgen.feature.ModTreeFeatures;
@@ -64,6 +65,7 @@ public class EndlessExpansion {
         ModPotions.register(modEventBus);
         ModMobEffects.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
@@ -81,6 +83,8 @@ public class EndlessExpansion {
 
             BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.AWKWARD,
                     ModItems.MYSTICAL_EVERBLUE_POWDER.get(), ModPotions.MYSTICAL_POTION.get()));
+            BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.AWKWARD,
+                    ModItems.LUMINITE.get(), ModPotions.GLOWING_POTION.get()));
         });
     }
 

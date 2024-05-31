@@ -96,6 +96,10 @@ public class EndlessExpansionMenuButton extends Button {
                 menu = MenuRows.INGAME_MENU;
                 rowIdx = 3;
                 offsetX = 4;
+            } else if (gui instanceof ModTitleScreen) {
+                menu = MenuRows.MAIN_MENU;
+                rowIdx = 2;
+                offsetX = 4;
             }
 
             if (rowIdx != 0 && menu != null) {

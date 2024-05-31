@@ -45,6 +45,8 @@
   "item.endlessexpansion.shadowsteel_chestplate": "§dShadowsteel Chestplate",
   "item.endlessexpansion.shadowsteel_leggings": "§dShadowsteel Leggings",
   "item.endlessexpansion.shadowsteel_boots": "§dShadowsteel Boots",
+  "item.endlessexpansion.flame_wand": "Flame Wand",
+  "item.endlessexpansion.ice_wand": "Ice Wand",
 
   "block.endlessexpansion.uranium_block": "\u00A7aUranium Block",
   "block.endlessexpansion.radioactive_generator": "\u00A7dRadioactive Generator",
@@ -80,17 +82,30 @@
   "block.endlessexpansion.small_red_mushroom": "Small Red Mushroom",
   "block.endlessexpansion.small_brown_mushroom": "Small Brown Mushroom",
   "block.endlessexpansion.deepslate_black_opal_ore": "Deepslate Black Opal Ore",
+  "block.endlessexpansion.world_beyond_portal": "World Beyond Portal",
+
+  "biome.endlessexpansion.titanic_forest": "The Titanic Forest",
+  "biome.endlessexpansion.frozen_wastes": "The Frozen Wastes",
+  "biome.endlessexpansion.sunken_wastes": "The Sunken Wastes",
+  "biome.endlessexpansion.volcanic_wastes": "The Volcanic Wastes",
+  "biome.endlessexpansion.scorched_wastes": "The Scorched Wastes",
+  "biome.endlessexpansion.zerzura": "Zerzura",
 
   "fluid_type.endlessexpansion.nuclear_waste_fluid": "Nuclear Waste",
 
   "creativemodetab.endless_expansion": "Endless Expansion",
 
   "effect.endlessexpansion.growth_spurt": "Growth Spurt",
+  "effect.endlessexpansion.freezing": "Freezing",
 
   "item.minecraft.potion.effect.mystical_potion": "Mystical Potion",
   "item.minecraft.splash_potion.effect.mystical_potion": "Splash Potion of Mysticality",
   "item.minecraft.lingering_potion.effect.mystical_potion": "Lingering Potion of Mysticality",
   "item.minecraft.tipped_arrow.effect.mystical_potion": "Tipped Arrow of Mysticality",
+  "item.minecraft.potion.effect.glowing_potion": "Glowing Potion",
+  "item.minecraft.splash_potion.effect.glowing_potion": "Splash Potion of Glow",
+  "item.minecraft.lingering_potion.effect.glowing_potion": "Lingering Potion of Glow",
+  "item.minecraft.tipped_arrow.effect.glowing_potion": "Tipped Arrow of Glow",
 
   "entity.endlessexpansion.wraith": "Wraith",
   "entity.endlessexpansion.arbor_boat": "Arbor Boat",

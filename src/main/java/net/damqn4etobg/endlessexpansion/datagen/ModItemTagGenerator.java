@@ -28,6 +28,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.CELESTIAL_HELMET.get(),
                         ModItems.CELESTIAL_CHESTPLATE.get(),
                         ModItems.CELESTIAL_LEGGINGS.get(),
-                        ModItems.CELESTIAL_BOOTS.get());
+                        ModItems.CELESTIAL_BOOTS.get(),
+                        ModItems.SHADOWSTEEL_HELMET.get(),
+                        ModItems.SHADOWSTEEL_CHESTPLATE.get(),
+                        ModItems.SHADOWSTEEL_LEGGINGS.get(),
+                        ModItems.SHADOWSTEEL_BOOTS.get());
     }
 }

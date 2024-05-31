@@ -63,7 +63,7 @@ public class FreezeC2SPacket {
                         freeze.subFreeze(1);
                     }
                     if (freeze.getFreeze() == 10) {
-                        player.hurt(player.level().damageSources().freeze(), 2f);
+                        player.hurt(player.level().damageSources().freeze(), 2.5f);
                     }
 
                     if (hasFireAroundPlayer(player, level, 2)) {

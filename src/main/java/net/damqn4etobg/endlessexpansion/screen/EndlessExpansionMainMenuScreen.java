@@ -3,13 +3,12 @@ package net.damqn4etobg.endlessexpansion.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
+import net.damqn4etobg.endlessexpansion.util.PlatformIconButton;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.PlainTextButton;
-import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.layouts.FrameLayout;
 import net.minecraft.client.gui.layouts.GridLayout;
 import net.minecraft.client.gui.screens.Screen;
@@ -34,11 +33,12 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     private final PanoramaRenderer panorama_sinkhole = new PanoramaRenderer(CUBE_MAP_SINKHOLE);
     private final EndlessExpansionConfig config;
     private final Screen lastScreen;
-    public static final Component MADE_BY_TEXT = Component.literal("Made by damqn4etoBG and Officer");
+    public static final Component MADE_BY_TEXT = Component.literal("Made by damqn4etoBG and officer");
     public static final Component INSPIRED_TEXT = Component.literal("Inspired by The World Beyond The Ice Wall");
     public static final Component VERSION = Component.literal("Endless Expansion " + EndlessExpansionConfig.MOD_VERSION);
     private static final ResourceLocation CURSEFORGE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/curseforge.png");
     private static final ResourceLocation GITHUB_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/github.png");
+    private static final ResourceLocation MODRINTH_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/modrinth.png");
 
     private long firstRenderTime;
     public EndlessExpansionMainMenuScreen(Screen screen) {
@@ -48,15 +48,9 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     }
     @Override
     protected void init() {
-        int k = 24;
-        int yPos = this.height / 4 + 48;
         GridLayout gridlayout = new GridLayout();
         gridlayout.defaultCellSetting().paddingHorizontal(5).paddingBottom(4).alignHorizontallyCenter();
         GridLayout.RowHelper gridlayout$rowhelper = gridlayout.createRowHelper(2);
-
-        // 12 px between buttons
-        // Calculate the center X position of the screen
-        int centerX = this.width / 2;
 
         gridlayout$rowhelper.addChild(Button.builder(Component.translatable("menu.endlessexpansion.config.custom_menu"), (button) -> {
             {}
@@ -95,67 +89,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         FrameLayout.alignInRectangle(gridlayout, 0, this.height / 6 - 12, this.width, this.height, 0.5F, 0.0F);
         gridlayout.visitWidgets(this::addRenderableWidget);
 
-        int buttonWidth = 20; // Adjust the width as needed
-        int buttonHeight = 20; // Adjust the height as needed
-        int padding = 4; // Adjust the padding between buttons
-        int centerX2 = this.width / 2;
-        int firstButtonX = centerX - buttonWidth - padding / 2;
-        int buttonY = this.height - buttonHeight - 10; // Adjust the vertical position
-
-//        this.addRenderableWidget(new EndlessExpansionMenuButton.PlatformIconButton(firstButtonX, buttonY, buttonWidth, buttonHeight,
-//                ModGuiTextures.CURSEFORGE_LOGO, 0.085f, (button) -> {
-//            System.out.println(ModGuiTextures.CURSEFORGE_LOGO);
-//        }, Tooltip.create(Component.empty())));
-
-//        this.addRenderableWidget(new ImageButton(firstButtonX, buttonY, buttonWidth, buttonWidth, 0, 0, 20, CURSEFORGE_LOGO, 256, 256, (button) -> {
-//            System.out.println(CURSEFORGE_LOGO);
-//            System.out.println(Button.ACCESSIBILITY_TEXTURE);
-//        }, Component.translatable("narrator.button.language")));
-//
-//        // Calculate the position for the second square button
-//        int secondButtonX = centerX2 + padding / 2;
-//
-//        // Create and add the second square button
-//        this.addRenderableWidget(new ImageButton(secondButtonX, buttonY, buttonWidth, buttonHeight, 0, 0, GITHUB_LOGO, (button) -> {
-//
-//        }));
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return true;
-    }
-
-    @Override
-    public void onClose() {
-        super.onClose();
-        Minecraft.getInstance().setScreen(this.lastScreen);
-        config.saveConfig();
-    }
-
-    @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        if (firstRenderTime == 0L)
-            this.firstRenderTime = Util.getMillis();
-
-        float f = (float) (Util.getMillis() - this.firstRenderTime) / 250.0F;
-        float alpha = Mth.clamp(f, 0.0F, 1.0F);
-        float elapsedPartials = minecraft.getDeltaFrameTime();
-
-        if(config.getBackgroundName().equals("Titanic Forest")) {
-            panorama_titanic_forest.render(elapsedPartials, alpha);
-            guiGraphics.blit(PANORAMA_OVERLAY, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
-        } else if (config.getBackgroundName().equals("Frozen Wastes")) {
-            panorama_frozen_wastes.render(elapsedPartials, alpha);
-            guiGraphics.blit(PANORAMA_OVERLAY, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
-        } else if (config.getBackgroundName().equals("Sinkhole")) {
-            panorama_sinkhole.render(elapsedPartials, alpha);
-            guiGraphics.blit(PANORAMA_OVERLAY, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
-        }
-
-        RenderSystem.setShaderTexture(0, PANORAMA_OVERLAY);
-        guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 15, 16777215);
-
+        // Calculate the position for the second square button
         int textWidth1 = this.font.width(MADE_BY_TEXT);
         int textHeight1 = this.font.lineHeight;
 
@@ -180,14 +114,60 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         int textWidth3 = this.font.width(VERSION);
         int textHeight3 = this.font.lineHeight;
 
-        int x3 = 2; //0 is left corner + 2 px for padding
+        this.addRenderableWidget(new StringWidget(2, y, textWidth3, textHeight3, VERSION, this.font));
 
-        this.addRenderableWidget(new PlainTextButton(x3, y, textWidth3, textHeight3, VERSION, (button) -> {
+        int buttonWidth = 20;
+        int buttonHeight = 20;
+
+        this.addRenderableWidget(new PlatformIconButton(2, y2 - 12, buttonWidth, buttonHeight,
+                CURSEFORGE_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/endless-expansion");
-        }, this.font));
+        }, Tooltip.create(Component.literal("§cCurseforge"))));
 
+        this.addRenderableWidget(new PlatformIconButton(2 + 24, y2 - 12, buttonWidth, buttonHeight,
+                MODRINTH_LOGO, 1f, (b) -> {
+            Util.getPlatform().openUri("https://modrinth.com/mod/endless-expansion");
+        }, Tooltip.create(Component.literal("§aModrinth"))));
+
+        this.addRenderableWidget(new PlatformIconButton(2 + 48, y2 - 12, buttonWidth, buttonHeight,
+                GITHUB_LOGO, 1f, (b) -> {
+            Util.getPlatform().openUri("https://github.com/damqn4etoBG/Endless-Expansion");
+        }, Tooltip.create(Component.literal("Github"))));
+    }
+
+    @Override
+    public boolean shouldCloseOnEsc() {
+        return true;
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
+        Minecraft.getInstance().setScreen(this.lastScreen);
+        config.saveConfig();
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+        if (firstRenderTime == 0L)
+            this.firstRenderTime = Util.getMillis();
+
+        float f = (float) (Util.getMillis() - this.firstRenderTime) / 250.0F;
+        float alpha = Mth.clamp(f,0.0F, 1.0F);
+
+        if(config.getBackgroundName().equals("Titanic Forest")) {
+            this.panorama_titanic_forest.render(delta, alpha);
+        } else if (config.getBackgroundName().equals("Frozen Wastes")) {
+            this.panorama_frozen_wastes.render(delta, alpha);
+        } else if (config.getBackgroundName().equals("Sinkhole")) {
+            this.panorama_sinkhole.render(delta, alpha);
+        } else {
+            return;
+        }
+        guiGraphics.blit(PANORAMA_OVERLAY, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
+        RenderSystem.setShaderTexture(0, PANORAMA_OVERLAY);
+        guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 15, 16777215);
         super.render(guiGraphics, mouseX, mouseY, delta);
-
     }
 
     private void updateBackgroundName(EndlessExpansionConfig config) {
@@ -220,5 +200,4 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     private void updateButtonLabelBackgroundSelector(Button button, EndlessExpansionConfig config) {
         button.setMessage(Component.literal(config.getBackgroundName()).withStyle(getChatFormattingForBackground(config.getBackgroundName())));
     }
-
 }

@@ -3,14 +3,15 @@
   "pattern": [
     "ABA",
     "CDC",
-    "E E"
+    "EFE"
   ],
   "key": {
     "A": { "item": "minecraft:obsidian" },
     "B": { "item": "minecraft:diamond" },
     "C": { "item": "endlessexpansion:luminite" },
     "D": { "item": "minecraft:crafting_table" },
-    "E": { "item": "minecraft:smooth_stone" }
+    "E": { "item": "minecraft:smooth_stone" },
+    "F": { "item": "endlessexpansion:celestial_ingot" }
   },
   "result": {
     "item": "endlessexpansion:infuser",

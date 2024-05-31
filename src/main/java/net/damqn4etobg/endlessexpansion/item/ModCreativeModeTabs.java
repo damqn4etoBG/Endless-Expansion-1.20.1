@@ -96,6 +96,8 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.SHADOWSTEEL_CHESTPLATE.get());
                         pOutput.accept(ModItems.SHADOWSTEEL_LEGGINGS.get());
                         pOutput.accept(ModItems.SHADOWSTEEL_BOOTS.get());
+                        pOutput.accept(ModItems.FLAME_WAND.get());
+                        pOutput.accept(ModItems.ICE_WAND.get());
                     })
                     .build());
     public static void register(IEventBus eventBus) {

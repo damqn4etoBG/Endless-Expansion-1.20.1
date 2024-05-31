@@ -108,6 +108,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.SHADOWSTEEL_CHESTPLATE);
         trimmedArmorItem(ModItems.SHADOWSTEEL_LEGGINGS);
         trimmedArmorItem(ModItems.SHADOWSTEEL_BOOTS);
+
+        //handheldItem(ModItems.FLAME_WAND);
+        handheldItem(ModItems.ICE_WAND);
     }
 
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
