@@ -1,0 +1,15 @@
+{
+  "type": "endlessexpansion:infusing",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "item": "endlessexpansion:mystical_everblue_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "endlessexpansion:glacial_crystal"
+  }
+}

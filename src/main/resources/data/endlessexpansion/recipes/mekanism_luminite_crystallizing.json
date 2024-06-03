@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemical_type": "slurry",
+  "input": {
+    "amount": 128,
+    "slurry": "endlessexpansion:luminite_essence_fluid"
+  },
+  "output": {
+    "count": 1,
+    "id": "endlessexpansion:luminite"
+  }
+}

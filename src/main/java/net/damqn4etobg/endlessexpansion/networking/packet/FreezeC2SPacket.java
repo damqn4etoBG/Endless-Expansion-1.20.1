@@ -18,6 +18,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterials;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
@@ -70,6 +74,14 @@ public class FreezeC2SPacket {
                         freeze.subFreeze(2);
                     }
 
+                    if(hasFullLeatherArmorEquipped(player)) {
+                        freeze.subFreeze(1);
+                    }
+
+                    if(hasFullLeatherArmorEquipped(player) && hasFireAroundPlayer(player, level, 2)) {
+                        freeze.subFreeze(3);
+                    }
+
                     ModMessages.sendToPlayer(new FreezeDataSyncS2CPacket(freeze.getFreeze()), player);
                 });
             } else {
@@ -85,4 +97,13 @@ public class FreezeC2SPacket {
                 .filter(state -> state.is(Blocks.CAMPFIRE) || state.is(Blocks.FIRE)
                         || state.is(Blocks.SOUL_CAMPFIRE) || state.is(Blocks.SOUL_FIRE)).toArray().length > 0;
     }
+    private static boolean hasFullLeatherArmorEquipped(Player player) {
+        for (ItemStack stack : player.getArmorSlots()) {
+            if (stack.isEmpty() || !(stack.getItem() instanceof ArmorItem armorItem) || armorItem.getMaterial() != ArmorMaterials.LEATHER) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

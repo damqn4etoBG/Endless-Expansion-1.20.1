@@ -12,6 +12,7 @@ public class EndlessExpansionConfig {
     public static final String MOD_VERSION = "1.20.1-1.2";
     private boolean customMainMenu;
     private String backgroundName = "Titanic Forest"; // Default value when config is made!!!
+    private String modSounds = "ON";
 
     public boolean isCustomMainMenu() {
         return customMainMenu;
@@ -21,6 +22,10 @@ public class EndlessExpansionConfig {
         return backgroundName;
     }
 
+    public String getModSounds() {
+        return modSounds;
+    }
+
     public void setCustomMainMenu(boolean customMainMenu) {
         this.customMainMenu = customMainMenu;
         saveConfig();
@@ -28,6 +33,11 @@ public class EndlessExpansionConfig {
 
     public void setBackgroundName(String newBackgroundName) {
         this.backgroundName = newBackgroundName;
+        saveConfig();
+    }
+
+    public void setModSounds(String newModSounds) {
+        this.modSounds = newModSounds;
         saveConfig();
     }
 

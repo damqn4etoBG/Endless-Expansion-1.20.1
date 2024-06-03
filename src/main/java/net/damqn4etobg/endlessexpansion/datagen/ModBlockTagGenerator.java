@@ -36,5 +36,18 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(BlockTags.MINEABLE_WITH_AXE)
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL);
+
+        this.tag(ModTags.Blocks.ORES_COBALT)
+                .add(ModBlocks.COBALT_ORE.get())
+                .add(ModBlocks.DEEPSLATE_COBALT_ORE.get());
+
+        this.tag(ModTags.Blocks.ORES_LUMINITE)
+                .add(ModBlocks.DEEPSLATE_LUMINITE_ORE.get());
+
+        this.tag(ModTags.Blocks.ORES_PYRONIUM)
+                .add(ModBlocks.PYRONIUM_ORE.get());
+
+        this.tag(ModTags.Blocks.ORES_BLACK_OPAL)
+                .add(ModBlocks.DEEPSLATE_BLACK_OPAL_ORE.get());
     }
 }

@@ -58,8 +58,8 @@ public class ModClientEvents {
         public static void onGuiOpened(ScreenEvent.Init event) {
             if (event.getScreen() instanceof TitleScreen) {
                 if (!(event.getScreen() instanceof ModTitleScreen) && EndlessExpansionConfig.loadConfig().isCustomMainMenu()) {
-                    Minecraft.getInstance().setScreen(new ModTitleScreen(true));
-                    System.out.println("[Endless Expansion]: Setting Mod Title Screen");
+                    Minecraft.getInstance().setScreen(new ModTitleScreen(false));
+                    EndlessExpansion.LOGGER.info("Setting Mod Title Screen");
                 }
             }
         }
@@ -69,7 +69,7 @@ public class ModClientEvents {
         @SubscribeEvent
         public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
             event.registerAboveAll("freeze", FreezingHudOverlay.HUD_FREEZE);
-            System.out.println("[Endless Expansion]: Registering Freeze Overlay");
+            EndlessExpansion.LOGGER.info("Registering Freeze Overlay");
         }
     }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "endlessexpansion:pyronium"
+    },
+    "X": {
+      "item": "minecraft:magma_block"
+    }
+  },
+  "result": {
+    "item": "endlessexpansion:fire_core",
+    "count": 1
+  }
+}

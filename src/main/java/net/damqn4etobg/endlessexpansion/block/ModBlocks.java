@@ -7,6 +7,7 @@ import net.damqn4etobg.endlessexpansion.item.ModItems;
 import net.damqn4etobg.endlessexpansion.sound.ModSounds;
 import net.damqn4etobg.endlessexpansion.util.ModWoodTypes;
 import net.damqn4etobg.endlessexpansion.worldgen.tree.ArborTreeGrower;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -167,7 +168,16 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> INFUSER = registerBlock("infuser",
             () -> new InfuserBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion().strength(1.25F)));
+                    .sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion().strength(1.25F)) {
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+                    if(Screen.hasShiftDown()) {
+                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.infuser"));
+                    } else {
+                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.holdshift"));
+                    }
+                }
+            });
 
     public static final RegistryObject<Block> SMALL_RED_MUSHROOM = registerBlock("small_red_mushroom",
             () -> new SmallMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).strength(0.1f)));
@@ -177,6 +187,11 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DEEPSLATE_BLACK_OPAL_ORE = registerBlock("deepslate_black_opal_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE)));
+    public static final RegistryObject<LiquidBlock> LUMINITE_ESSENCE_BLOCK = BLOCKS.register("luminite_essence_block",
+            () -> new LiquidBlock(ModFluids.SOURCE_LUMINITE_ESSENCE, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+    public static final RegistryObject<Block> LUMINITE_BLOCK = registerBlock("luminite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(ModBlocks.DEEPSLATE_LUMINITE_ORE.get()).lightLevel(state -> 15)));
 
     private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);

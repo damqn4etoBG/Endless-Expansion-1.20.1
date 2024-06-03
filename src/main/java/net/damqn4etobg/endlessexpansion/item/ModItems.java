@@ -18,15 +18,19 @@ public class ModItems {
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> NUCLEAR_WASTE_BUCKET = ITEMS.register("nuclear_waste_bucket",
-            () -> new BucketItem(ModFluids.SOURCE_NUCLEAR_WASTE,
-                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-
     public static final RegistryObject<Item> LUMINITE_STAFF = ITEMS.register("luminite_staff",
             LuminiteStaffItem::new);
 
     public static final RegistryObject<Item> LUMINITE = ITEMS.register("luminite",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NUCLEAR_WASTE_BUCKET = ITEMS.register("nuclear_waste_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_NUCLEAR_WASTE,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> LUMINITE_ESSENCE_BUCKET = ITEMS.register("luminite_essence_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_LUMINITE_ESSENCE,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> ARBOR_STICK = ITEMS.register("arbor_stick",
             () -> new Item(new Item.Properties()));
@@ -162,6 +166,10 @@ public class ModItems {
             () -> new FlameWandItem(new Item.Properties().stacksTo(1).durability(250)));
     public static final RegistryObject<Item> ICE_WAND = ITEMS.register("ice_wand",
             () -> new IceWandItem(new Item.Properties().stacksTo(1).durability(250)));
+    public static final RegistryObject<Item> FIRE_CORE = ITEMS.register("fire_core",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GLACIAL_CRYSTAL = ITEMS.register("glacial_crystal",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

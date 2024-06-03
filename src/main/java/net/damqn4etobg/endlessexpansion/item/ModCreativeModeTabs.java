@@ -5,6 +5,7 @@ import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.damqn4etobg.endlessexpansion.item.alchemy.ModPotions;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -18,6 +19,8 @@ public class ModCreativeModeTabs {
 
     public static final RegistryObject<CreativeModeTab> ENDLESSEXPANSION_TAB = CREATIVE_MODE_TABS.register("endless_expansion",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.ARBOR_SAPLING.get()))
+                    .withBackgroundLocation(new ResourceLocation(EndlessExpansion.MODID, "textures/gui/creative_mode_tab.png"))
+                    .withSearchBar(60)
                     .title(Component.translatable("creativemodetab.endless_expansion"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModBlocks.ARBOR_LEAVES.get());
@@ -43,12 +46,15 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.TITANUM_GRASS_BLOCK.get());
                         pOutput.accept(ModBlocks.TITANUM_SOIL.get());
                         pOutput.accept(ModBlocks.GLACIER_BRICKS.get());
-                        pOutput.accept(ModItems.LUMINITE_STAFF.get());
+                        pOutput.accept(ModBlocks.PACKED_SNOW_BLOCK.get());
+                        pOutput.accept(ModItems.GLACIAL_CRYSTAL.get());
                         pOutput.accept(ModBlocks.DEEPSLATE_LUMINITE_ORE.get());
                         pOutput.accept(ModItems.LUMINITE.get());
+                        pOutput.accept(ModBlocks.LUMINITE_BLOCK.get());
+                        pOutput.accept(ModItems.LUMINITE_ESSENCE_BUCKET.get());
+                        pOutput.accept(ModItems.LUMINITE_STAFF.get());
                         pOutput.accept(ModBlocks.MYSTICAL_EVERBLUE_OCRHID.get());
                         pOutput.accept(ModItems.MYSTICAL_EVERBLUE_POWDER.get());
-                        pOutput.accept(ModBlocks.PACKED_SNOW_BLOCK.get());
                         pOutput.accept(ModBlocks.COBALT_ORE.get());
                         pOutput.accept(ModBlocks.DEEPSLATE_COBALT_ORE.get());
                         pOutput.accept(ModItems.RAW_COBALT.get());
@@ -78,6 +84,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.CELESTIAL_BOOTS.get());
                         pOutput.accept(ModBlocks.PYRONIUM_ORE.get());
                         pOutput.accept(ModItems.PYRONIUM.get());
+                        pOutput.accept(ModItems.FIRE_CORE.get());
                         pOutput.accept(ModBlocks.INFUSER.get());
                         pOutput.accept(ModItems.PYRONIUM_INFUSED_COAL.get());
                         pOutput.accept(ModBlocks.SMALL_RED_MUSHROOM.get());

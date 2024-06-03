@@ -1,6 +1,6 @@
 {
   "sea_level": 63,
-  "disable_mob_generation": false,
+  "disable_mob_generation": true,
   "aquifers_enabled": true,
   "ore_veins_enabled": true,
   "legacy_random_source": false,
@@ -854,6 +854,60 @@
                     }
                   },
                   {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "endlessexpansion:frozen_wastes"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:sequence",
+                      "sequence": [
+                        {
+                          "type": "minecraft:condition",
+                          "if_true": {
+                            "type": "minecraft:biome",
+                            "biome_is": [
+                              "endlessexpansion:frozen_wastes"
+                            ]
+                          },
+                          "then_run": {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                              "type": "minecraft:y_above",
+                              "anchor": {
+                                "absolute": 61
+                              },
+                              "surface_depth_multiplier": 0,
+                              "add_stone_depth": false
+                            },
+                            "then_run": {
+                              "type": "minecraft:condition",
+                              "if_true": {
+                                "type": "minecraft:not",
+                                "invert": {
+                                  "type": "minecraft:y_above",
+                                  "anchor": {
+                                    "absolute": 63
+                                  },
+                                  "surface_depth_multiplier": 0,
+                                  "add_stone_depth": false
+                                }
+                              },
+                              "then_run": {
+                                "type": "minecraft:block",
+                                "result_state": {
+                                  "Name": "minecraft:blue_ice"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
                     "type": "minecraft:sequence",
                     "sequence": [
                       {
@@ -1111,6 +1165,41 @@
                               "if_true": {
                                 "type": "minecraft:biome",
                                 "biome_is": [
+                                  "endlessexpansion:frozen_wastes"
+                                ]
+                              },
+                              "then_run": {
+                                "type": "minecraft:condition",
+                                "if_true": {
+                                  "type": "minecraft:water",
+                                  "offset": 0,
+                                  "surface_depth_multiplier": 0,
+                                  "add_stone_depth": false
+                                },
+                                "then_run": {
+                                  "type": "minecraft:block",
+                                  "result_state": {
+                                    "Name": "minecraft:snow_block"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "minecraft:blue_ice"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "minecraft:sequence",
+                          "sequence": [
+                            {
+                              "type": "minecraft:condition",
+                              "if_true": {
+                                "type": "minecraft:biome",
+                                "biome_is": [
                                   "endlessexpansion:scorched_wastes"
                                 ]
                               },
@@ -1305,160 +1394,30 @@
                   }
                 ]
               }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 0,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:water",
-                  "offset": -1,
-                  "surface_depth_multiplier": 0,
-                  "add_stone_depth": false
-                },
-                "then_run": {
-                  "type": "minecraft:sequence",
-                  "sequence": [
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:biome",
-                        "biome_is": [
-                          "minecraft:frozen_ocean",
-                          "minecraft:deep_frozen_ocean"
-                        ]
-                      },
-                      "then_run": {
-                        "type": "minecraft:condition",
-                        "if_true": {
-                          "type": "minecraft:hole"
-                        },
-                        "then_run": {
-                          "type": "minecraft:sequence",
-                          "sequence": [
-                            {
-                              "type": "minecraft:condition",
-                              "if_true": {
-                                "type": "minecraft:water",
-                                "offset": 0,
-                                "surface_depth_multiplier": 0,
-                                "add_stone_depth": false
-                              },
-                              "then_run": {
-                                "type": "minecraft:block",
-                                "result_state": {
-                                  "Name": "minecraft:air"
-                                }
-                              }
-                            },
-                            {
-                              "type": "minecraft:condition",
-                              "if_true": {
-                                "type": "minecraft:temperature"
-                              },
-                              "then_run": {
-                                "type": "minecraft:block",
-                                "result_state": {
-                                  "Name": "minecraft:ice"
-                                }
-                              }
-                            },
-                            {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:water",
-                                "Properties": {
-                                  "level": "0"
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:water",
-                "offset": -6,
-                "surface_depth_multiplier": -1,
-                "add_stone_depth": true
-              },
-              "then_run": {
-                "type": "minecraft:sequence",
-                "sequence": [
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:stone_depth",
-                      "offset": 0,
-                      "surface_type": "floor",
-                      "add_surface_depth": false,
-                      "secondary_depth_range": 0
-                    },
-                    "then_run": {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:biome",
-                        "biome_is": [
-                          "minecraft:frozen_ocean",
-                          "minecraft:deep_frozen_ocean"
-                        ]
-                      },
-                      "then_run": {
-                        "type": "minecraft:condition",
-                        "if_true": {
-                          "type": "minecraft:hole"
-                        },
-                        "then_run": {
-                          "type": "minecraft:block",
-                          "result_state": {
-                            "Name": "minecraft:water",
-                            "Properties": {
-                              "level": "0"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:vertical_gradient",
-                      "random_name": "minecraft:deepslate",
-                      "true_at_and_below": {
-                        "absolute": 0
-                      },
-                      "false_at_and_above": {
-                        "absolute": 8
-                      }
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:deepslate",
-                        "Properties": {
-                          "axis": "y"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
             }
           ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "random_name": "minecraft:deepslate",
+          "true_at_and_below": {
+            "absolute": 0
+          },
+          "false_at_and_above": {
+            "absolute": 8
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
         }
       }
     ]

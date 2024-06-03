@@ -77,7 +77,9 @@ public class ModTitleScreen extends Screen {
         int textWidth3 = this.font.width(EndlessExpansionMainMenuScreen.VERSION);
         int textHeight3 = this.font.lineHeight;
         int frgVrsWidth = this.font.width("Forge " + ForgeVersion.getVersion());
-        int minecraftVersionWidth = this.font.width("Minecraft " + ("release".equalsIgnoreCase(this.minecraft.getVersionType()) ? "" : "/" + this.minecraft.getVersionType()));
+        String s = "Minecraft " + SharedConstants.getCurrentVersion().getName();
+        int minecraftVersionWidth = this.font.width(
+                s + ("release".equalsIgnoreCase(this.minecraft.getVersionType()) ? "" : "/" + this.minecraft.getVersionType()));
 
         int i = this.font.width(COPYRIGHT_TEXT);
         int j = this.width - i - 2;
@@ -88,20 +90,20 @@ public class ModTitleScreen extends Screen {
         this.addRenderableWidget(new StringWidget(this.width - frgVrsWidth - 2, y - 9, frgVrsWidth, textHeight3,
                 Component.literal("Forge " + ForgeVersion.getVersion()), this.font));
 
-        this.addRenderableWidget(new StringWidget(this.width - minecraftVersionWidth - 2, y - 18, minecraftVersionWidth, textHeight3,
-                Component.literal("Minecraft " + ("release".equalsIgnoreCase(this.minecraft.getVersionType()) ? "" : "/" + this.minecraft.getVersionType())), this.font));
+        this.addRenderableWidget(new StringWidget(this.width - minecraftVersionWidth - 2, y - 19, minecraftVersionWidth, textHeight3,
+                Component.literal(s + ("release".equalsIgnoreCase(this.minecraft.getVersionType()) ? "" : "/" + this.minecraft.getVersionType())), this.font));
 
-        this.addRenderableWidget(new PlatformIconButton(2, y2 - 12, 20, 20,
+        this.addRenderableWidget(new PlatformIconButton(2, y2 - 11, 20, 20,
                 CURSEFORGE_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/endless-expansion");
         }, Tooltip.create(Component.literal("§cCurseforge"))));
 
-        this.addRenderableWidget(new PlatformIconButton(2 + 24, y2 - 12, 20, 20,
+        this.addRenderableWidget(new PlatformIconButton(2 + 24, y2 - 11, 20, 20,
                 MODRINTH_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://modrinth.com/mod/endless-expansion");
         }, Tooltip.create(Component.literal("§aModrinth"))));
 
-        this.addRenderableWidget(new PlatformIconButton(2 + 48, y2 - 12, 20, 20,
+        this.addRenderableWidget(new PlatformIconButton(2 + 48, y2 - 11, 20, 20,
                 GITHUB_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://github.com/damqn4etoBG/Endless-Expansion");
         }, Tooltip.create(Component.literal("Github"))));

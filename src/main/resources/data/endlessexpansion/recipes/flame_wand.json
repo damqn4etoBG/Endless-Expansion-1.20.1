@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " !#",
+    " !!",
+    "!  "
+  ],
+  "key": {
+    "!": {
+      "item": "endlessexpansion:arbor_stick"
+    },
+    "#": {
+      "item": "endlessexpansion:fire_core"
+    }
+  },
+  "result": {
+    "item": "endlessexpansion:flame_wand"
+  }
+}

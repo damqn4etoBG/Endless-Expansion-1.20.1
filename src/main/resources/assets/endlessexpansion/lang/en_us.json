@@ -4,6 +4,7 @@
   "item.endlessexpansion.arbor_stick": "Arbor Stick",
   "item.endlessexpansion.luminite_staff": "Luminite Staff",
   "item.endlessexpansion.luminite": "Luminite",
+  "item.endlessexpansion.luminite_essence_bucket": "Luminite Essence Bucket",
   "item.endlessexpansion.raw_cobalt": "Raw Cobalt",
   "item.endlessexpansion.cobalt_ingot": "Cobalt Ingot",
   "item.endlessexpansion.celestial_ingot": "§aCelestial Ingot",
@@ -47,6 +48,8 @@
   "item.endlessexpansion.shadowsteel_boots": "§dShadowsteel Boots",
   "item.endlessexpansion.flame_wand": "Flame Wand",
   "item.endlessexpansion.ice_wand": "Ice Wand",
+  "item.endlessexpansion.fire_core": "Fire Core",
+  "item.endlessexpansion.glacial_crystal": "Glacial Crystal",
 
   "block.endlessexpansion.uranium_block": "\u00A7aUranium Block",
   "block.endlessexpansion.radioactive_generator": "\u00A7dRadioactive Generator",
@@ -83,6 +86,7 @@
   "block.endlessexpansion.small_brown_mushroom": "Small Brown Mushroom",
   "block.endlessexpansion.deepslate_black_opal_ore": "Deepslate Black Opal Ore",
   "block.endlessexpansion.world_beyond_portal": "World Beyond Portal",
+  "block.endlessexpansion.luminite_block": "Luminite Block",
 
   "biome.endlessexpansion.titanic_forest": "The Titanic Forest",
   "biome.endlessexpansion.frozen_wastes": "The Frozen Wastes",
@@ -92,6 +96,7 @@
   "biome.endlessexpansion.zerzura": "Zerzura",
 
   "fluid_type.endlessexpansion.nuclear_waste_fluid": "Nuclear Waste",
+  "fluid_type.endlessexpansion.luminite_essence_fluid": "§eLuminite Essence",
 
   "creativemodetab.endless_expansion": "Endless Expansion",
 
@@ -114,6 +119,8 @@
   "endlessexpansion.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "endlessexpansion.tooltip.liquid.amount": "%s mB",
   "endlessexpansion.tooltip.empty": "Empty",
+  "endlessexpansion.tooltip.holdshift": "§7Hold §eSHIFT §7for more information.",
+  "endlessexpansion.tooltip.infuser":  "A station used to infuse items together with the power of luminite.",
 
   "endlessexpansion.displayname.radioactive_generator": "Radioactive Generator",
 
@@ -125,6 +132,13 @@
   "menu.endlessexpansion.config.custom_menu_switch": "§eWarning! The game requires a restart after turning the custom menu off!",
   "menu.endlessexpansion.config.background_selector": "Background Select",
   "menu.endlessexpansion.config.background_selector_desc": "Choose a custom background.",
+  "menu.endlessexpansion.config.mod_sounds": "Mod Sounds",
+  "menu.endlessexpansion.config.mod_sounds_desc": "Choose how the mod's sounds are played.",
+  "menu.endlessexpansion.config.mod_sounds_on": "All of the mod's sounds will be played.",
+  "menu.endlessexpansion.config.mod_sounds_partial": "A selected amount of the mod's sounds will be played.",
+  "menu.endlessexpansion.config.mod_sounds_off": "None of the mod's sounds will be played.",
+
+  "recipetype.endlessexpansion.infuser": "Infusing",
 
   "advancements.endlessexpansion.root.title": "Endless Expansion",
   "advancements.endlessexpansion.root.desc": "Your journey begins here",
@@ -165,5 +179,7 @@
   "advancements.endlessexpansion.obtain_shadowsteel_paxel.title": "Endgame Harvesting",
   "advancements.endlessexpansion.obtain_shadowsteel_paxel.desc": "Make a Shadowsteel Paxel",
   "advancements.endlessexpansion.obtain_shadowsteel_hoe.title": "True Dedication",
-  "advancements.endlessexpansion.obtain_shadowsteel_hoe.desc": "Waste your materials on a Shadowsteel Hoe"
+  "advancements.endlessexpansion.obtain_shadowsteel_hoe.desc": "Waste your materials on a Shadowsteel Hoe",
+
+  "sounds.endlessexpansion.infuser_infusing": "Infuser Infusing"
 }

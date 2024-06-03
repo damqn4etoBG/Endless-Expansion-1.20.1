@@ -62,12 +62,6 @@ public class ModMessages {
                 .encoder(FreezeC2SPacket::toBytes)
                 .consumerMainThread(FreezeC2SPacket::handle)
                 .add();
-
-        net.messageBuilder(EssenceSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(EssenceSyncS2CPacket::new)
-                .encoder(EssenceSyncS2CPacket::toBytes)
-                .consumerMainThread(EssenceSyncS2CPacket::handle)
-                .add();
     }
 
     public static <MSG> void sendToServer(MSG message) {

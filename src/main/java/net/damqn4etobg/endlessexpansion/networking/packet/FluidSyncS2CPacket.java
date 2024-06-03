@@ -1,6 +1,8 @@
 package net.damqn4etobg.endlessexpansion.networking.packet;
 
+import net.damqn4etobg.endlessexpansion.block.entity.InfuserBlockEntity;
 import net.damqn4etobg.endlessexpansion.block.entity.RadioactiveGeneratorBlockEntity;
+import net.damqn4etobg.endlessexpansion.screen.InfuserMenu;
 import net.damqn4etobg.endlessexpansion.screen.RadioactiveGeneratorMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -36,6 +38,14 @@ public class FluidSyncS2CPacket {
                 blockEntity.setFluid(this.fluidStack);
 
                 if(Minecraft.getInstance().player.containerMenu instanceof RadioactiveGeneratorMenu menu &&
+                        menu.getBlockEntity().getBlockPos().equals(pos)) {
+                    menu.setFluid(this.fluidStack);
+                }
+            }
+            if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof InfuserBlockEntity blockEntity) {
+                blockEntity.setFluid(this.fluidStack);
+
+                if(Minecraft.getInstance().player.containerMenu instanceof InfuserMenu menu &&
                         menu.getBlockEntity().getBlockPos().equals(pos)) {
                     menu.setFluid(this.fluidStack);
                 }

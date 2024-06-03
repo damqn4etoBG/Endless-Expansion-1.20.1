@@ -20,7 +20,6 @@ public class InfuserMenu extends AbstractContainerMenu {
     private final Level level;
     private final ContainerData data;
     private FluidStack fluidStack;
-    private FluidStack fluidStackWaste;
 
     public InfuserMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         this(id, inv ,inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
@@ -32,6 +31,7 @@ public class InfuserMenu extends AbstractContainerMenu {
         blockEntity = (InfuserBlockEntity) entity;
         this.level = inv.player.level();
         this.data = data;
+        this.fluidStack = blockEntity.getFluidStack();
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
@@ -51,6 +51,13 @@ public class InfuserMenu extends AbstractContainerMenu {
 
     public boolean isCrafting() {
         return data.get(0) > 0;
+    }
+    public void setFluid(FluidStack fluidStack) {
+        this.fluidStack = fluidStack;
+    }
+
+    public FluidStack getFluidStack() {
+        return fluidStack;
     }
 
     public int getScaledProgress() {

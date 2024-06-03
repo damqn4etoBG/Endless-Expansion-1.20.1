@@ -35,7 +35,7 @@ public class ModCreditsScreen extends Screen {
     private List<FormattedCharSequence> lines;
     private IntSet centeredLines;
     private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
-    private static final Component SECTION_HEADING = Component.literal("============").withStyle(ChatFormatting.WHITE);
+    private static final Component SECTION_HEADING = Component.literal("------------").withStyle(ChatFormatting.GRAY);
     private float scroll;
     private final float unmodifiedScrollSpeed;
     private float scrollSpeed;

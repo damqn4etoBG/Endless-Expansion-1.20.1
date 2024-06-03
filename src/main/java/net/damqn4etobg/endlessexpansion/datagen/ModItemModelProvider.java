@@ -110,7 +110,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.SHADOWSTEEL_BOOTS);
 
         //handheldItem(ModItems.FLAME_WAND);
-        handheldItem(ModItems.ICE_WAND);
+        //handheldItem(ModItems.ICE_WAND);
+
+        simpleItem(ModItems.LUMINITE_ESSENCE_BUCKET);
+        evenSimplerBlockItem(ModBlocks.LUMINITE_BLOCK);
+        simpleItem(ModItems.FIRE_CORE);
+        simpleItem(ModItems.GLACIAL_CRYSTAL);
     }
 
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {

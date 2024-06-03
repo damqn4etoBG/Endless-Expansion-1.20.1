@@ -1,10 +1,15 @@
 package net.damqn4etobg.endlessexpansion.block.entity;
 
+import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
+import net.damqn4etobg.endlessexpansion.block.ModBlocks;
+import net.damqn4etobg.endlessexpansion.fluid.ModFluids;
 import net.damqn4etobg.endlessexpansion.item.ModItems;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
 import net.damqn4etobg.endlessexpansion.networking.packet.*;
 import net.damqn4etobg.endlessexpansion.recipe.InfuserRecipe;
 import net.damqn4etobg.endlessexpansion.screen.InfuserMenu;
+import net.damqn4etobg.endlessexpansion.sound.ModSoundOptions;
+import net.damqn4etobg.endlessexpansion.sound.ModSounds;
 import net.damqn4etobg.endlessexpansion.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -26,9 +32,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -51,30 +61,40 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == ModItems.LUMINITE.get();
+                case 0 -> stack.getItem() == ModItems.LUMINITE.get() && stack.getItem() == ModBlocks.LUMINITE_BLOCK.get().asItem();
                 default -> super.isItemValid(slot, stack);
             };
         }
     };
 
-    private final ModLuminiteEssence LUMINITE_ESSENCE = new ModLuminiteEssence(20, 20) {
+    private final FluidTank FLUID_TANK = new FluidTank(12000) {
         @Override
-        public void onEssenceChanged() {
+        protected void onContentsChanged() {
             setChanged();
-            ModMessages.sendToClients(new EssenceSyncS2CPacket(this.getEssence(), getBlockPos()));
+            if(!level.isClientSide()) {
+                ModMessages.sendToClients(new FluidSyncS2CPacket(this.fluid, worldPosition));
+            }
+        }
+
+        @Override
+        public boolean isFluidValid(FluidStack stack) {
+            return stack.getFluid() == ModFluids.SOURCE_LUMINITE_ESSENCE.get();
         }
     };
 
-    public ILuminiteEssence getEssenceStorage() {
-        return LUMINITE_ESSENCE;
+    public void setFluid(FluidStack stack) {
+        this.FLUID_TANK.setFluid(stack);
+    }
+    public FluidStack getFluidStack() {
+        return this.FLUID_TANK.getFluid();
     }
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-    private LazyOptional<ILuminiteEssence> lazyEssenceHandler = LazyOptional.empty();
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 78;
+    private int maxProgress = 39; //original 78
     public InfuserBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.INFUSER.get(), pos, state);
         this.data = new ContainerData() {
@@ -124,10 +144,6 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
         return Component.translatable("block.endlessexpansion.infuser");
     }
 
-    public void setEssenceLevel(int essence) {
-        this.LUMINITE_ESSENCE.setEssence(essence);
-    }
-
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
@@ -136,14 +152,12 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-
         if(cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
-        if(cap == ModCapabilities.LUMINITE_ESSENCE) {
-            return lazyEssenceHandler.cast();
+        if(cap == ForgeCapabilities.FLUID_HANDLER) {
+            return lazyFluidHandler.cast();
         }
-
         return super.getCapability(cap, side);
     }
 
@@ -151,21 +165,21 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
-        lazyEssenceHandler = LazyOptional.of(() -> LUMINITE_ESSENCE);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
-        lazyEssenceHandler.invalidate();
+        lazyFluidHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
         nbt.putInt("infuser.progress", this.progress);
-        nbt.putInt("infuser.essence", this.LUMINITE_ESSENCE.getEssence());
+        nbt = FLUID_TANK.writeToNBT(nbt);
 
         super.saveAdditional(nbt);
     }
@@ -175,7 +189,7 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
         progress = nbt.getInt("infuser.progress");
-        LUMINITE_ESSENCE.setEssence(nbt.getInt("infuser.essence"));
+        FLUID_TANK.readFromNBT(nbt);
     }
 
     public void drops() {
@@ -186,19 +200,24 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
-
+    private boolean soundPlayed = false;
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         makeLuminiteEssence();
-        if(hasRecipe() && LUMINITE_ESSENCE.getEssence() >= 2) {
+        if (hasRecipe() && FLUID_TANK.getFluidAmount() >= 256) {
+            if (!soundPlayed && ModSoundOptions.ON()) {
+                pLevel.playSound(null, pPos, ModSounds.INFUSER_INFUSING.get(), SoundSource.BLOCKS, 0.4f, 1f);
+                soundPlayed = true;
+            }
             increaseCraftingProgress();
             setChanged(pLevel, pPos, pState);
-
-            if(hasProgressFinished()) {
+            if (hasProgressFinished()) {
                 craftItem();
                 resetProgress();
-                LUMINITE_ESSENCE.extractEssence(2, false);
+                FLUID_TANK.drain(256, IFluidHandler.FluidAction.EXECUTE);
+                soundPlayed = false;
             }
         } else {
+            soundPlayed = false;
             resetProgress();
         }
     }
@@ -208,10 +227,20 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void makeLuminiteEssence() {
-        if(LUMINITE_ESSENCE.getEssence() < 20 && hasLuminiteInSlot()) {
-            this.LUMINITE_ESSENCE.receiveEssence(2, false);
+        FluidStack luminiteEssenceStack = new FluidStack(ModFluids.SOURCE_LUMINITE_ESSENCE.get(), 128);
+        FluidStack luminiteEssenceBlockStack = new FluidStack(ModFluids.SOURCE_LUMINITE_ESSENCE.get(), 1152);
+        if(FLUID_TANK.getFluidAmount() < 12000 && hasLuminiteInSlot()) {
+            this.FLUID_TANK.fill(luminiteEssenceStack,  IFluidHandler.FluidAction.EXECUTE);
             this.itemHandler.extractItem(0, 1, false);
         }
+        if(FLUID_TANK.getFluidAmount() < 12000 && hasLuminiteBlockInSlot()) {
+            this.FLUID_TANK.fill(luminiteEssenceBlockStack,  IFluidHandler.FluidAction.EXECUTE);
+            this.itemHandler.extractItem(0, 1, false);
+        }
+    }
+    private static void fillTankWithFluid(InfuserBlockEntity pEntity, FluidStack stack) {
+        pEntity.FLUID_TANK.fill(stack, IFluidHandler.FluidAction.EXECUTE);
+        pEntity.itemHandler.extractItem(0, 1 , false);
     }
 
     private void craftItem() {
@@ -259,10 +288,15 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
 
     private void increaseCraftingProgress() {
         progress++;
+
     }
 
     private boolean hasLuminiteInSlot() {
         return this.itemHandler.getStackInSlot(0).getItem() == ModItems.LUMINITE.get();
+    }
+
+    private boolean hasLuminiteBlockInSlot() {
+        return this.itemHandler.getStackInSlot(0).getItem() == ModBlocks.LUMINITE_BLOCK.get().asItem();
     }
 
     @Nullable

@@ -26,7 +26,6 @@ public class RadioactiveGeneratorScreen extends AbstractContainerScreen<Radioact
     private FluidTankRenderer renderer;
     private FluidTankRenderer wasteRenderer;
     private TemperatureInfoArea temperatureInfoArea;
-
     private Minecraft minecraft;
     private MultiBufferSource.BufferSource bufferSource;
 

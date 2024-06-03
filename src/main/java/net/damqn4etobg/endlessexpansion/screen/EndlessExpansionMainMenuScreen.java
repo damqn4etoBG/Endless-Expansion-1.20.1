@@ -21,6 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class EndlessExpansionMainMenuScreen extends Screen {
@@ -81,6 +82,19 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                     updateButtonLabelBackgroundSelector(button, config);
                 }).width(100).build());
 
+        gridlayout$rowhelper.addChild(Button.builder(Component.translatable("menu.endlessexpansion.config.mod_sounds"), (button) -> {
+                    {}
+                }).width(100).build())
+                .setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.mod_sounds_desc")));
+
+        gridlayout$rowhelper.addChild(Button.builder(
+                Component.literal(config.getModSounds()).withStyle(getChatFormattingForSounds(config.getModSounds())),
+                button -> {
+                    updateModSoundsName(config);
+                    updateButtonLabelModSoundsSelector(button, config);
+                    button.setTooltip(getTooltipForSounds(config));
+                }).width(100).build());
+
         gridlayout$rowhelper.addChild(Button.builder(CommonComponents.GUI_DONE, (button) -> {
             Minecraft.getInstance().setScreen(this.lastScreen);
         }).width(200).build(), 2, gridlayout$rowhelper.newCellSettings().paddingTop(6));
@@ -96,7 +110,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         int x = this.width - textWidth1 - 2;
         int y = this.height - textHeight1 - 2;
 
-        this.addRenderableWidget(new PlainTextButton(x, y, textWidth1, textHeight1, MADE_BY_TEXT, (button) -> {
+        this.addRenderableWidget(new PlainTextButton(x, y + 1, textWidth1, textHeight1, MADE_BY_TEXT, (button) -> {
             this.minecraft.setScreen(new ModCreditsScreen(Minecraft.getInstance().screen));
         }, this.font));
 
@@ -104,7 +118,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         int textHeight2 = this.font.lineHeight;
 
         int x2 = this.width - textWidth2 - 2;
-        int y2 = y - textHeight2 - 2;
+        int y2 = y - textHeight2 - 1;
 
         this.addRenderableWidget(new PlainTextButton(x2, y2, textWidth2, textHeight2, INSPIRED_TEXT, (button) -> {
             Util.getPlatform().openUri("https://twbtiw.miraheze.org/wiki/Main_Page");
@@ -114,7 +128,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         int textWidth3 = this.font.width(VERSION);
         int textHeight3 = this.font.lineHeight;
 
-        this.addRenderableWidget(new StringWidget(2, y, textWidth3, textHeight3, VERSION, this.font));
+        this.addRenderableWidget(new StringWidget(2, y + 1, textWidth3, textHeight3, VERSION, this.font));
 
         int buttonWidth = 20;
         int buttonHeight = 20;
@@ -136,11 +150,6 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     }
 
     @Override
-    public boolean shouldCloseOnEsc() {
-        return true;
-    }
-
-    @Override
     public void onClose() {
         super.onClose();
         Minecraft.getInstance().setScreen(this.lastScreen);
@@ -148,21 +157,20 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         if (firstRenderTime == 0L)
             this.firstRenderTime = Util.getMillis();
 
         float f = (float) (Util.getMillis() - this.firstRenderTime) / 250.0F;
         float alpha = Mth.clamp(f,0.0F, 1.0F);
 
-        if(config.getBackgroundName().equals("Titanic Forest")) {
-            this.panorama_titanic_forest.render(delta, alpha);
-        } else if (config.getBackgroundName().equals("Frozen Wastes")) {
-            this.panorama_frozen_wastes.render(delta, alpha);
-        } else if (config.getBackgroundName().equals("Sinkhole")) {
-            this.panorama_sinkhole.render(delta, alpha);
-        } else {
-            return;
+        switch (config.getBackgroundName()) {
+            case "Titanic Forest" -> this.panorama_titanic_forest.render(delta, alpha);
+            case "Frozen Wastes" -> this.panorama_frozen_wastes.render(delta, alpha);
+            case "Sinkhole" -> this.panorama_sinkhole.render(delta, alpha);
+            default -> {
+                return;
+            }
         }
         guiGraphics.blit(PANORAMA_OVERLAY, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
         RenderSystem.setShaderTexture(0, PANORAMA_OVERLAY);
@@ -184,20 +192,51 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         config.saveConfig(); // Save the updated configuration here
     }
 
-    private ChatFormatting getChatFormattingForBackground(String backgroundName) {
-        switch (backgroundName) {
-            case "Titanic Forest":
-                return ChatFormatting.AQUA;
-            case "Frozen Wastes":
-                return ChatFormatting.BLUE;
-            case "Sinkhole":
-                return ChatFormatting.WHITE;
-            default:
-                return ChatFormatting.RED;
+    private void updateModSoundsName(EndlessExpansionConfig config) {
+        String currentString = config.getModSounds();
+
+        if ("ON".equals(currentString)) {
+            config.setModSounds("Partial");
+        } else if ("Partial".equals(currentString)) {
+            config.setModSounds("OFF");
+        } else if ("OFF".equals(currentString)) {
+            config.setModSounds("ON");
         }
+
+        config.saveConfig();
+    }
+    private ChatFormatting getChatFormattingForBackground(String backgroundName) {
+        return switch (backgroundName) {
+            case "Titanic Forest" -> ChatFormatting.AQUA;
+            case "Frozen Wastes" -> ChatFormatting.BLUE;
+            case "Sinkhole" -> ChatFormatting.WHITE;
+            default -> ChatFormatting.RED;
+        };
+    }
+
+    private ChatFormatting getChatFormattingForSounds(String modSounds) {
+        return switch (modSounds) {
+            case "ON" -> ChatFormatting.GREEN;
+            case "Partial" -> ChatFormatting.YELLOW;
+            case "OFF" -> ChatFormatting.RED;
+            default -> ChatFormatting.WHITE;
+        };
+    }
+
+    private Tooltip getTooltipForSounds(EndlessExpansionConfig config) {
+        String currentString = config.getModSounds();
+        return switch (currentString) {
+            case "ON" -> Tooltip.create(Component.translatable("menu.endlessexpansion.config.mod_sounds_on"));
+            case "Partial" -> Tooltip.create(Component.translatable("menu.endlessexpansion.config.mod_sounds_partial"));
+            case "OFF" -> Tooltip.create(Component.translatable("menu.endlessexpansion.config.mod_sounds_off"));
+            default -> Tooltip.create(Component.empty());
+        };
     }
 
     private void updateButtonLabelBackgroundSelector(Button button, EndlessExpansionConfig config) {
         button.setMessage(Component.literal(config.getBackgroundName()).withStyle(getChatFormattingForBackground(config.getBackgroundName())));
+    }
+    private void updateButtonLabelModSoundsSelector(Button button, EndlessExpansionConfig config) {
+        button.setMessage(Component.literal(config.getModSounds()).withStyle(getChatFormattingForSounds(config.getModSounds())));
     }
 }

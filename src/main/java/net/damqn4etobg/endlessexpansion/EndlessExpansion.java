@@ -47,9 +47,7 @@ public class EndlessExpansion {
 
     // Define mod id in a common place for everything to reference
     public static final String MODID = "endlessexpansion";
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static final double Version = 1.0;
+    public static final Logger LOGGER = LogUtils.getLogger();
     public EndlessExpansion() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -102,6 +100,8 @@ public class EndlessExpansion {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_NUCLEAR_WASTE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_NUCLEAR_WASTE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_LUMINITE_ESSENCE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_LUMINITE_ESSENCE.get(), RenderType.translucent());
 
             EntityRenderers.register(ModEntities.WRAITH.get(), WraithRenderer::new);
 

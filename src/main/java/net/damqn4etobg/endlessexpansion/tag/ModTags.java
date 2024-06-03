@@ -24,6 +24,11 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_CELESTIAL_TOOL = tag("needs_celestial_tool");
         public static final TagKey<Block> NEEDS_SHADOWSTEEL_TOOL = tag("needs_shadowsteel_tool");
         public static final TagKey<Block> MINEABLE_WITH_PAXEL = tag("mineable/paxel");
+        public static final TagKey<Block> ORES_COBALT = forgeTag("ores/cobalt");
+        public static final TagKey<Block> ORES_LUMINITE = forgeTag("ores/luminite");
+        public static final TagKey<Block> ORES_BLACK_OPAL = forgeTag("ores/black_opal");
+        public static final TagKey<Block> ORES_PYRONIUM = forgeTag("ores/pyronium");
+
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(EndlessExpansion.MODID, name));
         }

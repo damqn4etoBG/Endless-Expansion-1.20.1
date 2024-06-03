@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " !#",
+    " !!",
+    "!  "
+  ],
+  "key": {
+    "!": {
+      "item": "endlessexpansion:arbor_stick"
+    },
+    "#": {
+      "item": "endlessexpansion:glacial_crystal"
+    }
+  },
+  "result": {
+    "item": "endlessexpansion:ice_wand"
+  }
+}
