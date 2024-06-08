@@ -3,6 +3,7 @@ package net.damqn4etobg.endlessexpansion.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
+import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -65,6 +66,11 @@ public class InfuserRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
+    public ItemStack getToastSymbol() {
+        return new ItemStack(ModBlocks.INFUSER.get());
+    }
+
+    @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
     }
@@ -113,6 +119,10 @@ public class InfuserRecipe implements Recipe<SimpleContainer> {
             }
 
             pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
+        }
+
+        interface SingleItemMaker<T extends InfuserRecipe> {
+            T create(ResourceLocation pId, String pGroup, Ingredient pIngredient, ItemStack pResult);
         }
     }
 }

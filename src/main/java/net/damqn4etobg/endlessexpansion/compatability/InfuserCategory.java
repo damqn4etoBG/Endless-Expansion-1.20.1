@@ -31,22 +31,16 @@ public class InfuserCategory implements IRecipeCategory<InfuserRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(EndlessExpansion.MODID, "infusing");
     public static final ResourceLocation TEXTURE = new ResourceLocation(EndlessExpansion.MODID,
             "textures/gui/infuser_gui.png");
-
     public static final RecipeType<InfuserRecipe> INFUSING_TYPE =
             new RecipeType<>(UID, InfuserRecipe.class);
-
-    protected int titleLabelX;
-    protected int titleLabelY;
-    protected int inventoryLabelX;
-    protected int inventoryLabelY;
     private final IDrawable background;
     private final IDrawable icon;
     private final FluidTankRenderer fluidTankRenderer;
 
     public InfuserCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
+        this.background = helper.createDrawable(TEXTURE, 14, 13, 139, 59); // 176 width 85 height default
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.INFUSER.get()));
-        this.fluidTankRenderer = new FluidTankRenderer(256, true, 4, 54);
+        this.fluidTankRenderer = new FluidTankRenderer(256, false, 4, 54);
     }
 
     @Override
@@ -71,16 +65,16 @@ public class InfuserCategory implements IRecipeCategory<InfuserRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, InfuserRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 26, 42).addIngredients(recipe.getIngredients().get(0));
-        builder.addSlot(RecipeIngredientRole.INPUT, 134, 42).addIngredients(recipe.getIngredients().get(1));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 80, 42).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.INPUT, 12, 29).addIngredients(recipe.getIngredients().get(0)); // 26. 42
+        builder.addSlot(RecipeIngredientRole.INPUT, 120, 29).addIngredients(recipe.getIngredients().get(1)); // 134, 42
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 29).addItemStack(recipe.getResultItem(null)); // 80, 42
     }
 
     @Override
     public void draw(InfuserRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         FluidStack luminiteEssence = new FluidStack(ModFluids.SOURCE_LUMINITE_ESSENCE.get(), 256);
-        int fluidX = 17;
-        int fluidY = 16;
+        int fluidX = 3; // org 17
+        int fluidY = 3; // org 16
         fluidTankRenderer.render(guiGraphics, fluidX, fluidY, luminiteEssence);
 
         // Check if the mouse is hovering over the fluid area

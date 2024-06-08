@@ -61,7 +61,7 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == ModItems.LUMINITE.get() && stack.getItem() == ModBlocks.LUMINITE_BLOCK.get().asItem();
+                case 0 -> stack.getItem() == ModItems.LUMINITE.get() || stack.getItem() == ModBlocks.LUMINITE_BLOCK.get().asItem();
                 default -> super.isItemValid(slot, stack);
             };
         }
