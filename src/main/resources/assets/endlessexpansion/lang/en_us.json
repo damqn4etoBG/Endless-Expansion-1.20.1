@@ -87,6 +87,8 @@
   "block.endlessexpansion.deepslate_black_opal_ore": "Deepslate Black Opal Ore",
   "block.endlessexpansion.world_beyond_portal": "World Beyond Portal",
   "block.endlessexpansion.luminite_block": "Luminite Block",
+  "block.endlessexpansion.blackstone_pyronium_ore": "Blackstone Pyronium Ore",
+
 
   "biome.endlessexpansion.titanic_forest": "The Titanic Forest",
   "biome.endlessexpansion.frozen_wastes": "The Frozen Wastes",
@@ -121,6 +123,7 @@
   "endlessexpansion.tooltip.empty": "Empty",
   "endlessexpansion.tooltip.holdshift": "§7Hold §eSHIFT §7for more information.",
   "endlessexpansion.tooltip.infuser":  "A station used to infuse items together with the power of luminite.",
+  "endlessexpansion.tooltip.blueorhid": "§d§oIt gives off a strong Magical energy",
 
   "endlessexpansion.displayname.radioactive_generator": "Radioactive Generator",
 
@@ -180,6 +183,8 @@
   "advancements.endlessexpansion.obtain_shadowsteel_paxel.desc": "Make a Shadowsteel Paxel",
   "advancements.endlessexpansion.obtain_shadowsteel_hoe.title": "True Dedication",
   "advancements.endlessexpansion.obtain_shadowsteel_hoe.desc": "Waste your materials on a Shadowsteel Hoe",
+  "advancements.endlessexpansion.obtain_uranium.title": "Remnants of the past",
+  "advancements.endlessexpansion.obtain_uranium.desc": "Discover what Endless Expansion was",
 
   "sounds.endlessexpansion.infuser_infusing": "Infuser Infusing"
 }

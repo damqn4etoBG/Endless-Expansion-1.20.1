@@ -10,16 +10,41 @@
     "grass_color": 6276926,
     "foliage_color": 5815098
   },
-  "spawners": {},
+  "spawners": {
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 6
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ]
+  },
   "spawn_costs": {},
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
   "features": [
     [
       "endlessexpansion:giant_red_mushroom_placed",
       "endlessexpansion:giant_brown_mushroom_placed",
       "minecraft:mushroom_island_vegetation",
       "endlessexpansion:small_red_mushroom_placed",
-      "endlessexpansion:small_brown_mushroom_placed"
+      "endlessexpansion:small_brown_mushroom_placed",
+      "endlessexpansion:brown_shroom_house_placed",
+      "endlessexpansion:red_shroom_house_placed"
     ],
     [
       "minecraft:disk_sand",
@@ -60,7 +85,9 @@
       "minecraft:flower_plains",
       "minecraft:patch_grass_plain",
       "minecraft:patch_sugar_cane",
-      "minecraft:seagrass_swamp"
+      "minecraft:seagrass_normal",
+      "minecraft:seagrass_simple",
+      "minecraft:kelp_cold"
     ]
   ]
 }

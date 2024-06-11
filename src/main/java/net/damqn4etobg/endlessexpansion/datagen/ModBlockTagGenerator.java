@@ -21,7 +21,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .add(ModBlocks.CELESTIAL_BLOCK.get())
-                .add(ModBlocks.PYRONIUM_ORE.get());
+                .add(ModBlocks.PYRONIUM_ORE.get())
+                .add(ModBlocks.BLACKSTONE_PYRONIUM_ORE.get());
 
         this.tag(ModTags.Blocks.NEEDS_CELESTIAL_TOOL)
                 .add(ModBlocks.DEEPSLATE_BLACK_OPAL_ORE.get());
@@ -45,7 +46,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.DEEPSLATE_LUMINITE_ORE.get());
 
         this.tag(ModTags.Blocks.ORES_PYRONIUM)
-                .add(ModBlocks.PYRONIUM_ORE.get());
+                .add(ModBlocks.PYRONIUM_ORE.get())
+                .add(ModBlocks.BLACKSTONE_PYRONIUM_ORE.get());
 
         this.tag(ModTags.Blocks.ORES_BLACK_OPAL)
                 .add(ModBlocks.DEEPSLATE_BLACK_OPAL_ORE.get());

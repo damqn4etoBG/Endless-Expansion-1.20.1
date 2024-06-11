@@ -59,6 +59,7 @@ public class    ModBlockStateProvider extends BlockStateProvider {
         trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.ARBOR_TRAPDOOR.get()), modLoc("block/arbor_trapdoor"), true, "cutout");
 
         blockWithItem(ModBlocks.PYRONIUM_ORE);
+        blockWithItem(ModBlocks.BLACKSTONE_PYRONIUM_ORE);
 
         simpleBlock(ModBlocks.INFUSER.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/infuser")));

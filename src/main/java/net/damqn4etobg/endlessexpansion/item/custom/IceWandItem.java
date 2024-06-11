@@ -32,7 +32,6 @@ public class IceWandItem extends Item {
     public IceWandItem(Properties pProperties) {
         super(pProperties);
     }
-    private final Minecraft minecraft = Minecraft.getInstance();
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
         ItemStack projectileStack = Blocks.ICE.asItem().getDefaultInstance();

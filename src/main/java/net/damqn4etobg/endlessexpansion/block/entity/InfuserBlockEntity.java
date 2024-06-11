@@ -233,7 +233,7 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
             this.FLUID_TANK.fill(luminiteEssenceStack,  IFluidHandler.FluidAction.EXECUTE);
             this.itemHandler.extractItem(0, 1, false);
         }
-        if(FLUID_TANK.getFluidAmount() < 12000 && hasLuminiteBlockInSlot()) {
+        if(FLUID_TANK.getFluidAmount() <= 10848 && hasLuminiteBlockInSlot()) {
             this.FLUID_TANK.fill(luminiteEssenceBlockStack,  IFluidHandler.FluidAction.EXECUTE);
             this.itemHandler.extractItem(0, 1, false);
         }

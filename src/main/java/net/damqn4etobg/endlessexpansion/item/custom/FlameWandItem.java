@@ -27,14 +27,13 @@ public class FlameWandItem extends Item {
     public FlameWandItem(Properties pProperties) {
         super(pProperties);
     }
-    private final Minecraft minecraft = Minecraft.getInstance();
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
         if (itemstack.isDamageableItem() && itemstack.getDamageValue() < itemstack.getMaxDamage()) {
             pLevel.playSound((Player) null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(),
                     SoundEvents.FIRECHARGE_USE, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
             pPlayer.getCooldowns().addCooldown(this, 20);
-            Position position = pPlayer.getPosition(minecraft.getDeltaFrameTime());
+            Position position = pPlayer.getPosition(Minecraft.getInstance().getDeltaFrameTime());
             Direction direction = pPlayer.getDirection();
             double d0 = position.x() + (double) ((float) direction.getStepX() * 0.35F);
             double d1 = position.y() + (double) ((float) direction.getStepY() * 0.35F) + 1;

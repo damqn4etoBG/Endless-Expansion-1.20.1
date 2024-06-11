@@ -81,6 +81,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.PYRONIUM);
         evenSimplerBlockItem(ModBlocks.PYRONIUM_ORE);
+        evenSimplerBlockItem(ModBlocks.BLACKSTONE_PYRONIUM_ORE);
         simpleItem(ModItems.PYRONIUM_INFUSED_COAL);
         evenSimplerBlockItem(ModBlocks.INFUSER);
 

@@ -18,7 +18,13 @@
   },
   "spawners": {},
   "spawn_costs": {},
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
   "features": [
     [],
     [],
@@ -27,7 +33,9 @@
     [
       "minecraft:delta",
       "minecraft:small_basalt_columns",
-      "minecraft:large_basalt_columns"
+      "minecraft:large_basalt_columns",
+      "endlessexpansion:small_blackstone_columns_placed",
+      "endlessexpansion:large_blackstone_columns_placed"
     ],
     [
       "minecraft:disk_sand",

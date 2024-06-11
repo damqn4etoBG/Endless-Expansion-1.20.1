@@ -20,7 +20,7 @@ public class ModLevelGen extends NoiseRouterData {
     public static NoiseGeneratorSettings worldBeyond(BootstapContext<?> pContext, boolean pAmplified, boolean pLarge) {
         return new NoiseGeneratorSettings(WORLD_BEYOND_NOISE_SETTINGS, Blocks.STONE.defaultBlockState(),
                 Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(pContext.lookup(Registries.DENSITY_FUNCTION),
-                pContext.lookup(Registries.NOISE), true, false), ModSurfaceRules.makeRules(), (new OverworldBiomeBuilder()).spawnTarget(),
+                pContext.lookup(Registries.NOISE), true, true), ModSurfaceRules.makeRules(), (new OverworldBiomeBuilder()).spawnTarget(),
                 63, false, true, true, false);
     }
 

@@ -36,17 +36,22 @@ public class ModCreditsScreen extends Screen {
     private IntSet centeredLines;
     private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
     private static final Component SECTION_HEADING = Component.literal("------------").withStyle(ChatFormatting.GRAY);
+    private static final Component RETURN_MESSAGE = Component.literal("(Press ESC to return)").withStyle(ChatFormatting.GRAY);
     private float scroll;
     private final float unmodifiedScrollSpeed;
     private float scrollSpeed;
     private final ModLogoRenderer logoRenderer = new ModLogoRenderer(true);
     private final Screen lastScreen;
+    private boolean showReturnMessage;
+    private float returnMessageAlpha;
 
     protected ModCreditsScreen(Screen screen) {
         super(GameNarrator.NO_TITLE);
         this.unmodifiedScrollSpeed = 1F;
         this.scrollSpeed = unmodifiedScrollSpeed;
         this.lastScreen = screen;
+        this.showReturnMessage = false;
+        this.returnMessageAlpha = 0.0f;
     }
 
     @Override
@@ -122,15 +127,15 @@ public class ModCreditsScreen extends Screen {
         this.logoRenderer.renderLogo(pGuiGraphics, this.width, 0.0F, j - 50);
         int k = j + 100; //org 100
 
-        for(int l = 0; l < this.lines.size(); ++l) {
+        for (int l = 0; l < this.lines.size(); ++l) {
             if (l == this.lines.size() - 1) {
-                float f1 = (float)k + f - (float)(this.height / 2 - 6);
+                float f1 = (float) k + f - (float) (this.height / 2 - 6);
                 if (f1 < 0.0F) {
                     pGuiGraphics.pose().translate(0.0F, -f1, 0.0F);
                 }
             }
 
-            if ((float)k + f + 12.0F + 8.0F > 0.0F && (float)k + f < (float)this.height) {
+            if ((float) k + f + 12.0F + 8.0F > 0.0F && (float) k + f < (float) this.height) {
                 FormattedCharSequence formattedcharsequence = this.lines.get(l);
                 if (this.centeredLines.contains(l)) {
                     pGuiGraphics.drawCenteredString(this.font, formattedcharsequence, i + 128, k, 16777215);
@@ -143,11 +148,34 @@ public class ModCreditsScreen extends Screen {
         }
 
         pGuiGraphics.pose().popPose();
+
+        // Show return message if the credits have scrolled off the screen
+        if (k + f < 0) {
+            this.showReturnMessage = true;
+        }
+
+        pGuiGraphics.pose().popPose();
         RenderSystem.enableBlend();
         RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
         pGuiGraphics.blit(VIGNETTE_LOCATION, 0, 0, 0, 0.0F, 0.0F, this.width, this.height, this.width, this.height);
         RenderSystem.disableBlend();
         RenderSystem.defaultBlendFunc();
+
+        if (this.showReturnMessage) {
+            this.returnMessageAlpha = Math.min(this.returnMessageAlpha + pPartialTick * 0.05f, 1.0f);
+            int returnMessageColor = (int)(this.returnMessageAlpha * 255.0f) << 24 | 0xFFFFFF;
+
+            float scaleFactor = 1.5F;
+            int scaledWidth = (int)(this.width / scaleFactor);
+            int scaledHeight = (int)(this.height / scaleFactor);
+
+            pGuiGraphics.pose().pushPose();
+            pGuiGraphics.pose().scale(scaleFactor, scaleFactor, scaleFactor);
+            pGuiGraphics.drawCenteredString(this.font, RETURN_MESSAGE.getVisualOrderText(), scaledWidth / 2,
+                    scaledHeight / 2 - (this.font.lineHeight / 2), returnMessageColor);
+            pGuiGraphics.pose().popPose();
+        }
+
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
     }
 

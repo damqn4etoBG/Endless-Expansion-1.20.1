@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "endlessexpansion:volcanic_wastes",
+  "features": "endlessexpansion:blackstone_pyronium_placed",
+  "step": "underground_ores"
+}

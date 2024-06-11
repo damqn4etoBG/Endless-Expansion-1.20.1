@@ -366,6 +366,33 @@
           }
         },
         {
+          "biome": "endlessexpansion:volcanic_wastes",
+          "parameters": {
+            "continentalness": [
+              -0.11,
+              0.03
+            ],
+            "depth": 0.0,
+            "erosion": [
+              -1,
+              -0.7799
+            ],
+            "humidity": [
+              -1,
+              -0.35
+            ],
+            "offset": 0.0,
+            "temperature": [
+              0.55,
+              1
+            ],
+            "weirdness": [
+              -1,
+              -0.9333
+            ]
+          }
+        },
+        {
           "biome": "endlessexpansion:zerzura",
           "parameters": {
             "temperature": [

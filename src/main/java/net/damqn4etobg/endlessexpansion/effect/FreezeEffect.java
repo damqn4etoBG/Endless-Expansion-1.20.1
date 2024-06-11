@@ -13,13 +13,11 @@ import net.minecraft.world.phys.Vec3;
 
 
 public class FreezeEffect extends MobEffect {
-    private Minecraft minecraft = Minecraft.getInstance();
     public FreezeEffect(MobEffectCategory mobEffectCategory, int color) {
         super(mobEffectCategory, color);
     }
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int amplifier) {
-        GuiGraphics guiGraphics = new GuiGraphics(minecraft, minecraft.renderBuffers().bufferSource());
         BlockPos playerPos = pLivingEntity.blockPosition().below();
         BlockState blockState = pLivingEntity.level().getBlockState(playerPos);
         if (pLivingEntity.hasEffect(ModMobEffects.FREEZING.get()) && !(blockState.isAir() || blockState.is(Blocks.WATER))) {

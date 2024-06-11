@@ -83,6 +83,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.CELESTIAL_LEGGINGS.get());
                         pOutput.accept(ModItems.CELESTIAL_BOOTS.get());
                         pOutput.accept(ModBlocks.PYRONIUM_ORE.get());
+                        pOutput.accept(ModBlocks.BLACKSTONE_PYRONIUM_ORE.get());
                         pOutput.accept(ModItems.PYRONIUM.get());
                         pOutput.accept(ModItems.FIRE_CORE.get());
                         pOutput.accept(ModBlocks.INFUSER.get());

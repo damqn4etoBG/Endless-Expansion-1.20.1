@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class EndlessExpansionConfig {
-    public static final String MOD_VERSION = "1.20.1-1.21";
+    public static final String MOD_VERSION = "1.20.1-1.3";
     private boolean customMainMenu;
     private String backgroundName = "Titanic Forest"; // Default value when config is made!!!
     private String modSounds = "ON";

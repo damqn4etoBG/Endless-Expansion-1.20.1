@@ -139,7 +139,11 @@ public class ModBlocks {
                     BlockBehaviour.Properties.copy(Blocks.BLUE_ORCHID).noOcclusion().noCollission().lightLevel(state -> 7)) {
                 @Override
                 public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-                    pTooltip.add(Component.literal("§d§oIt gives off a strong Magical energy"));
+                    if(Screen.hasShiftDown()) {
+                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.blueorhid"));
+                    } else {
+                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.holdshift"));
+                    }
                     super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
                 }
             });
@@ -192,6 +196,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LUMINITE_BLOCK = registerBlock("luminite_block",
             () -> new Block(BlockBehaviour.Properties.copy(ModBlocks.DEEPSLATE_LUMINITE_ORE.get()).lightLevel(state -> 15)));
+
+    public static final RegistryObject<Block> BLACKSTONE_PYRONIUM_ORE = registerBlock("blackstone_pyronium_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.STONE)
+                    .mapColor(MapColor.COLOR_BLACK).strength(1.25F, 4.2F)));
 
     private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
