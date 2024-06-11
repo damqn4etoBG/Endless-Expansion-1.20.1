@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-24T20:38:13.0999851	Item Models: endlessexpansion
+// 1.20.1	2024-06-11T17:32:23.391242	Item Models: endlessexpansion
 01cd99e21ebbf794e422d4eab0da3582f500a661 assets/endlessexpansion/models/item/arbor_boat.json
 d3d3848d006aae03113cec4267fd9ab8f956ce90 assets/endlessexpansion/models/item/arbor_button.json
 459c8d13b9fa4aef3b5844286105b3613e49aca6 assets/endlessexpansion/models/item/arbor_chest_boat.json
@@ -11,6 +11,7 @@ b6d3c250c1c1d56c09c2138bf80a336560892e88 assets/endlessexpansion/models/item/arb
 cd37192cc8a354c14827372bca3a80eeee8f0409 assets/endlessexpansion/models/item/arbor_slab.json
 d21b331dbb83f45dfd5db25b254a48858810c7c1 assets/endlessexpansion/models/item/arbor_stairs.json
 7115ff721b4e758fda3e22c97a979fda8422b618 assets/endlessexpansion/models/item/arbor_trapdoor.json
+0da11be785c1727b0c57087aceb8bbbeb3fd339a assets/endlessexpansion/models/item/blackstone_pyronium_ore.json
 3fc9230297d214c04e52de383e8e0baae01a84c1 assets/endlessexpansion/models/item/black_opal.json
 c8a9f6b53c5b3c745ae960b5f16d1464125d1ea2 assets/endlessexpansion/models/item/celestial_axe.json
 e9a9a977e8ed8c52da9b27513a1c48e7ce3edeaf assets/endlessexpansion/models/item/celestial_boots.json
@@ -113,7 +114,11 @@ ae4dfe2a275ebac389f61ba516c66fb18c7a6e27 assets/endlessexpansion/models/item/cob
 1b8c3ab8dfddfcbbc6278c5dafcc6f2199daa849 assets/endlessexpansion/models/item/cobalt_shovel.json
 7985fd6a6c20c197f7dd387e81765ddb32fdda9d assets/endlessexpansion/models/item/cobalt_sword.json
 ca4e430f2e63e3689328f7e526ddc6811bf4e919 assets/endlessexpansion/models/item/deepslate_black_opal_ore.json
+d54bf0a05097697dccc06a93f96f3447e33c761c assets/endlessexpansion/models/item/fire_core.json
+b5deabbf3dd1f0bc77f00be4164e280f4edc3594 assets/endlessexpansion/models/item/glacial_crystal.json
 d3c3dfd6e57368a47c3eadd6db3dabbe5977e1b1 assets/endlessexpansion/models/item/infuser.json
+2317a7c7ba347923aacd7a9941d70041b7f094c9 assets/endlessexpansion/models/item/luminite_block.json
+580039958b84e930caa2433475df57ca2975a8ed assets/endlessexpansion/models/item/luminite_essence_bucket.json
 9b18390e6bebb8e1bdc32ac23d1f25aa064e51c2 assets/endlessexpansion/models/item/mystical_everblue_powder.json
 3c044553ec62c17f378566ec1b630bb00f755ed9 assets/endlessexpansion/models/item/pyronium.json
 73dc582650171091f805d6507cd33caf2096f101 assets/endlessexpansion/models/item/pyronium_infused_coal.json

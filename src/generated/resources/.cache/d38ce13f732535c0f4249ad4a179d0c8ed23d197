@@ -1,6 +1,10 @@
-// 1.20.1	2024-01-22T20:41:37.539711	Tags for minecraft:block mod id endlessexpansion
+// 1.20.1	2024-06-11T17:42:35.5865223	Tags for minecraft:block mod id endlessexpansion
 82362cfbd1836db13c7e9d36c8712821e795ac55 data/endlessexpansion/tags/blocks/mineable/paxel.json
 fba69e0fe431360c465d4baf37b2192c7ca4d6b1 data/endlessexpansion/tags/blocks/needs_celestial_tool.json
-780249d7bc88523ddc7a9b021aebb7396e267969 data/endlessexpansion/tags/blocks/needs_cobalt_tool.json
+a67e732780678e7a2a84fba4d463df3a5ca1d5e0 data/endlessexpansion/tags/blocks/needs_cobalt_tool.json
+fba69e0fe431360c465d4baf37b2192c7ca4d6b1 data/forge/tags/blocks/ores/black_opal.json
+f2f8c71e75e793e8e169ae588dead3d1257832df data/forge/tags/blocks/ores/cobalt.json
+48dd69820baa65c0aca647a5f1a145c32ab2d81d data/forge/tags/blocks/ores/luminite.json
+07bfc664c076361fd29127c02e78f9d2457f3a26 data/forge/tags/blocks/ores/pyronium.json
 e00a6f41a49a9cc42814883906137924bf1415f6 data/minecraft/tags/blocks/fences.json
 9c25ea8773dbb56072dfe8bae04dd7f53c69cba9 data/minecraft/tags/blocks/fence_gates.json
