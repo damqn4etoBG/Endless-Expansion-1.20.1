@@ -31,11 +31,9 @@ import java.util.List;
 
 public class FluidTankRenderer {
     private static final Logger LOGGER = LogManager.getLogger();
-
     private static final NumberFormat nf = NumberFormat.getIntegerInstance();
     private static final int TEXTURE_SIZE = 16;
     private static final int MIN_FLUID_HEIGHT = 1; // ensure tiny amounts of fluid are still visible
-
     private final long capacity;
     private final TooltipMode tooltipMode;
     private final int width;
@@ -174,7 +172,7 @@ public class FluidTankRenderer {
         Fluid fluidType = fluidStack.getFluid();
         try {
             if (fluidType.isSame(Fluids.EMPTY)) {
-                MutableComponent amountString = Component.translatable("endlessexpansion.tooltip.empty");
+                MutableComponent amountString = Component.translatable("tooltip.endlessexpansion.empty");
                 tooltip.add(amountString.withStyle(ChatFormatting.WHITE));
                 return tooltip;
             }
@@ -186,10 +184,10 @@ public class FluidTankRenderer {
             long milliBuckets = (amount * 1000) / FluidType.BUCKET_VOLUME;
 
             if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
-                MutableComponent amountString = Component.translatable("endlessexpansion.tooltip.liquid.amount.with.capacity", nf.format(milliBuckets), nf.format(capacity));
+                MutableComponent amountString = Component.translatable("tooltip.endlessexpansion.liquid.amount.with.capacity", nf.format(milliBuckets), nf.format(capacity));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             } else if (tooltipMode == TooltipMode.SHOW_AMOUNT) {
-                MutableComponent amountString = Component.translatable("endlessexpansion.tooltip.liquid.amount", nf.format(milliBuckets));
+                MutableComponent amountString = Component.translatable("tooltip.endlessexpansion.liquid.amount", nf.format(milliBuckets));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             }
         } catch (RuntimeException e) {

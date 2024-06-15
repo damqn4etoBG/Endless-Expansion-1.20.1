@@ -3,7 +3,7 @@
         "section": "Art",
         "titles": [
             {
-                "title": "Lead Artist",
+                "title": "Artist",
                 "names": [
                     "officer"
                 ]
@@ -14,9 +14,26 @@
         "section": "Programming",
         "titles": [
             {
-                "title": "Lead Programmer",
+                "title": "Programmer",
                 "names": [
                     "damqn4etoBG"
+                ]
+            }
+        ]
+    },
+    {
+        "section": "Localization",
+        "titles": [
+            {
+                "title": "French Localization",
+                "names": [
+                    "damqn4etoBG"
+                ]
+            },
+            {
+                "title": "Bulgarian Localization",
+                "names": [
+                    "officer"
                 ]
             }
         ]
@@ -25,7 +42,7 @@
         "section": "Special Thanks",
         "titles": [
             {
-                "title": "Huge Thanks to:",
+                "title": "Huge thanks to:",
                 "names": [
                     "Kostenski",
                     "Tutorials by Kaupenjoe",
@@ -33,6 +50,7 @@
                     "ohawhewhe and The World Beyond The Ice Wall Team",
                     "Create Mod",
                     "Emendatus Enigmatica",
+                    "Mekanism",
                     "           ",
                     "§7--------------------------------------------",
                     "           ",

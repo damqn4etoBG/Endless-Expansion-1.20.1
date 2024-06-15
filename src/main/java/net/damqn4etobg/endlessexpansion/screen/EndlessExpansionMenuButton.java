@@ -27,8 +27,8 @@ import java.util.stream.Collectors;
 
 public class EndlessExpansionMenuButton extends Button {
 
-    //Code from https://github.com/Creators-of-Create/Create
-    //Modified to work with this
+    // Code from https://github.com/Creators-of-Create/Create
+    // Modified to work with this
     public static final ItemStack ICON = ModBlocks.ARBOR_SAPLING.get().asItem().getDefaultInstance();
 
     public EndlessExpansionMenuButton(int x, int y) {
@@ -45,13 +45,15 @@ public class EndlessExpansionMenuButton extends Button {
     }
 
     public static class SingleMenuRow {
-        public final String left, right;
-        public SingleMenuRow(String left, String right) {
-            this.left = I18n.get(left);
-            this.right = I18n.get(right);
+        public final String leftKey, rightKey;
+
+        public SingleMenuRow(String leftKey, String rightKey) {
+            this.leftKey = leftKey;
+            this.rightKey = rightKey;
         }
-        public SingleMenuRow(String center) {
-            this(center, center);
+
+        public SingleMenuRow(String centerKey) {
+            this(centerKey, centerKey);
         }
     }
 
@@ -71,11 +73,11 @@ public class EndlessExpansionMenuButton extends Button {
                 new SingleMenuRow("menu.returnToMenu")
         ));
 
-        protected final List<String> leftButtons, rightButtons;
+        protected final List<String> leftButtonKeys, rightButtonKeys;
 
         public MenuRows(List<SingleMenuRow> variants) {
-            leftButtons = variants.stream().map(r -> r.left).collect(Collectors.toList());
-            rightButtons = variants.stream().map(r -> r.right).collect(Collectors.toList());
+            leftButtonKeys = variants.stream().map(r -> r.leftKey).collect(Collectors.toList());
+            rightButtonKeys = variants.stream().map(r -> r.rightKey).collect(Collectors.toList());
         }
     }
 
@@ -104,7 +106,8 @@ public class EndlessExpansionMenuButton extends Button {
 
             if (rowIdx != 0 && menu != null) {
                 boolean onLeft = offsetX < 0;
-                String target = (onLeft ? menu.leftButtons : menu.rightButtons).get(rowIdx - 1);
+                String targetKey = (onLeft ? menu.leftButtonKeys : menu.rightButtonKeys).get(rowIdx - 1);
+                String targetText = I18n.get(targetKey);
 
                 int offsetX_ = offsetX;
                 MutableObject<GuiEventListener> toAdd = new MutableObject<>(null);
@@ -112,7 +115,7 @@ public class EndlessExpansionMenuButton extends Button {
                         .stream()
                         .filter(w -> w instanceof AbstractWidget)
                         .map(w -> (AbstractWidget) w)
-                        .filter(w -> w.getMessage().getString().equals(target))
+                        .filter(w -> w.getMessage().getString().equals(targetText))
                         .findFirst()
                         .ifPresent(w -> {
                             EndlessExpansionMenuButton button = new EndlessExpansionMenuButton(w.getX() + offsetX_ + (onLeft ? -20 : w.getWidth()), w.getY());

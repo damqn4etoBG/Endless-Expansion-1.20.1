@@ -140,9 +140,9 @@ public class ModBlocks {
                 @Override
                 public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
                     if(Screen.hasShiftDown()) {
-                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.blueorhid"));
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.blueorchid"));
                     } else {
-                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.holdshift"));
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.holdshift"));
                     }
                     super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
                 }
@@ -176,9 +176,9 @@ public class ModBlocks {
                 @Override
                 public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
                     if(Screen.hasShiftDown()) {
-                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.infuser"));
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.infuser"));
                     } else {
-                        pTooltip.add(Component.translatable("endlessexpansion.tooltip.holdshift"));
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.holdshift"));
                     }
                 }
             });

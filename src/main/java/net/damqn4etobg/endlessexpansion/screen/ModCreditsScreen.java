@@ -36,7 +36,7 @@ public class ModCreditsScreen extends Screen {
     private IntSet centeredLines;
     private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
     private static final Component SECTION_HEADING = Component.literal("------------").withStyle(ChatFormatting.GRAY);
-    private static final Component RETURN_MESSAGE = Component.literal("(Press ESC to return)").withStyle(ChatFormatting.GRAY);
+    private static final Component RETURN_MESSAGE = Component.translatable("menu.endlessexpansion.credits.pressesc").withStyle(ChatFormatting.GRAY);
     private float scroll;
     private final float unmodifiedScrollSpeed;
     private float scrollSpeed;

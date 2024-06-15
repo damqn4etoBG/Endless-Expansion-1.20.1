@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
 import net.damqn4etobg.endlessexpansion.util.PlatformIconButton;
+import net.damqn4etobg.endlessexpansion.util.gui.components.ConfigButton;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -34,8 +35,8 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     private final PanoramaRenderer panorama_sinkhole = new PanoramaRenderer(CUBE_MAP_SINKHOLE);
     private final EndlessExpansionConfig config;
     private final Screen lastScreen;
-    public static final Component MADE_BY_TEXT = Component.literal("Made by damqn4etoBG and officer");
-    public static final Component INSPIRED_TEXT = Component.literal("Inspired by The World Beyond The Ice Wall");
+    public static final Component MADE_BY_TEXT = Component.translatable("menu.endlessexpansion.config.madeby");
+    public static final Component INSPIRED_TEXT = Component.translatable("menu.endlessexpansion.config.inspiredby");
     public static final Component VERSION = Component.literal("Endless Expansion " + EndlessExpansionConfig.MOD_VERSION);
     private static final ResourceLocation CURSEFORGE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/curseforge.png");
     private static final ResourceLocation GITHUB_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/github.png");
@@ -122,8 +123,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
 
         this.addRenderableWidget(new PlainTextButton(x2, y2, textWidth2, textHeight2, INSPIRED_TEXT, (button) -> {
             Util.getPlatform().openUri("https://twbtiw.miraheze.org/wiki/Main_Page");
-            button.setTooltip(Tooltip.create(Component.literal("Created By ohawhewhe")));
-        }, this.font));
+        }, this.font)).setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.ohawhewhe")));
 
         int textWidth3 = this.font.width(VERSION);
         int textHeight3 = this.font.lineHeight;

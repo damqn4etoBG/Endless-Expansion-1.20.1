@@ -45,10 +45,10 @@ public class InfuserScreen extends AbstractContainerScreen<InfuserMenu> {
     protected void renderLabels(GuiGraphics guiGraphics, int pMouseX, int pMouseY) {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
+        this.titleLabelY = 6;
+        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2 + 2;
 
-        this.titleLabelY = 5;
-        guiGraphics.drawString(this.font, this.title, this.titleLabelX + 62 , this.titleLabelY, 4210752, false);
-
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
         renderFluidAreaTooltips(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluidStack(), 17, 16, renderer);
     }
 

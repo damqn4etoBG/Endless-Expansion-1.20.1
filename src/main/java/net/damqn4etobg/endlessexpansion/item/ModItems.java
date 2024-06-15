@@ -111,7 +111,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> PYRONIUM_INFUSED_COAL = ITEMS.register("pyronium_infused_coal",
-            () -> new FuelItem(new Item.Properties(), 7000));
+            () -> new FuelItem(new Item.Properties(), 10000));
 
     public static final RegistryObject<Item> ARBOR_BOAT = ITEMS.register("arbor_boat",
             () -> new ArborBoatItem(false, ArborBoatEntity.Type.ARBOR, new Item.Properties()));

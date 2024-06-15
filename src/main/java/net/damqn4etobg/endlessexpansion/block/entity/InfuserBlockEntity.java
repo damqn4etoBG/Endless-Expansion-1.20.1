@@ -13,12 +13,15 @@ import net.damqn4etobg.endlessexpansion.sound.ModSounds;
 import net.damqn4etobg.endlessexpansion.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -193,19 +196,21 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
-        }
+        BlockEntity blockentity = level.getBlockEntity(getBlockPos());
+        if (blockentity instanceof InfuserBlockEntity infuserBlockEntity) {
+            ItemStack itemStack = new ItemStack(ModBlocks.INFUSER.get().asItem());
+            infuserBlockEntity.saveToItem(itemStack);
 
-        Containers.dropContents(this.level, this.worldPosition, inventory);
+            Containers.dropItemStack(this.level, this.worldPosition.getX(), this.worldPosition.getY(), this.worldPosition.getZ(), itemStack);
+        }
     }
     private boolean soundPlayed = false;
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        RandomSource random = RandomSource.create();
         makeLuminiteEssence();
         if (hasRecipe() && FLUID_TANK.getFluidAmount() >= 256) {
             if (!soundPlayed && ModSoundOptions.ON()) {
-                pLevel.playSound(null, pPos, ModSounds.INFUSER_INFUSING.get(), SoundSource.BLOCKS, 0.4f, 1f);
+                pLevel.playSound(null, pPos, ModSounds.INFUSER_INFUSING.get(), SoundSource.BLOCKS, 0.2f, 1f);
                 soundPlayed = true;
             }
             increaseCraftingProgress();
@@ -216,12 +221,19 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
                 FLUID_TANK.drain(256, IFluidHandler.FluidAction.EXECUTE);
                 soundPlayed = false;
             }
+            double x = pPos.getX() + 0.5;
+            double y = pPos.getY() + 1.1; // Slightly above the block
+            double z = pPos.getZ() + 0.5;
+            for (int i = 0; i < 4; i++) {
+                double offsetX = (random.nextDouble() - 0.5) * 0.2;
+                double offsetZ = (random.nextDouble() - 0.5) * 0.2;
+                pLevel.addParticle(ParticleTypes.SMOKE, x + offsetX, y, z + offsetZ, 0, 0, 0);
+            }
         } else {
             soundPlayed = false;
             resetProgress();
         }
     }
-
     private void resetProgress() {
         progress = 0;
     }

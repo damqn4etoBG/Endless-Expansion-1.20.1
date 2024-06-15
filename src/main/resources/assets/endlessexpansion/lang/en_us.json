@@ -118,14 +118,14 @@
   "entity.endlessexpansion.arbor_boat": "Arbor Boat",
   "entity.endlessexpansion.arbor_chest_boat": "Arbor Chest Boat",
 
-  "endlessexpansion.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "endlessexpansion.tooltip.liquid.amount": "%s mB",
-  "endlessexpansion.tooltip.empty": "Empty",
-  "endlessexpansion.tooltip.holdshift": "§7Hold §eSHIFT §7for more information.",
-  "endlessexpansion.tooltip.infuser":  "A station used to infuse items together with the power of luminite.",
-  "endlessexpansion.tooltip.blueorhid": "§d§oIt gives off a strong Magical energy",
+  "tooltip.endlessexpansion.liquid.amount.with.capacity": "%s / %s mB",
+  "tooltip.endlessexpansion.liquid.amount": "%s mB",
+  "tooltip.endlessexpansion.empty": "Empty",
+  "tooltip.endlessexpansion.holdshift": "§7Hold §eSHIFT §7for more information.",
+  "tooltip.endlessexpansion.infuser":  "A station used to infuse items together with the power of luminite.",
+  "tooltip.endlessexpansion.blueorchid": "§d§oIt gives off a strong Magical energy",
 
-  "endlessexpansion.displayname.radioactive_generator": "Radioactive Generator",
+  "displayname.endlessexpansion.radioactive_generator": "Radioactive Generator",
 
   "container.radioactive_generator": "Radioactive Generator",
 
@@ -140,6 +140,10 @@
   "menu.endlessexpansion.config.mod_sounds_on": "All of the mod's sounds will be played.",
   "menu.endlessexpansion.config.mod_sounds_partial": "A selected amount of the mod's sounds will be played.",
   "menu.endlessexpansion.config.mod_sounds_off": "None of the mod's sounds will be played.",
+  "menu.endlessexpansion.credits.pressesc": "(Press ESC to return)",
+  "menu.endlessexpansion.config.ohawhewhe": "Created by ohawhewhe",
+  "menu.endlessexpansion.config.madeby": "Made by damqn4etoBG and officer",
+  "menu.endlessexpansion.config.inspiredby": "Inspired by The World Beyond The Ice Wall",
 
   "recipetype.endlessexpansion.infuser": "Infusing",
 
@@ -186,5 +190,5 @@
   "advancements.endlessexpansion.obtain_uranium.title": "Remnants of the past",
   "advancements.endlessexpansion.obtain_uranium.desc": "Discover what Endless Expansion was",
 
-  "sounds.endlessexpansion.infuser_infusing": "Infuser Infusing"
+  "sounds.endlessexpansion.infuser_infusing": "Infuser hums"
 }
