@@ -104,6 +104,7 @@
 
   "effect.endlessexpansion.growth_spurt": "Growth Spurt",
   "effect.endlessexpansion.freezing": "Freezing",
+  "effect.endlessexpansion.shadow_state": "Shadow-state",
 
   "item.minecraft.potion.effect.mystical_potion": "Mystical Potion",
   "item.minecraft.splash_potion.effect.mystical_potion": "Splash Potion of Mysticality",
@@ -124,6 +125,8 @@
   "tooltip.endlessexpansion.holdshift": "§7Hold §eSHIFT §7for more information.",
   "tooltip.endlessexpansion.infuser":  "A station used to infuse items together with the power of luminite.",
   "tooltip.endlessexpansion.blueorchid": "§d§oIt gives off a strong Magical energy",
+  "tooltip.endlessexpansion.glacier_bricks": "Used for the frame of the World Beyond Portal.",
+  "tooltip.endlessexpansion.luminite_staff": "Used to light the World Beyond Portal.",
 
   "displayname.endlessexpansion.radioactive_generator": "Radioactive Generator",
 
@@ -190,5 +193,10 @@
   "advancements.endlessexpansion.obtain_uranium.title": "Remnants of the past",
   "advancements.endlessexpansion.obtain_uranium.desc": "Discover what Endless Expansion was",
 
-  "sounds.endlessexpansion.infuser_infusing": "Infuser hums"
+  "sounds.endlessexpansion.infuser_infusing": "Infuser hums",
+  "sounds.endlessexpansion.dash": "Player dashes",
+  "sounds.endlessexpansion.dash_indicator": "Dash ready",
+
+  "key.category.endlessexpansion.name": "Endless Expansion",
+  "key.endlessexpansion.dash": "Shadow Dash"
 }

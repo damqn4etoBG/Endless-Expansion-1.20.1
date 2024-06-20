@@ -4,5 +4,17 @@
     "sounds": [
       "endlessexpansion:infuser_infusing"
     ]
+  },
+  "dash": {
+    "subtitle": "sounds.endlessexpansion.dash",
+    "sounds": [
+      "endlessexpansion:dash"
+    ]
+  },
+  "dash_indicator": {
+    "subtitle": "sounds.endlessexpansion.dash_indicator",
+    "sounds": [
+      "endlessexpansion:dash_indicator"
+    ]
   }
 }

@@ -1,4 +1,4 @@
-package net.damqn4etobg.endlessexpansion.util;
+package net.damqn4etobg.endlessexpansion.util.capabilities;
 
 public abstract class ModTemperature extends Temperature {
     public ModTemperature(int capacity, int maxTransfer) {

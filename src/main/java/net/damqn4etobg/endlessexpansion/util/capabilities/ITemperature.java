@@ -1,4 +1,4 @@
-package net.damqn4etobg.endlessexpansion.util;
+package net.damqn4etobg.endlessexpansion.util.capabilities;
 
 public interface ITemperature {
     int receiveTemperature(int maxReceive, boolean simulate);

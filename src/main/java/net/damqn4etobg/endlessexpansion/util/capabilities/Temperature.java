@@ -1,4 +1,4 @@
-package net.damqn4etobg.endlessexpansion.util;
+package net.damqn4etobg.endlessexpansion.util.capabilities;
 
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;

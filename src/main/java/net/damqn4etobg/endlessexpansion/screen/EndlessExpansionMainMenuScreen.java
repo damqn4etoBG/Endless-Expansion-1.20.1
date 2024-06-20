@@ -1,19 +1,21 @@
 package net.damqn4etobg.endlessexpansion.screen;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
-import net.damqn4etobg.endlessexpansion.util.PlatformIconButton;
 import net.damqn4etobg.endlessexpansion.util.gui.components.ConfigButton;
+import net.damqn4etobg.endlessexpansion.util.gui.components.PlatformIconConfigButton;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.*;
+import net.minecraft.client.gui.components.PlainTextButton;
+import net.minecraft.client.gui.components.StringWidget;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.layouts.FrameLayout;
 import net.minecraft.client.gui.layouts.GridLayout;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
 import net.minecraft.network.chat.CommonComponents;
@@ -39,10 +41,11 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     public static final Component INSPIRED_TEXT = Component.translatable("menu.endlessexpansion.config.inspiredby");
     public static final Component VERSION = Component.literal("Endless Expansion " + EndlessExpansionConfig.MOD_VERSION);
     private static final ResourceLocation CURSEFORGE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/curseforge.png");
-    private static final ResourceLocation GITHUB_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/github.png");
+    private static final ResourceLocation GITHUB_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/github_alt.png");
     private static final ResourceLocation MODRINTH_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/modrinth.png");
-
     private long firstRenderTime;
+    private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
+
     public EndlessExpansionMainMenuScreen(Screen screen) {
         super(Component.translatable("menu.endlessexpansion.config.name"));
         config = EndlessExpansionConfig.loadConfig();
@@ -54,12 +57,12 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         gridlayout.defaultCellSetting().paddingHorizontal(5).paddingBottom(4).alignHorizontallyCenter();
         GridLayout.RowHelper gridlayout$rowhelper = gridlayout.createRowHelper(2);
 
-        gridlayout$rowhelper.addChild(Button.builder(Component.translatable("menu.endlessexpansion.config.custom_menu"), (button) -> {
+        gridlayout$rowhelper.addChild(ConfigButton.builder(Component.translatable("menu.endlessexpansion.config.custom_menu"), (button) -> {
             {}
         }).width(100).build())
                 .setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.custom_menu_desc")));
 
-        gridlayout$rowhelper.addChild(Button.builder(config.isCustomMainMenu() ? Component.literal("ON").withStyle(ChatFormatting.GREEN) : Component.literal("OFF").withStyle(ChatFormatting.RED),
+        gridlayout$rowhelper.addChild(ConfigButton.builder(config.isCustomMainMenu() ? Component.literal("ON").withStyle(ChatFormatting.GREEN) : Component.literal("OFF").withStyle(ChatFormatting.RED),
                 button -> {
                     // Toggle the customMainMenu state
                     config.setCustomMainMenu(!config.isCustomMainMenu());
@@ -70,12 +73,12 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                     );
         }).width(100).build()).setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.custom_menu_switch")));
 
-        gridlayout$rowhelper.addChild(Button.builder(Component.translatable("menu.endlessexpansion.config.background_selector"), (button) -> {
+        gridlayout$rowhelper.addChild(ConfigButton.builder(Component.translatable("menu.endlessexpansion.config.background_selector"), (button) -> {
                     {}
                 }).width(100).build())
                 .setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.background_selector_desc")));
 
-        gridlayout$rowhelper.addChild(Button.builder(
+        gridlayout$rowhelper.addChild(ConfigButton.builder(
                 Component.literal(config.getBackgroundName()).withStyle(getChatFormattingForBackground(config.getBackgroundName())),
                 button -> {
                     // Update the background name and button label
@@ -83,12 +86,12 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                     updateButtonLabelBackgroundSelector(button, config);
                 }).width(100).build());
 
-        gridlayout$rowhelper.addChild(Button.builder(Component.translatable("menu.endlessexpansion.config.mod_sounds"), (button) -> {
+        gridlayout$rowhelper.addChild(ConfigButton.builder(Component.translatable("menu.endlessexpansion.config.mod_sounds"), (button) -> {
                     {}
                 }).width(100).build())
                 .setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.mod_sounds_desc")));
 
-        gridlayout$rowhelper.addChild(Button.builder(
+        gridlayout$rowhelper.addChild(ConfigButton.builder(
                 Component.literal(config.getModSounds()).withStyle(getChatFormattingForSounds(config.getModSounds())),
                 button -> {
                     updateModSoundsName(config);
@@ -96,7 +99,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                     button.setTooltip(getTooltipForSounds(config));
                 }).width(100).build());
 
-        gridlayout$rowhelper.addChild(Button.builder(CommonComponents.GUI_DONE, (button) -> {
+        gridlayout$rowhelper.addChild(ConfigButton.builder(CommonComponents.GUI_DONE, (button) -> {
             Minecraft.getInstance().setScreen(this.lastScreen);
         }).width(200).build(), 2, gridlayout$rowhelper.newCellSettings().paddingTop(6));
 
@@ -133,17 +136,17 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         int buttonWidth = 20;
         int buttonHeight = 20;
 
-        this.addRenderableWidget(new PlatformIconButton(2, y2 - 12, buttonWidth, buttonHeight,
+        this.addRenderableWidget(new PlatformIconConfigButton(2, y2 - 12, buttonWidth, buttonHeight,
                 CURSEFORGE_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/endless-expansion");
         }, Tooltip.create(Component.literal("§cCurseforge"))));
 
-        this.addRenderableWidget(new PlatformIconButton(2 + 24, y2 - 12, buttonWidth, buttonHeight,
+        this.addRenderableWidget(new PlatformIconConfigButton(2 + 24, y2 - 12, buttonWidth, buttonHeight,
                 MODRINTH_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://modrinth.com/mod/endless-expansion");
         }, Tooltip.create(Component.literal("§aModrinth"))));
 
-        this.addRenderableWidget(new PlatformIconButton(2 + 48, y2 - 12, buttonWidth, buttonHeight,
+        this.addRenderableWidget(new PlatformIconConfigButton(2 + 48, y2 - 12, buttonWidth, buttonHeight,
                 GITHUB_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://github.com/damqn4etoBG/Endless-Expansion");
         }, Tooltip.create(Component.literal("Github"))));
@@ -172,6 +175,12 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                 return;
             }
         }
+
+        RenderSystem.enableBlend();
+        RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+        guiGraphics.blit(VIGNETTE_LOCATION, 0, 0, 0, 0.0F, 0.0F, this.width, this.height, this.width, this.height);
+        RenderSystem.disableBlend();
+        RenderSystem.defaultBlendFunc();
         guiGraphics.blit(PANORAMA_OVERLAY, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
         RenderSystem.setShaderTexture(0, PANORAMA_OVERLAY);
         guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 15, 16777215);
@@ -189,7 +198,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
             config.setBackgroundName("Titanic Forest");
         }
 
-        config.saveConfig(); // Save the updated configuration here
+        config.saveConfig();
     }
 
     private void updateModSoundsName(EndlessExpansionConfig config) {
@@ -233,10 +242,10 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         };
     }
 
-    private void updateButtonLabelBackgroundSelector(Button button, EndlessExpansionConfig config) {
+    private void updateButtonLabelBackgroundSelector(ConfigButton button, EndlessExpansionConfig config) {
         button.setMessage(Component.literal(config.getBackgroundName()).withStyle(getChatFormattingForBackground(config.getBackgroundName())));
     }
-    private void updateButtonLabelModSoundsSelector(Button button, EndlessExpansionConfig config) {
+    private void updateButtonLabelModSoundsSelector(ConfigButton button, EndlessExpansionConfig config) {
         button.setMessage(Component.literal(config.getModSounds()).withStyle(getChatFormattingForSounds(config.getModSounds())));
     }
 }

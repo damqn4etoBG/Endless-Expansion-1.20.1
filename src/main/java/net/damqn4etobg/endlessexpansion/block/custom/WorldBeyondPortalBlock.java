@@ -2,9 +2,9 @@ package net.damqn4etobg.endlessexpansion.block.custom;
 
 import net.damqn4etobg.endlessexpansion.dimension.portal.WorldBeyondPortalShape;
 import net.damqn4etobg.endlessexpansion.dimension.portal.WorldBeyondTeleporter;
+import net.damqn4etobg.endlessexpansion.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -59,24 +59,21 @@ public class WorldBeyondPortalBlock extends NetherPortalBlock {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
-        for (int i = 0; i < 2; i++) { // Reduce the number of particles (e.g., 2 particles)
+        for (int i = 0; i < 1; i++) {
             double px = pos.getX() + random.nextFloat();
-            double py = pos.getY() + 0.5; // Start particles at the portal's vertical center
+            double py = pos.getY() + 0.5;
             double pz = pos.getZ() + random.nextFloat();
-            double vx = (random.nextFloat() - 0.5) / 8.0; // Adjust the velocity (e.g., 1/8)
-            double vy = -0.1; // Make particles fall downward (negative Y velocity)
-            double vz = (random.nextFloat() - 0.5) / 8.0; // Adjust the velocity (e.g., 1/8)
+            double vx = (random.nextFloat() - 0.5) / 4.0;
+            double vy = -0.05D;
+            double vz = (random.nextFloat() - 0.5) / 4.0;
 
-            world.addParticle(ParticleTypes.SNOWFLAKE, px, py, pz, vx, vy, vz);
-        }
-        if (random.nextInt(100) == 0) {
-            // Add your custom logic here for particles (e.g., portal activation)
+            world.addParticle(ModParticles.SNOWFLAKE.get(), px, py, pz, vx, vy, vz);
         }
     }
 
     @Override
     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
-        if (entity.canChangeDimensions() && !entity.level().isClientSide() && true) {
+        if (entity.canChangeDimensions() && !entity.level().isClientSide()) {
             if (entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
             } else if (entity.level().dimension() != ResourceKey.create(Registries.DIMENSION, new ResourceLocation("endlessexpansion:world_beyond"))) {

@@ -13,17 +13,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 
-public class WorldBeyondTP {
+public class EndExpCommand {
 
-    public WorldBeyondTP(CommandDispatcher<CommandSourceStack> dispatcher) {
+    public EndExpCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("endexp")
                 .then(Commands.literal("tpWorldBeyond")
                         .requires((commandSourceStack) -> commandSourceStack.hasPermission(2))
-                        .executes(this::execute)
+                        .executes(this::executeTpWB)
                 )
         );
     }
-    private int execute(CommandContext<CommandSourceStack> context) {
+    private int executeTpWB(CommandContext<CommandSourceStack> context) {
         ServerPlayer player = context.getSource().getPlayer();
         BlockPos pos = player.getOnPos();
         if (player.level() instanceof ServerLevel serverlevel) {

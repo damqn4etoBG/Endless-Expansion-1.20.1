@@ -51,8 +51,8 @@
   "item.endlessexpansion.fire_core": "Огнено ядро",
   "item.endlessexpansion.glacial_crystal": "Глациялен кристал",
 
-  "block.endlessexpansion.uranium_block": "\u00A7aУраниев блок",
-  "block.endlessexpansion.radioactive_generator": "\u00A7dРадиоактивен генератор",
+  "block.endlessexpansion.uranium_block": "§aУраниев блок",
+  "block.endlessexpansion.radioactive_generator": "§dРадиоактивен генератор",
   "block.endlessexpansion.arbor_log": "Арборов дънер",
   "block.endlessexpansion.arbor_planks": "Арборови дъски",
   "block.endlessexpansion.arbor_wood": "Арборово дърво",
@@ -73,7 +73,7 @@
   "block.endlessexpansion.titanum_soil": "Титанова почва",
   "block.endlessexpansion.titanum_grass_block": "Блокче титанова трева",
   "block.endlessexpansion.glacier_bricks": "Глетчерни тухли",
-  "block.endlessexpansion.mystical_everblue_orchid": "\u00A7bМистична вечносиня орхидея",
+  "block.endlessexpansion.mystical_everblue_orchid": "§bМистична вечносиня орхидея",
   "block.endlessexpansion.packed_snow_block": "Блокче плътен сняг",
   "block.endlessexpansion.deepslate_luminite_ore": "Шистова луминитена руда",
   "block.endlessexpansion.cobalt_ore": "Кобалтова руда",
@@ -104,6 +104,7 @@
 
   "effect.endlessexpansion.growth_spurt": "Growth Spurt",
   "effect.endlessexpansion.freezing": "Замръзване",
+  "effect.endlessexpansion.shadow_state": "Сенчесто състояние",
 
   "item.minecraft.potion.effect.mystical_potion": "Мистична отвара",
   "item.minecraft.splash_potion.effect.mystical_potion": "Разплискваща се мистична отвара",
@@ -122,8 +123,10 @@
   "tooltip.endlessexpansion.liquid.amount": "%s mB",
   "tooltip.endlessexpansion.empty": "Празно",
   "tooltip.endlessexpansion.holdshift": "§7Задръж §eSHIFT §7за повече информация.",
-  "tooltip.endlessexpansion.infuser":  "Станция използвана за инфузиране на предмети със силата на луминита.",
+  "tooltip.endlessexpansion.infuser": "Станция използвана за инфузиране на предмети със силата на луминита.",
   "tooltip.endlessexpansion.blueorchid": "§d§oОтдава силна магическа енергия",
+  "tooltip.endlessexpansion.glacier_bricks": "Използвано за рамката на портала за Света Отвъд.",
+  "tooltip.endlessexpansion.luminite_staff": "Използвано за да се запали портала за Света Отвъд.",
 
   "displayname.endlessexpansion.radioactive_generator": "Радиоактивен генератор",
 
@@ -152,7 +155,7 @@
   "advancements.endlessexpansion.obtain_luminite.title": "Блести ярко",
   "advancements.endlessexpansion.obtain_luminite.desc": "Сдобий се с луминит",
   "advancements.endlessexpansion.world_beyond_enter.title": "Свят отвъд...?",
-  "advancements.endlessexpansion.world_beyond_enter.desc": "Построй и активирай портал за света отвъд",
+  "advancements.endlessexpansion.world_beyond_enter.desc": "Построй и активирай портал за Света отвъд",
   "advancements.endlessexpansion.explore_world_beyond.title": "Изследовател",
   "advancements.endlessexpansion.explore_world_beyond.desc": "Разгледай всичките региони от Света отвъд",
   "advancements.endlessexpansion.obtain_cobalt.title": "По-добро от диамант?",
@@ -176,7 +179,7 @@
   "advancements.endlessexpansion.infuse_coal.title": "По-добро гориво",
   "advancements.endlessexpansion.infuse_coal.desc": "Инфузирай пироний с въглища",
   "advancements.endlessexpansion.obtain_shadow_essence.title": "Есенция на тъмнината",
-  "advancements.endlessexpansion.obtain_shadow_essence.desc": "Сдобий се с сенчестта есенция",
+  "advancements.endlessexpansion.obtain_shadow_essence.desc": "Сдобий се със сенчестта есенция",
   "advancements.endlessexpansion.obtain_shadowsteel.title": "Изковано в сенките",
   "advancements.endlessexpansion.obtain_shadowsteel.desc": "Изкови сенчесто-стоманено кюлче",
   "advancements.endlessexpansion.obtain_shadowsteel_pickaxe.title": "Копаене в края на играта",
@@ -190,5 +193,10 @@
   "advancements.endlessexpansion.obtain_uranium.title": "Остатъци от миналото",
   "advancements.endlessexpansion.obtain_uranium.desc": "Открий какво Endless Expansion трябваше да бъде",
 
-  "sounds.endlessexpansion.infuser_infusing": "Инфузера бръмчи"
+  "sounds.endlessexpansion.infuser_infusing": "Инфузер бръмчи",
+  "sounds.endlessexpansion.dash": "Играч се тласка",
+  "sounds.endlessexpansion.dash_indicator": "Тласъкът е готов",
+
+  "key.category.endlessexpansion.name": "Endless Expansion",
+  "key.endlessexpansion.dash": "Shadow Dash"
 }

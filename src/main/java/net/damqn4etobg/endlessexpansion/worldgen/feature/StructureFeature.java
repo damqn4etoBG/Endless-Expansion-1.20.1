@@ -1,7 +1,6 @@
 package net.damqn4etobg.endlessexpansion.worldgen.feature;
 
 import com.mojang.serialization.Codec;
-import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.worldgen.feature.configuration.StructureFeatureConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -16,9 +15,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber
 public class StructureFeature extends Feature<StructureFeatureConfiguration> {

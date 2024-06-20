@@ -3,7 +3,6 @@ package net.damqn4etobg.endlessexpansion.fluid;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.SoundAction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;

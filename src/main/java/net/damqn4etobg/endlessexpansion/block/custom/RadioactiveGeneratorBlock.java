@@ -46,8 +46,7 @@ public class RadioactiveGeneratorBlock extends BaseEntityBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource source) {
         BlockEntity entity = level.getBlockEntity(pos);
-        if(entity instanceof RadioactiveGeneratorBlockEntity) {
-            RadioactiveGeneratorBlockEntity blockEntity = (RadioactiveGeneratorBlockEntity) entity;
+        if(entity instanceof RadioactiveGeneratorBlockEntity blockEntity) {
             if (RadioactiveGeneratorBlockEntity.hasRecipe(blockEntity)) {
                 level.addParticle(ParticleTypes.SMOKE, pos.getX() + source.nextDouble(), pos.getY(), pos.getZ() + source.nextDouble(), 0d, 0.05d, 0d);
                 level.addParticle(ParticleTypes.SMOKE, pos.getX() + source.nextDouble(), pos.getY(), pos.getZ() + source.nextDouble(), 0d, 0.05d, 0d);

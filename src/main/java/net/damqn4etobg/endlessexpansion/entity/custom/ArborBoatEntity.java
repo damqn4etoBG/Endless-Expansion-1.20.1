@@ -62,7 +62,7 @@ public class ArborBoatEntity extends Boat {
         }
     }
 
-    public static enum Type implements StringRepresentable {
+    public enum Type implements StringRepresentable {
         ARBOR(ModBlocks.ARBOR_PLANKS.get(), "arbor");
 
         private final String name;
@@ -70,7 +70,7 @@ public class ArborBoatEntity extends Boat {
         public static final StringRepresentable.EnumCodec<ArborBoatEntity.Type> CODEC = StringRepresentable.fromEnum(ArborBoatEntity.Type::values);
         private static final IntFunction<Type> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
 
-        private Type(Block pPlanks, String pName) {
+        Type(Block pPlanks, String pName) {
             this.name = pName;
             this.planks = pPlanks;
         }

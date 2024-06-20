@@ -15,7 +15,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.LogoRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +22,6 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.GsonHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -39,7 +37,7 @@ public class ModCreditsScreen extends Screen {
     private static final Component RETURN_MESSAGE = Component.translatable("menu.endlessexpansion.credits.pressesc").withStyle(ChatFormatting.GRAY);
     private float scroll;
     private final float unmodifiedScrollSpeed;
-    private float scrollSpeed;
+    private final float scrollSpeed;
     private final ModLogoRenderer logoRenderer = new ModLogoRenderer(true);
     private final Screen lastScreen;
     private boolean showReturnMessage;

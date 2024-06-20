@@ -2,7 +2,6 @@ package net.damqn4etobg.endlessexpansion.screen;
 
 import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.damqn4etobg.endlessexpansion.block.entity.InfuserBlockEntity;
-import net.damqn4etobg.endlessexpansion.block.entity.RadioactiveGeneratorBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

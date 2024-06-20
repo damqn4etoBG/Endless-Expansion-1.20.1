@@ -31,9 +31,6 @@ public class ModSoundOptions {
             return false;
         } else if(currentString.equals("Partial")) {
             return false;
-        } else if(currentString.equals("OFF")) {
-            return true;
-        }
-        return false;
+        } else return currentString.equals("OFF");
     }
 }

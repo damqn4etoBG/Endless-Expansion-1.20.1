@@ -1,7 +1,6 @@
-package net.damqn4etobg.endlessexpansion.util;
+package net.damqn4etobg.endlessexpansion.util.gui.components;
 
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -9,11 +8,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class PlatformIconButton extends Button {
+public class PlatformIconConfigButton extends ConfigButton {
     protected final ResourceLocation icon;
     protected final float scale;
 
-    public PlatformIconButton(int pX, int pY, int pWidth, int pHeight, ResourceLocation icon, float scale, OnPress pOnPress, Tooltip tooltip) {
+    public PlatformIconConfigButton(int pX, int pY, int pWidth, int pHeight, ResourceLocation icon, float scale, OnPress pOnPress, Tooltip tooltip) {
         super(pX, pY, pWidth, pHeight, Component.empty(), pOnPress, DEFAULT_NARRATION);
         this.icon = icon;
         this.scale = scale;

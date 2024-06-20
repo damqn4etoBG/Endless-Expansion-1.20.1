@@ -1,19 +1,16 @@
 package net.damqn4etobg.endlessexpansion.block.entity;
 
-import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
 import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.damqn4etobg.endlessexpansion.fluid.ModFluids;
 import net.damqn4etobg.endlessexpansion.item.ModItems;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
-import net.damqn4etobg.endlessexpansion.networking.packet.*;
+import net.damqn4etobg.endlessexpansion.networking.packet.FluidSyncS2CPacket;
 import net.damqn4etobg.endlessexpansion.recipe.InfuserRecipe;
 import net.damqn4etobg.endlessexpansion.screen.InfuserMenu;
 import net.damqn4etobg.endlessexpansion.sound.ModSoundOptions;
 import net.damqn4etobg.endlessexpansion.sound.ModSounds;
-import net.damqn4etobg.endlessexpansion.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -34,8 +31,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -204,6 +199,16 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
             Containers.dropItemStack(this.level, this.worldPosition.getX(), this.worldPosition.getY(), this.worldPosition.getZ(), itemStack);
         }
     }
+
+    public void dropsItems() {
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+
+        Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
     private boolean soundPlayed = false;
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         RandomSource random = RandomSource.create();
@@ -213,6 +218,12 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
                 pLevel.playSound(null, pPos, ModSounds.INFUSER_INFUSING.get(), SoundSource.BLOCKS, 0.2f, 1f);
                 soundPlayed = true;
             }
+            double x = pPos.getX() + random.nextDouble() - 0.5;
+            double y = pPos.getY() + random.nextDouble() + 1.5;
+            double z = pPos.getZ() + random.nextDouble() - 0.5;
+            for (int i = 0; i < 10; i++) {
+                pLevel.addParticle(ParticleTypes.SMOKE, x, y, z, 0, 0.02D, 0);
+            }
             increaseCraftingProgress();
             setChanged(pLevel, pPos, pState);
             if (hasProgressFinished()) {
@@ -220,14 +231,6 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
                 resetProgress();
                 FLUID_TANK.drain(256, IFluidHandler.FluidAction.EXECUTE);
                 soundPlayed = false;
-            }
-            double x = pPos.getX() + 0.5;
-            double y = pPos.getY() + 1.1; // Slightly above the block
-            double z = pPos.getZ() + 0.5;
-            for (int i = 0; i < 4; i++) {
-                double offsetX = (random.nextDouble() - 0.5) * 0.2;
-                double offsetZ = (random.nextDouble() - 0.5) * 0.2;
-                pLevel.addParticle(ParticleTypes.SMOKE, x + offsetX, y, z + offsetZ, 0, 0, 0);
             }
         } else {
             soundPlayed = false;

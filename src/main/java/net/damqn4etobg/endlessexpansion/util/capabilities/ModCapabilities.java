@@ -1,4 +1,4 @@
-package net.damqn4etobg.endlessexpansion.util;
+package net.damqn4etobg.endlessexpansion.util.capabilities;
 
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;

@@ -3,21 +3,12 @@ package net.damqn4etobg.endlessexpansion.event.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.dimension.ModDimensions;
-import net.damqn4etobg.endlessexpansion.effect.FreezeEffectRenderer;
-import net.damqn4etobg.endlessexpansion.effect.ModMobEffects;
 import net.damqn4etobg.endlessexpansion.tag.ModTags;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 public class FreezingHudOverlay {
@@ -81,13 +72,6 @@ public class FreezingHudOverlay {
                     break;
                 }
             }
-
-        MobEffectInstance freezingEffectInstance = new MobEffectInstance(ModMobEffects.FREEZING.get(), 300, 0);
-        if(ClientFreezeData.getPlayerFreeze() >= 10) {
-                gui.getMinecraft().player.addEffect(freezingEffectInstance);
-            } else {
-            gui.getMinecraft().player.removeEffect(ModMobEffects.FREEZING.get());
-        }
         gui.getMinecraft().getProfiler().pop();
     });
 }

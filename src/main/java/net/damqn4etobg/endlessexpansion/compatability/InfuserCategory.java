@@ -14,7 +14,6 @@ import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.damqn4etobg.endlessexpansion.fluid.ModFluids;
 import net.damqn4etobg.endlessexpansion.recipe.InfuserRecipe;
 import net.damqn4etobg.endlessexpansion.screen.renderer.FluidTankRenderer;
-import net.damqn4etobg.endlessexpansion.util.MouseUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -22,9 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.List;
 import java.util.Optional;
 
 public class InfuserCategory implements IRecipeCategory<InfuserRecipe> {

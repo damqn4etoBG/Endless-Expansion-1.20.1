@@ -1,8 +1,5 @@
 package net.damqn4etobg.endlessexpansion.effect;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -20,11 +17,11 @@ public class FreezeEffect extends MobEffect {
     public void applyEffectTick(LivingEntity pLivingEntity, int amplifier) {
         BlockPos playerPos = pLivingEntity.blockPosition().below();
         BlockState blockState = pLivingEntity.level().getBlockState(playerPos);
-        if (pLivingEntity.hasEffect(ModMobEffects.FREEZING.get()) && !(blockState.isAir() || blockState.is(Blocks.WATER))) {
+        if (pLivingEntity.hasEffect(ModMobEffects.FREEZING.get()) && pLivingEntity.onGround() || pLivingEntity.isInWater()) {
             pLivingEntity.makeStuckInBlock(Blocks.AIR.defaultBlockState(), new Vec3(0.25, 0.05, 0.25));
-            //FreezeEffectRenderer.renderOutline(guiGraphics);
         }
-
+        // oh lmao
+        pLivingEntity.isInPowderSnow = true;
     }
 
     @Override

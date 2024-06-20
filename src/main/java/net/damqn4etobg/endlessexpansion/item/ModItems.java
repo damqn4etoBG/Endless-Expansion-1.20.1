@@ -121,6 +121,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> ARBOR_SIGN = ITEMS.register("arbor_sign",
             () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.ARBOR_SIGN.get(), ModBlocks.ARBOR_WALL_SIGN.get()));
+
     public static final RegistryObject<Item> ARBOR_HANGING_SIGN = ITEMS.register("arbor_hanging_sign",
             () -> new HangingSignItem(ModBlocks.ARBOR_HANGING_SIGN.get(), ModBlocks.ARBOR_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
@@ -152,22 +153,26 @@ public class ModItems {
             () -> new PaxelItem(ModToolTiers.SHADOWSTEEL, 7, -2.8f, new Item.Properties()));
 
     public static final RegistryObject<Item> SHADOWSTEEL_HELMET = ITEMS.register("shadowsteel_helmet",
-            () -> new ArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new ModArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static final RegistryObject<Item> SHADOWSTEEL_CHESTPLATE = ITEMS.register("shadowsteel_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new ModArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 
     public static final RegistryObject<Item> SHADOWSTEEL_LEGGINGS = ITEMS.register("shadowsteel_leggings",
-            () -> new ArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new ModArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 
     public static final RegistryObject<Item> SHADOWSTEEL_BOOTS = ITEMS.register("shadowsteel_boots",
-            () -> new ArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new ModArmorItem(ModArmorMaterials.SHADOWSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
+
     public static final RegistryObject<Item> FLAME_WAND = ITEMS.register("flame_wand",
             () -> new FlameWandItem(new Item.Properties().stacksTo(1).durability(250)));
+
     public static final RegistryObject<Item> ICE_WAND = ITEMS.register("ice_wand",
             () -> new IceWandItem(new Item.Properties().stacksTo(1).durability(250)));
+
     public static final RegistryObject<Item> FIRE_CORE = ITEMS.register("fire_core",
             () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> GLACIAL_CRYSTAL = ITEMS.register("glacial_crystal",
             () -> new Item(new Item.Properties()));
 

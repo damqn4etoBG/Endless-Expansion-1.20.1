@@ -36,7 +36,7 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, EndlessExpansion.MODID);
     public static final RegistryObject<Block> URANIUM_BLOCK = registerBlock("uranium_block",
-            () -> new UraniumBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> RADIOACTIVE_GENERATOR = registerBlock("radioactive_generator",
             () -> new RadioactiveGeneratorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion()));
@@ -127,7 +127,17 @@ public class ModBlocks {
             () -> new SaplingBlock(new ArborTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
     public static final RegistryObject<Block> GLACIER_BRICKS = registerBlock("glacier_bricks",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS).sound(SoundType.GLASS)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS).sound(SoundType.GLASS)) {
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+                    if(Screen.hasShiftDown()) {
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.glacier_bricks"));
+                    } else {
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.holdshift"));
+                    }
+                    super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
+                }
+            });
 
     public static final RegistryObject<Block> WORLDBEYOND_PORTAL = registerBlockWithoutBlockItem("world_beyond_portal",
             WorldBeyondPortalBlock::new);

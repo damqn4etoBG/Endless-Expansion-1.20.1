@@ -13,6 +13,7 @@ import net.damqn4etobg.endlessexpansion.item.ModCreativeModeTabs;
 import net.damqn4etobg.endlessexpansion.item.ModItems;
 import net.damqn4etobg.endlessexpansion.item.alchemy.ModPotions;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
+import net.damqn4etobg.endlessexpansion.particle.ModParticles;
 import net.damqn4etobg.endlessexpansion.recipe.ModRecipes;
 import net.damqn4etobg.endlessexpansion.screen.InfuserScreen;
 import net.damqn4etobg.endlessexpansion.screen.ModMenuTypes;
@@ -53,7 +54,6 @@ public class EndlessExpansion {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
-
         MinecraftForge.EVENT_BUS.register(this);
 
         ModCreativeModeTabs.register(modEventBus);
@@ -65,6 +65,7 @@ public class EndlessExpansion {
         ModMobEffects.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModParticles.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);

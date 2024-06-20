@@ -1,6 +1,6 @@
 package net.damqn4etobg.endlessexpansion.screen.renderer;
 
-import net.damqn4etobg.endlessexpansion.util.ITemperature;
+import net.damqn4etobg.endlessexpansion.util.capabilities.ITemperature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.MultiBufferSource;

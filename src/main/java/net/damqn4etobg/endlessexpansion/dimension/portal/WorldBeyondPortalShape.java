@@ -196,8 +196,8 @@ public class WorldBeyondPortalShape {
         BlockPos blockpos = p_259931_.minCorner;
         BlockState blockstate = p_259301_.getBlockState(blockpos);
         Direction.Axis direction$axis = blockstate.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
-        double d0 = (double) p_259931_.axis1Size;
-        double d1 = (double) p_259931_.axis2Size;
+        double d0 = p_259931_.axis1Size;
+        double d1 = p_259931_.axis2Size;
         EntityDimensions entitydimensions = p_259166_.getDimensions(p_259166_.getPose());
         int i = p_259901_ == direction$axis ? 0 : 90;
         Vec3 vec3 = p_259901_ == direction$axis ? p_260043_ : new Vec3(p_260043_.z, p_260043_.y, -p_260043_.x);
@@ -214,8 +214,8 @@ public class WorldBeyondPortalShape {
         if (!(p_259816_.width > 4.0F) && !(p_259816_.height > 4.0F)) {
             double d0 = (double) p_259816_.height / 2.0D;
             Vec3 vec3 = p_260315_.add(0.0D, d0, 0.0D);
-            VoxelShape voxelshape = Shapes.create(AABB.ofSize(vec3, (double) p_259816_.width, 0.0D, (double) p_259816_.width).expandTowards(0.0D, 1.0D, 0.0D).inflate(1.0E-6D));
-            Optional<Vec3> optional = p_259704_.findFreePosition(p_259626_, voxelshape, vec3, (double) p_259816_.width, (double) p_259816_.height, (double) p_259816_.width);
+            VoxelShape voxelshape = Shapes.create(AABB.ofSize(vec3, p_259816_.width, 0.0D, p_259816_.width).expandTowards(0.0D, 1.0D, 0.0D).inflate(1.0E-6D));
+            Optional<Vec3> optional = p_259704_.findFreePosition(p_259626_, voxelshape, vec3, p_259816_.width, p_259816_.height, p_259816_.width);
             Optional<Vec3> optional1 = optional.map((p_259019_) -> {
                 return p_259019_.subtract(0.0D, d0, 0.0D);
             });

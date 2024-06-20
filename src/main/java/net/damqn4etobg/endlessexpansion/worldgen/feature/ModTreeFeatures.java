@@ -2,7 +2,6 @@ package net.damqn4etobg.endlessexpansion.worldgen.feature;
 
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;

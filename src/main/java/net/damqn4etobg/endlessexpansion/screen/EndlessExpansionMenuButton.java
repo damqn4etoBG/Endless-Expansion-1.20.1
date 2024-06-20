@@ -1,6 +1,5 @@
 package net.damqn4etobg.endlessexpansion.screen;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.damqn4etobg.endlessexpansion.block.ModBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;

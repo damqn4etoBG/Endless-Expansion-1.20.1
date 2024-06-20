@@ -2,15 +2,12 @@ package net.damqn4etobg.endlessexpansion.event.client;
 
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.block.entity.ModBlockEntities;
-import net.damqn4etobg.endlessexpansion.block.entity.renderer.InfuserBlockEntityRenderer;
-import net.damqn4etobg.endlessexpansion.entity.ModEntities;
 import net.damqn4etobg.endlessexpansion.entity.client.ModModelLayers;
 import net.damqn4etobg.endlessexpansion.entity.client.WraithModel;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

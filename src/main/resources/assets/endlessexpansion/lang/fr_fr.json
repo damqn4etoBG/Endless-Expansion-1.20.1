@@ -51,8 +51,8 @@
   "item.endlessexpansion.fire_core": "Noyau de feu",
   "item.endlessexpansion.glacial_crystal": "Cristal Glacial",
 
-  "block.endlessexpansion.uranium_block": "\u00A7aBloc d'Uranium",
-  "block.endlessexpansion.radioactive_generator": "\u00A7dGénérateur Radioactif",
+  "block.endlessexpansion.uranium_block": "§aBloc d'Uranium",
+  "block.endlessexpansion.radioactive_generator": "§dGénérateur Radioactif",
   "block.endlessexpansion.arbor_log": "Bûche d'Arbor",
   "block.endlessexpansion.arbor_planks": "Planches d'Arbor",
   "block.endlessexpansion.arbor_wood": "Bois d'Arbor",
@@ -73,7 +73,7 @@
   "block.endlessexpansion.titanum_soil": "Sol Titanum",
   "block.endlessexpansion.titanum_grass_block": "Bloc d'Herbe Titanum",
   "block.endlessexpansion.glacier_bricks": "Briques de Glacier",
-  "block.endlessexpansion.mystical_everblue_orchid": "\u00A7bOrchidée Mystique Bleue Éternelle",
+  "block.endlessexpansion.mystical_everblue_orchid": "§bOrchidée Mystique Bleue Éternelle",
   "block.endlessexpansion.packed_snow_block": "Bloc de Neige Tassée",
   "block.endlessexpansion.deepslate_luminite_ore": "Minerai de Luminite des Abîmes",
   "block.endlessexpansion.cobalt_ore": "Minerai de Cobalt",
@@ -89,6 +89,7 @@
   "block.endlessexpansion.luminite_block": "Bloc de Luminite",
   "block.endlessexpansion.blackstone_pyronium_ore": "Minerai de Pyronium de Roche Noire",
 
+
   "biome.endlessexpansion.titanic_forest": "La Forêt Titanesque",
   "biome.endlessexpansion.frozen_wastes": "Les Déchets Gelés",
   "biome.endlessexpansion.sunken_wastes": "Les Déchets Engloutis",
@@ -103,6 +104,7 @@
 
   "effect.endlessexpansion.growth_spurt": "Growth Spurt",
   "effect.endlessexpansion.freezing": "Gelér",
+  "effect.endlessexpansion.shadow_state": "État d'ombre",
 
   "item.minecraft.potion.effect.mystical_potion": "Potion Mystique",
   "item.minecraft.splash_potion.effect.mystical_potion": "Potion Mystique Jetable",
@@ -121,8 +123,10 @@
   "tooltip.endlessexpansion.liquid.amount": "%s mB",
   "tooltip.endlessexpansion.empty": "Vide",
   "tooltip.endlessexpansion.holdshift": "§7Maintenez §eSHIFT §7pour plus d'informations.",
-  "tooltip.endlessexpansion.infuser":  "Une station utilisée pour infuser des items ensemble avec le pouvoir de la luminite.",
+  "tooltip.endlessexpansion.infuser": "Une station utilisée pour infuser des objets ensemble avec le pouvoir de la luminite.",
   "tooltip.endlessexpansion.blueorchid": "§d§oElle dégage une forte énergie magique",
+  "tooltip.endlessexpansion.glacier_bricks": "Utilisé pour le cadre du Portail du Monde Au-delà.",
+  "tooltip.endlessexpansion.luminite_staff": "Utilisé pour allumer le Portail du Monde Au-delà.",
 
   "displayname.endlessexpansion.radioactive_generator": "Générateur Radioactif",
 
@@ -189,5 +193,10 @@
   "advancements.endlessexpansion.obtain_uranium.title": "Vestiges du passé",
   "advancements.endlessexpansion.obtain_uranium.desc": "Découvrez ce qu'était Endless Expansion",
 
-  "sounds.endlessexpansion.infuser_infusing": "Infuseur bourdonne"
+  "sounds.endlessexpansion.infuser_infusing": "Infuseur bourdonne",
+  "sounds.endlessexpansion.dash": "Joueur se précipite",
+  "sounds.endlessexpansion.dash_indicator": "Dash prêt",
+
+  "key.category.endlessexpansion.name": "Endless Expansion",
+  "key.endlessexpansion.dash": "Shadow Dash"
 }

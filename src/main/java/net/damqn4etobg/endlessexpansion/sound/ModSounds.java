@@ -13,10 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, EndlessExpansion.MODID);
-    public static final RegistryObject<SoundEvent> ARBOR_WOOD_BREAK = registerSoundEvent("arbor_wood.break");
-    public static final RegistryObject<SoundEvent> ARBOR_WOOD_HIT = registerSoundEvent("arbor_wood.hit");
-    public static final RegistryObject<SoundEvent> ARBOR_WOOD_PLACE = registerSoundEvent("arbor_wood.place");
     public static final RegistryObject<SoundEvent> INFUSER_INFUSING = registerSoundEvent("infuser_infusing");
+    public static final RegistryObject<SoundEvent> DASH = registerSoundEvent("dash");
+    public static final RegistryObject<SoundEvent> DASH_INDICATOR = registerSoundEvent("dash_indicator");
     public static final ForgeSoundType ARBOR_WOOD_SOUNDS = new ForgeSoundType(1f, 0.85f,
             () -> SoundEvents.WOOD_BREAK, () -> SoundEvents.WOOD_STEP, () -> SoundEvents.WOOD_PLACE, () -> SoundEvents.WOOD_HIT, () -> SoundEvents.WOOD_FALL);
     public static RegistryObject<SoundEvent> registerSoundEvent(String name) {

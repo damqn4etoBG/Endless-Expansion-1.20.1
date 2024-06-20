@@ -1,31 +1,20 @@
 package net.damqn4etobg.endlessexpansion.networking.packet;
 
 import net.damqn4etobg.endlessexpansion.dimension.ModDimensions;
-import net.damqn4etobg.endlessexpansion.event.client.ClientFreezeData;
 import net.damqn4etobg.endlessexpansion.freeze.PlayerFreezeProvider;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
 import net.damqn4etobg.endlessexpansion.tag.ModTags;
-import net.damqn4etobg.endlessexpansion.worldgen.biome.ModBiomes;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -71,7 +60,7 @@ public class FreezeC2SPacket {
                     }
 
                     if (hasFireAroundPlayer(player, level, 2)) {
-                        freeze.subFreeze(2);
+                        freeze.subFreeze(1);
                     }
 
                     if(hasFullLeatherArmorEquipped(player)) {
@@ -79,7 +68,7 @@ public class FreezeC2SPacket {
                     }
 
                     if(hasFullLeatherArmorEquipped(player) && hasFireAroundPlayer(player, level, 2)) {
-                        freeze.subFreeze(3);
+                        freeze.subFreeze(2);
                     }
 
                     ModMessages.sendToPlayer(new FreezeDataSyncS2CPacket(freeze.getFreeze()), player);

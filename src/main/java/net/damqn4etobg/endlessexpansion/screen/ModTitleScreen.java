@@ -5,10 +5,9 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.realmsclient.RealmsMainScreen;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
-import net.damqn4etobg.endlessexpansion.util.PlatformIconButton;
+import net.damqn4etobg.endlessexpansion.util.gui.components.PlatformIconButton;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -49,7 +48,7 @@ public class ModTitleScreen extends Screen {
         this(false);
     }
     public ModTitleScreen(boolean fading) {
-        this(fading, (LogoRenderer)null);
+        this(fading, null);
     }
     public ModTitleScreen(boolean fading, @Nullable LogoRenderer pLogoRenderer) {
         super(Component.empty());
@@ -137,9 +136,9 @@ public class ModTitleScreen extends Screen {
         boolean flag = component == null;
         Tooltip tooltip = component != null ? Tooltip.create(component) : null;
         (this.addRenderableWidget(Button.builder(Component.translatable("menu.multiplayer"), (p_280833_) -> {
-            Screen screen = (Screen)(this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this));
+            Screen screen = this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this);
             this.minecraft.setScreen(screen);
-        }).bounds(this.width / 2 - 100, pY + pRowHeight * 1, 200, 20).tooltip(tooltip).build())).active = flag;
+        }).bounds(this.width / 2 - 100, pY + pRowHeight, 200, 20).tooltip(tooltip).build())).active = flag;
         (this.addRenderableWidget(Button.builder(Component.translatable("menu.online"), (p_210872_) -> {
             this.realmsButtonClicked();
         }).bounds(this.width / 2 + 2, pY + pRowHeight * 2, 98, 20).tooltip(tooltip).build())).active = flag;

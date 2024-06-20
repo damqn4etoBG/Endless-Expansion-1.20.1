@@ -22,7 +22,7 @@ public class ModLogoRenderer {
     public void renderLogo(GuiGraphics pGuiGraphics, int pScreenWidth, float pTransparency, int pHeight) {
         pGuiGraphics.setColor(1.0F, 1.0F, 1.0F, this.keepLogoThroughFade ? 1.0F : pTransparency);
         int i = pScreenWidth / 2 - 160; // 128
-        pGuiGraphics.blit(this.ENDLESS_EXPANSION_LOGO, i, pHeight, 0.0F, 0.0F, 320, 125, 320, 125); // 256, 100
+        pGuiGraphics.blit(ENDLESS_EXPANSION_LOGO, i, pHeight, 0.0F, 0.0F, 320, 125, 320, 125); // 256, 100
         pGuiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 }
