@@ -198,5 +198,9 @@
   "sounds.endlessexpansion.dash_indicator": "Тласъкът е готов",
 
   "key.category.endlessexpansion.name": "Endless Expansion",
-  "key.endlessexpansion.dash": "Shadow Dash"
+  "key.endlessexpansion.dash": "Shadow Dash",
+
+  "commands.endlessexpansion.tpWorldBeyond": "Телепортиран %s до Света отвъд",
+  "commands.endlessexpansion.freeze.add": "Добавено %d замръзване към %s",
+  "commands.endlessexpansion.freeze.subtract": "Извадено %d замръзване от %s"
 }

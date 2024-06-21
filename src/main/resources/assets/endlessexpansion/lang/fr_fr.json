@@ -198,5 +198,9 @@
   "sounds.endlessexpansion.dash_indicator": "Dash prêt",
 
   "key.category.endlessexpansion.name": "Endless Expansion",
-  "key.endlessexpansion.dash": "Shadow Dash"
+  "key.endlessexpansion.dash": "Shadow Dash",
+
+  "commands.endlessexpansion.tpWorldBeyond": "%s est téléporté(e) dans le Monde Au-Delà",
+  "commands.endlessexpansion.freeze.add": "Ajout de %d gels à %s",
+  "commands.endlessexpansion.freeze.subtract": "Soustrait %d gels de %s"
 }

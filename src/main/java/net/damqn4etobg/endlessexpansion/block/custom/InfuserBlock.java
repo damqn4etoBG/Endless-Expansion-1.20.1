@@ -3,6 +3,7 @@ package net.damqn4etobg.endlessexpansion.block.custom;
 import net.damqn4etobg.endlessexpansion.block.entity.InfuserBlockEntity;
 import net.damqn4etobg.endlessexpansion.block.entity.ModBlockEntities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -54,7 +55,7 @@ public class InfuserBlock extends BaseEntityBlock {
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
-            Player player = Minecraft.getInstance().player;
+            LocalPlayer player = Minecraft.getInstance().player;
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof InfuserBlockEntity) {
                 if (player.isCreative()) {

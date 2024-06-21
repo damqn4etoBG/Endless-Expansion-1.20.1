@@ -14,6 +14,7 @@ import net.damqn4etobg.endlessexpansion.util.KeyBinding;
 import net.damqn4etobg.endlessexpansion.worldgen.biome.ModBiomes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundSource;
@@ -73,16 +74,16 @@ public class ModClientEvents {
 
             if (player.hasEffect(ModMobEffects.FREEZING.get())) {
                 if(random.nextFloat() < 0.25f) { // 25% chance
-                    Minecraft.getInstance().level.addParticle(ModParticles.SNOWFLAKE.get(), x, y, z, 0d, 0.025d, 0d);
+                    world.addParticle(ModParticles.SNOWFLAKE.get(), x, y, z, 0d, 0.025d, 0d);
                 }
             }
             if (player.hasEffect(ModMobEffects.SHADOW_STATE.get())) {
                 player.setInvisible(true); // doing this on the end of the tick ensures that we don't get that flash between the effect expiring and being renewed
                 if(random.nextFloat() < 0.125f) {
-                    Minecraft.getInstance().level.addParticle(ModParticles.SHADOW_ORB.get(), x, y, z, 0d, 0.025d, 0d);
+                    world.addParticle(ModParticles.SHADOW_ORB.get(), x, y, z, 0d, 0.025d, 0d);
                 }
                 if(random.nextFloat() < 0.125f) {
-                    Minecraft.getInstance().level.addParticle(ModParticles.SHADOW_STRIP.get(), x, y, z, 0d, 0.025d, 0d);
+                    world.addParticle(ModParticles.SHADOW_STRIP.get(), x, y, z, 0d, 0.025d, 0d);
                 }
                 if(dashTicksElapsed <= 60) {
                     dashTicksElapsed++;
@@ -91,7 +92,7 @@ public class ModClientEvents {
                     dashTicksElapsed = 0;
                     canDash = true;
                     if(!ModSoundOptions.OFF()) {
-                        //player.level().playSound(player, player.blockPosition(), ModSounds.DASH_INDICATOR.get(), SoundSource.AMBIENT, 1f, 1f); // broken
+                        //player.level().playSound(player, player.blockPosition(), ModSounds.DASH_INDICATOR.get(), SoundSource.AMBIENT, 1f, 1f); // broken atm
                     }
                 }
             }
@@ -101,6 +102,8 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
         Player player = Minecraft.getInstance().player;
+        Level world = player.level();
+
         if(player != null && player.hasEffect(ModMobEffects.SHADOW_STATE.get()) && KeyBinding.DASHING_KEY.consumeClick() && canDash) {
             canDash = false;
             double speed = 1.5D;
@@ -111,10 +114,10 @@ public class ModClientEvents {
 
             player.setDeltaMovement(dx, player.getDeltaMovement().y, dz);
             if(!ModSoundOptions.OFF()) {
-                Minecraft.getInstance().level.playSound(player, player.blockPosition(), ModSounds.DASH.get(), SoundSource.AMBIENT, 1f, 1f);
+                world.playSound(player, player.blockPosition(), ModSounds.DASH.get(), SoundSource.AMBIENT, 1f, 1f);
             }
             for (int i = 0; i < 10; i++) {
-                Minecraft.getInstance().level.addParticle(ModParticles.SHADOW_SMOKE.get(), player.getX(), player.getY(), player.getZ(),
+                world.addParticle(ModParticles.SHADOW_SMOKE.get(), player.getX(), player.getY(), player.getZ(),
                         random.nextGaussian() * 0.15, random.nextGaussian() * 0.1, random.nextGaussian() * 0.15);
             }
         }
@@ -131,19 +134,6 @@ public class ModClientEvents {
                     EndlessExpansion.LOGGER.info("Setting Mod Title Screen");
                 }
             }
-        }
-    }
-
-    @Mod.EventBusSubscriber(modid = EndlessExpansion.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ModClientBusEvents {
-        @SubscribeEvent
-        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-            event.registerAboveAll("freeze", FreezingHudOverlay.HUD_FREEZE);
-            EndlessExpansion.LOGGER.info("Registering Freeze Overlay");
-        }
-        @SubscribeEvent
-        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-            event.register(KeyBinding.DASHING_KEY);
         }
     }
 }

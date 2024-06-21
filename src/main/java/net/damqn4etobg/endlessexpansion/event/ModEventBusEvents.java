@@ -19,11 +19,4 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.WRAITH.get(), WraithEntity.createAttributes().build());
     }
-    @SubscribeEvent
-    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ModParticles.SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.SHADOW_ORB.get(), ShadowOrbParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.SHADOW_STRIP.get(), ShadowStripParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.SHADOW_SMOKE.get(), ShadowSmokeParticle.Provider::new);
-    }
 }

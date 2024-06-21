@@ -198,5 +198,9 @@
   "sounds.endlessexpansion.dash_indicator": "Dash ready",
 
   "key.category.endlessexpansion.name": "Endless Expansion",
-  "key.endlessexpansion.dash": "Shadow Dash"
+  "key.endlessexpansion.dash": "Shadow Dash",
+
+  "commands.endlessexpansion.tpWorldBeyond": "Teleported %s to the World Beyond",
+  "commands.endlessexpansion.freeze.add": "Added %d freeze to %s",
+  "commands.endlessexpansion.freeze.subtract": "Subtracted %d freeze from %s"
 }
