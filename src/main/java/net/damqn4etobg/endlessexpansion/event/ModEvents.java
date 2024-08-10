@@ -1,8 +1,9 @@
 package net.damqn4etobg.endlessexpansion.event;
 
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
+import net.damqn4etobg.endlessexpansion.capability.dash.PlayerDashProvider;
+import net.damqn4etobg.endlessexpansion.capability.freeze.PlayerFreezeProvider;
 import net.damqn4etobg.endlessexpansion.command.EndExpCommand;
-import net.damqn4etobg.endlessexpansion.freeze.PlayerFreezeProvider;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
 import net.damqn4etobg.endlessexpansion.networking.packet.FreezeDataSyncS2CPacket;
 import net.minecraft.client.Minecraft;
@@ -36,6 +37,9 @@ public class ModEvents {
             if(!event.getObject().getCapability(PlayerFreezeProvider.PLAYER_FREEZE).isPresent()) {
                 event.addCapability(new ResourceLocation(EndlessExpansion.MODID, "properties"), new PlayerFreezeProvider());
             }
+            if(!event.getObject().getCapability(PlayerDashProvider.PLAYER_DASH).isPresent()) {
+                event.addCapability(new ResourceLocation(EndlessExpansion.MODID, "dash"), new PlayerDashProvider());
+            }
         }
     }
 
@@ -47,8 +51,14 @@ public class ModEvents {
                     newStore.copyFrom(oldStore);
                 });
             });
+            event.getOriginal().getCapability(PlayerDashProvider.PLAYER_DASH).ifPresent(oldDash -> {
+                event.getEntity().getCapability(PlayerDashProvider.PLAYER_DASH).ifPresent(newDash -> {
+                    newDash.copyFrom(oldDash);
+                });
+            });
         }
     }
+
     @SubscribeEvent
     public static void onPlayerJoinWorld(EntityJoinLevelEvent event) {
         if(!event.getLevel().isClientSide()) {

@@ -50,6 +50,10 @@
   "item.endlessexpansion.ice_wand": "Ice Wand",
   "item.endlessexpansion.fire_core": "Fire Core",
   "item.endlessexpansion.glacial_crystal": "Glacial Crystal",
+  "item.endlessexpansion.raw_sapphire": "Raw Sapphire",
+  "item.endlessexpansion.refined_sapphire": "§bRefined Sapphire",
+  "item.endlessexpansion.glass_vial": "Glass Vial",
+  "item.endlessexpansion.mystical_cookie": "§bMystical Cookie",
 
   "block.endlessexpansion.uranium_block": "\u00A7aUranium Block",
   "block.endlessexpansion.radioactive_generator": "\u00A7dRadioactive Generator",
@@ -88,7 +92,10 @@
   "block.endlessexpansion.world_beyond_portal": "World Beyond Portal",
   "block.endlessexpansion.luminite_block": "Luminite Block",
   "block.endlessexpansion.blackstone_pyronium_ore": "Blackstone Pyronium Ore",
-
+  "block.endlessexpansion.sapphire_cluster": "Sapphire Cluster",
+  "block.endlessexpansion.mystical_cookie_jar": "§bMystical Cookie Jar",
+  "block.endlessexpansion.mystical_glass": "§bMystical Glass",
+  "block.endlessexpansion.mystical_glass_pane": "§bMystical Glass Pane",
 
   "biome.endlessexpansion.titanic_forest": "The Titanic Forest",
   "biome.endlessexpansion.frozen_wastes": "The Frozen Wastes",
@@ -96,6 +103,7 @@
   "biome.endlessexpansion.volcanic_wastes": "The Volcanic Wastes",
   "biome.endlessexpansion.scorched_wastes": "The Scorched Wastes",
   "biome.endlessexpansion.zerzura": "Zerzura",
+  "biome.endlessexpansion.abyssal_ocean": "Abyssal Ocean",
 
   "fluid_type.endlessexpansion.nuclear_waste_fluid": "Nuclear Waste",
   "fluid_type.endlessexpansion.luminite_essence_fluid": "§eLuminite Essence",
@@ -127,8 +135,13 @@
   "tooltip.endlessexpansion.blueorchid": "§d§oIt gives off a strong Magical energy",
   "tooltip.endlessexpansion.glacier_bricks": "Used for the frame of the World Beyond Portal.",
   "tooltip.endlessexpansion.luminite_staff": "Used to light the World Beyond Portal.",
+  "tooltip.endlessexpansion.armor_set_bonus": "§eArmor Set Bonus:",
+  "tooltip.endlessexpansion.shadowsteel_bonus": "§7Grants the ability to dash and provides increased movement speed",
+  "tooltip.endlessexpansion.progress": "Progress: ",
+  "tooltip.endlessexpansion.mystical_cookie_jar": "A jar that generates §bMystical Cookies.",
 
   "displayname.endlessexpansion.radioactive_generator": "Radioactive Generator",
+  "displayname.endlessexpansion.mystical_cookie_jar": "Mystical Cookie Jar",
 
   "container.radioactive_generator": "Radioactive Generator",
 
@@ -144,11 +157,18 @@
   "menu.endlessexpansion.config.mod_sounds_partial": "A selected amount of the mod's sounds will be played.",
   "menu.endlessexpansion.config.mod_sounds_off": "None of the mod's sounds will be played.",
   "menu.endlessexpansion.credits.pressesc": "(Press ESC to return)",
-  "menu.endlessexpansion.config.ohawhewhe": "Created by ohawhewhe",
+  "menu.endlessexpansion.config.ohawhewhe": "§7Created by §rohawhewhe",
   "menu.endlessexpansion.config.madeby": "Made by damqn4etoBG and officer",
   "menu.endlessexpansion.config.inspiredby": "Inspired by The World Beyond The Ice Wall",
+  "menu.endlessexpansion.config.credits": "§7Opens the §rCredits",
+  "menu.endlessexpansion.config.background_note": "§rNote: §7These backgrounds are from earlier versions of the mod.",
+  "menu.endlessexpansion.config.on": "ON",
+  "menu.endlessexpansion.config.off": "OFF",
+  "menu.endlessexpansion.config.partial": "Partial",
+  "menu.endlessexpansion.credits.press_alt": "Hold ALT to speed up",
 
   "recipetype.endlessexpansion.infuser": "Infusing",
+  "recipetype.endlessexpansion.mystical_cookie_generating": "Mystical Cookie Generating",
 
   "advancements.endlessexpansion.root.title": "Endless Expansion",
   "advancements.endlessexpansion.root.desc": "Your journey begins here",
@@ -201,6 +221,9 @@
   "key.endlessexpansion.dash": "Shadow Dash",
 
   "commands.endlessexpansion.tpWorldBeyond": "Teleported %s to the World Beyond",
+  "commands.endlessexpansion.tpWorldBeyond_multiple": "Teleported %s players to the World Beyond",
   "commands.endlessexpansion.freeze.add": "Added %d freeze to %s",
-  "commands.endlessexpansion.freeze.subtract": "Subtracted %d freeze from %s"
+  "commands.endlessexpansion.freeze.add_multiple": "Added %d freeze to %s players",
+  "commands.endlessexpansion.freeze.subtract": "Subtracted %d freeze from %s",
+  "commands.endlessexpansion.freeze.subtract_multiple": "Subtracted %d freeze from %s players"
 }

@@ -19,6 +19,9 @@ public class ModParticles {
             PARTICLE_TYPES.register("shadow_strip", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> SHADOW_SMOKE =
             PARTICLE_TYPES.register("shadow_smoke", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> SPARK =
+            PARTICLE_TYPES.register("spark", () -> new SimpleParticleType(true));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

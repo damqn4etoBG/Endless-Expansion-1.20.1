@@ -13,10 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -210,6 +207,27 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLACKSTONE_PYRONIUM_ORE = registerBlock("blackstone_pyronium_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.STONE)
                     .mapColor(MapColor.COLOR_BLACK).strength(1.25F, 4.2F)));
+
+    public static final RegistryObject<Block> SAPPHIRE_CLUSTER = registerBlock("sapphire_cluster",
+            () -> new SapphireClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> MYSTICAL_COOKIE_JAR = registerBlock("mystical_cookie_jar",
+            () -> new MysticalCookieJarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).requiresCorrectToolForDrops()) {
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+                    if(Screen.hasShiftDown()) {
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.mystical_cookie_jar"));
+                    } else {
+                        pTooltip.add(Component.translatable("tooltip.endlessexpansion.holdshift"));
+                    }
+                }
+            });
+
+    public static final RegistryObject<Block> MYSTICAL_GLASS = registerBlock("mystical_glass",
+            () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(state -> 7).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> MYSTICAL_GLASS_PANE = registerBlock("mystical_glass_pane",
+            () -> new StainedGlassPaneBlock(DyeColor.RED, BlockBehaviour.Properties.copy(Blocks.RED_STAINED_GLASS_PANE).lightLevel(state -> 7).requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);

@@ -6,6 +6,7 @@ import com.mojang.realmsclient.RealmsMainScreen;
 import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.EndlessExpansionConfig;
 import net.damqn4etobg.endlessexpansion.util.gui.components.PlatformIconButton;
+import net.damqn4etobg.endlessexpansion.util.gui.components.PlatformIconConfigButton;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
 import net.minecraft.client.gui.GuiGraphics;
@@ -43,6 +44,7 @@ public class ModTitleScreen extends Screen {
     private static final ResourceLocation CURSEFORGE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/curseforge.png");
     private static final ResourceLocation GITHUB_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/github.png");
     private static final ResourceLocation MODRINTH_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/modrinth.png");
+    private static final ResourceLocation MIRAHEZE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/miraheze.png");
 
     public ModTitleScreen() {
         this(false);
@@ -92,20 +94,25 @@ public class ModTitleScreen extends Screen {
         this.addRenderableWidget(new StringWidget(this.width - minecraftVersionWidth - 2, y - 19, minecraftVersionWidth, textHeight3,
                 Component.literal(s + ("release".equalsIgnoreCase(this.minecraft.getVersionType()) ? "" : "/" + this.minecraft.getVersionType())), this.font));
 
-        this.addRenderableWidget(new PlatformIconButton(2, y2 - 11, 20, 20,
+        this.addRenderableWidget(new PlatformIconButton(2, y2 - 12, 20, 20,
                 CURSEFORGE_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/endless-expansion");
         }, Tooltip.create(Component.literal("§cCurseforge"))));
 
-        this.addRenderableWidget(new PlatformIconButton(2 + 24, y2 - 11, 20, 20,
+        this.addRenderableWidget(new PlatformIconButton(2 + 24, y2 - 12, 20, 20,
                 MODRINTH_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://modrinth.com/mod/endless-expansion");
         }, Tooltip.create(Component.literal("§aModrinth"))));
 
-        this.addRenderableWidget(new PlatformIconButton(2 + 48, y2 - 11, 20, 20,
+        this.addRenderableWidget(new PlatformIconButton(2 + 48, y2 - 12, 20, 20,
                 GITHUB_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://github.com/damqn4etoBG/Endless-Expansion");
         }, Tooltip.create(Component.literal("Github"))));
+
+        this.addRenderableWidget(new PlatformIconButton(2 + 72, y2 - 12, 20, 20,
+                MIRAHEZE_LOGO, 1f, (b) -> {
+            Util.getPlatform().openUri("https://endlessexpansion.miraheze.org");
+        }, Tooltip.create(Component.literal("§eMiraheze Wiki"))));
 
         this.createNormalMenuOptions(l, 24);
         modButton = this.addRenderableWidget(Button.builder(Component.translatable("fml.menu.mods"), button -> this.minecraft.setScreen(new net.minecraftforge.client.gui.ModListScreen(this)))

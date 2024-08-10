@@ -1,0 +1,15 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    " B ",
+    " A ",
+    " A "
+  ],
+  "key": {
+    "A": { "item": "minecraft:white_stained_glass_pane" },
+    "B": { "tag": "minecraft:wooden_slabs" }
+  },
+  "result": {
+    "item": "endlessexpansion:glass_vial"
+  }
+}

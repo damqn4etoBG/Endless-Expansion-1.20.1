@@ -11,7 +11,7 @@ public class ShadowStateEffect extends MobEffect {
     }
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int amplifier) {
-
+        //pLivingEntity.setInvisible(true);
     }
 
     @Override

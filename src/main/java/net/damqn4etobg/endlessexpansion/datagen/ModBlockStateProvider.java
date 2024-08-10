@@ -71,13 +71,18 @@ public class    ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.DEEPSLATE_BLACK_OPAL_ORE);
         blockWithItem(ModBlocks.LUMINITE_BLOCK);
+        crossBlock(ModBlocks.SAPPHIRE_CLUSTER);
+
+        simpleBlock(ModBlocks.MYSTICAL_COOKIE_JAR.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/mystical_cookie_jar")));
+        blockWithItem(ModBlocks.MYSTICAL_GLASS);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
 
-    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+    private void crossBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get(),
                 models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }

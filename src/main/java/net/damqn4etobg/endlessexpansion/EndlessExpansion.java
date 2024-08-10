@@ -17,12 +17,14 @@ import net.damqn4etobg.endlessexpansion.particle.ModParticles;
 import net.damqn4etobg.endlessexpansion.recipe.ModRecipes;
 import net.damqn4etobg.endlessexpansion.screen.InfuserScreen;
 import net.damqn4etobg.endlessexpansion.screen.ModMenuTypes;
+import net.damqn4etobg.endlessexpansion.screen.MysticalCookieJarScreen;
 import net.damqn4etobg.endlessexpansion.screen.RadioactiveGeneratorScreen;
 import net.damqn4etobg.endlessexpansion.sound.ModSounds;
 import net.damqn4etobg.endlessexpansion.util.BetterBrewingRecipe;
 import net.damqn4etobg.endlessexpansion.util.ModWoodTypes;
 import net.damqn4etobg.endlessexpansion.worldgen.feature.ModFeatures;
 import net.damqn4etobg.endlessexpansion.worldgen.feature.ModTreeFeatures;
+import net.damqn4etobg.endlessexpansion.worldgen.feature.placement.ModPlacementModifierTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -75,6 +77,7 @@ public class EndlessExpansion {
 
         ModTreeFeatures.register(modEventBus);
         ModFeatures.register(modEventBus);
+        ModPlacementModifierTypes.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -105,6 +108,7 @@ public class EndlessExpansion {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_NUCLEAR_WASTE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_LUMINITE_ESSENCE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_LUMINITE_ESSENCE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYSTICAL_GLASS_PANE.get(), RenderType.translucent());
 
             EntityRenderers.register(ModEntities.WRAITH.get(), WraithRenderer::new);
 
@@ -114,7 +118,7 @@ public class EndlessExpansion {
 
             MenuScreens.register(ModMenuTypes.RADIOACTIVE_GENERATOR_MENU.get(), RadioactiveGeneratorScreen::new);
             MenuScreens.register(ModMenuTypes.INFUSER_MENU.get(), InfuserScreen::new);
-
+            MenuScreens.register(ModMenuTypes.MYSTICAL_COOKIE_JAR_MENU.get(), MysticalCookieJarScreen::new);
         }
     }
 }

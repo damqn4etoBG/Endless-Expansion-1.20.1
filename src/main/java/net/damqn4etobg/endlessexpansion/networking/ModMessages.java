@@ -11,7 +11,6 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 public class ModMessages {
     private static SimpleChannel INSTANCE;
-
     private static int packetId = 0;
     private static int id() {
         return packetId++;
@@ -61,6 +60,12 @@ public class ModMessages {
                 .decoder(FreezeC2SPacket::new)
                 .encoder(FreezeC2SPacket::toBytes)
                 .consumerMainThread(FreezeC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(ProgressSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ProgressSyncS2CPacket::new)
+                .encoder(ProgressSyncS2CPacket::toBytes)
+                .consumerMainThread(ProgressSyncS2CPacket::handle)
                 .add();
     }
 

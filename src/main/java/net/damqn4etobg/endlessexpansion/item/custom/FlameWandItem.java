@@ -2,7 +2,6 @@ package net.damqn4etobg.endlessexpansion.item.custom;
 
 import net.damqn4etobg.endlessexpansion.effect.ModMobEffects;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundEvents;
@@ -16,26 +15,22 @@ import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class FlameWandItem extends Item {
     public FlameWandItem(Properties pProperties) {
         super(pProperties);
     }
+
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
         if (itemstack.isDamageableItem() && itemstack.getDamageValue() < itemstack.getMaxDamage()) {
             pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(),
                     SoundEvents.FIRECHARGE_USE, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
             pPlayer.getCooldowns().addCooldown(this, 20);
-            Position position = pPlayer.getPosition(Minecraft.getInstance().getDeltaFrameTime());
-            Direction direction = pPlayer.getDirection();
-            double d0 = position.x() + (double) ((float) direction.getStepX() * 0.35F);
-            double d1 = position.y() + (double) ((float) direction.getStepY() * 0.35F) + 1;
-            double d2 = position.z() + (double) ((float) direction.getStepZ() * 0.35F);
+            double d0 = pPlayer.getX() + (double) ((float) pPlayer.getDirection().getStepX() * 0.35F);
+            double d1 = pPlayer.getY() + (double) ((float) pPlayer.getDirection().getStepY() * 0.35F) + 1;
+            double d2 = pPlayer.getZ() + (double) ((float) pPlayer.getDirection().getStepZ() * 0.35F);
             if (!pLevel.isClientSide) {
                 SmallFireball smallfireball = new CustomSmallFireball(pLevel, d0, d1, d2, 0, 0, 0);
                 // smallfireball.setItem(itemstack); the item shot, in this case the wand, we want a fireball.
@@ -63,6 +58,9 @@ public class FlameWandItem extends Item {
             if (ticksCounted >= 40) {
                 this.remove(Entity.RemovalReason.DISCARDED);
             }
+            if(this.isInWater()) {
+                this.remove(Entity.RemovalReason.DISCARDED);
+            }
         }
 
         @Override
@@ -73,17 +71,6 @@ public class FlameWandItem extends Item {
                 if(livingEntity.hasEffect(ModMobEffects.FREEZING.get())) {
                     livingEntity.removeEffect(ModMobEffects.FREEZING.get());
                 }
-            }
-        }
-
-        @Override
-        protected void onHitBlock(BlockHitResult pResult) {
-            super.onHitBlock(pResult);
-            BlockPos blockPos = pResult.getBlockPos();
-            BlockState blockState = this.level().getBlockState(blockPos);
-
-            if (blockState.getBlock() == Blocks.WATER) {
-                this.remove(Entity.RemovalReason.DISCARDED);
             }
         }
     }

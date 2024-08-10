@@ -87,6 +87,10 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
         return this.FLUID_TANK.getFluid();
     }
 
+    public FluidTank getFluidTank() {
+        return this.FLUID_TANK;
+    }
+
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
@@ -215,14 +219,14 @@ public class InfuserBlockEntity extends BlockEntity implements MenuProvider {
         makeLuminiteEssence();
         if (hasRecipe() && FLUID_TANK.getFluidAmount() >= 256) {
             if (!soundPlayed && ModSoundOptions.ON()) {
-                pLevel.playSound(null, pPos, ModSounds.INFUSER_INFUSING.get(), SoundSource.BLOCKS, 0.2f, 1f);
+                level.playSound(null, pPos, ModSounds.INFUSER_INFUSING.get(), SoundSource.BLOCKS, 0.2f, 1f);
                 soundPlayed = true;
             }
             double x = pPos.getX() + random.nextDouble() - 0.5;
             double y = pPos.getY() + random.nextDouble() + 1.5;
             double z = pPos.getZ() + random.nextDouble() - 0.5;
             for (int i = 0; i < 10; i++) {
-                pLevel.addParticle(ParticleTypes.SMOKE, x, y, z, 0, 0.02D, 0);
+                level.addParticle(ParticleTypes.SMOKE, x, y, z, 0, 0.02D, 0);
             }
             increaseCraftingProgress();
             setChanged(pLevel, pPos, pState);

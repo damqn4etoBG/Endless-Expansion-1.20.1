@@ -1,6 +1,6 @@
 package net.damqn4etobg.endlessexpansion.screen.renderer;
 
-import net.damqn4etobg.endlessexpansion.util.capabilities.ITemperature;
+import net.damqn4etobg.endlessexpansion.capability.temperature.ITemperature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -31,6 +31,7 @@ public class TemperatureInfoArea extends InfoArea {
         String temperatureString = temperature.getTemperature() + " / " + temperature.getMaxTemperature() + " °C";
         return List.of(Component.literal(temperatureString));
     }
+
     @Override
     public void draw(GuiGraphics guiGraphics) {
         final int height = area.getHeight();

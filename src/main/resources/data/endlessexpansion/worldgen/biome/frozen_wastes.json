@@ -7,7 +7,7 @@
     "fog_color": 12638463,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "grass_color": 54783,
+    "grass_color": 16777215,
     "foliage_color": 16777215
   },
   "spawners": {},
@@ -29,6 +29,8 @@
         "endlessexpansion:igloo_placed"
       ],
       [
+        "minecraft:disk_sand",
+        "minecraft:ore_gravel",
         "minecraft:ore_granite_upper",
         "minecraft:ore_granite_lower",
         "minecraft:ore_diorite_upper",
@@ -51,7 +53,9 @@
         "minecraft:ore_lapis",
         "minecraft:ore_lapis_buried",
         "minecraft:ore_copper",
-        "minecraft:underwater_magma"
+        "minecraft:underwater_magma",
+        "minecraft:disk_clay",
+        "minecraft:disk_gravel"
       ]
     ]
 }

@@ -32,6 +32,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ArborHangingSignBlockEntity::new,
                             ModBlocks.ARBOR_HANGING_SIGN.get(), ModBlocks.ARBOR_WALL_HANGING_SIGN.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<MysticalCookieJarBlockEntity>> MYSTICAL_COOKIE_JAR =
+            BLOCK_ENTITIES.register("mystical_cookie_jar",
+                    () -> BlockEntityType.Builder.of(MysticalCookieJarBlockEntity::new, ModBlocks.MYSTICAL_COOKIE_JAR.get())
+                            .build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

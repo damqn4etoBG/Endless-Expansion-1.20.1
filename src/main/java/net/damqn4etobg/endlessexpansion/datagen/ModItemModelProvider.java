@@ -54,7 +54,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.CELESTIAL_SWORD);
         handheldItem(ModItems.CELESTIAL_PICKAXE);
         handheldItem(ModItems.CELESTIAL_SHOVEL);
-        handheldItem(ModItems.CELESTIALT_AXE);
+        handheldItem(ModItems.CELESTIAL_AXE);
         handheldItem(ModItems.CELESTIAL_HOE);
         handheldItem(ModItems.CELESTIAL_PAXEL);
 
@@ -117,6 +117,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimplerBlockItem(ModBlocks.LUMINITE_BLOCK);
         simpleItem(ModItems.FIRE_CORE);
         simpleItem(ModItems.GLACIAL_CRYSTAL);
+        simpleItem(ModItems.RAW_SAPPHIRE);
+        simpleItem(ModItems.REFINED_SAPPHIRE);
+        simpleBlockItemBlockTexture(ModBlocks.SAPPHIRE_CLUSTER);
+        simpleItem(ModItems.GLASS_VIAL);
+        simpleItem(ModItems.MYSTICAL_COOKIE);
+        evenSimplerBlockItem(ModBlocks.MYSTICAL_COOKIE_JAR);
+        evenSimplerBlockItem(ModBlocks.MYSTICAL_GLASS);
     }
 
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {

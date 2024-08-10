@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "endlessexpansion:block/mystical_glass_pane_top",
+    "pane": "endlessexpansion:block/mystical_glass"
+  }
+}

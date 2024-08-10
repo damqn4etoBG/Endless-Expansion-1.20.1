@@ -13,6 +13,7 @@ public class FreezeEffect extends MobEffect {
     public FreezeEffect(MobEffectCategory mobEffectCategory, int color) {
         super(mobEffectCategory, color);
     }
+
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int amplifier) {
         BlockPos playerPos = pLivingEntity.blockPosition().below();

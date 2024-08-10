@@ -1,7 +1,7 @@
 {
   "temperature": 2,
   "downfall": 0,
-  "has_precipitation": true,
+  "has_precipitation": false,
   "effects": {
     "sky_color": 6710886,
     "fog_color": 8224125,
@@ -40,8 +40,11 @@
     [
       "minecraft:disk_sand",
       "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
       "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
       "minecraft:ore_tuff",
       "minecraft:ore_coal_upper",

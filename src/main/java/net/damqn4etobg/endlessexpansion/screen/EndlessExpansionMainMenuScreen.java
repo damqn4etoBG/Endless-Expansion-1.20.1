@@ -43,6 +43,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     private static final ResourceLocation CURSEFORGE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/curseforge.png");
     private static final ResourceLocation GITHUB_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/github_alt.png");
     private static final ResourceLocation MODRINTH_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/modrinth.png");
+    private static final ResourceLocation MIRAHEZE_LOGO = new ResourceLocation(EndlessExpansion.MODID, "textures/gui/platform/miraheze.png");
     private long firstRenderTime;
     private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
 
@@ -51,6 +52,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         config = EndlessExpansionConfig.loadConfig();
         this.lastScreen = screen;
     }
+
     @Override
     protected void init() {
         GridLayout gridlayout = new GridLayout();
@@ -62,14 +64,14 @@ public class EndlessExpansionMainMenuScreen extends Screen {
         }).width(100).build())
                 .setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.custom_menu_desc")));
 
-        gridlayout$rowhelper.addChild(ConfigButton.builder(config.isCustomMainMenu() ? Component.literal("ON").withStyle(ChatFormatting.GREEN) : Component.literal("OFF").withStyle(ChatFormatting.RED),
+        gridlayout$rowhelper.addChild(ConfigButton.builder(config.isCustomMainMenu() ? Component.translatable("menu.endlessexpansion.config.on").withStyle(ChatFormatting.GREEN) : Component.translatable("menu.endlessexpansion.config.off").withStyle(ChatFormatting.RED),
                 button -> {
                     // Toggle the customMainMenu state
                     config.setCustomMainMenu(!config.isCustomMainMenu());
 
                     // Update button label and save the config
                     button.setMessage(
-                            config.isCustomMainMenu() ? Component.literal("ON").withStyle(ChatFormatting.GREEN) : Component.literal("OFF").withStyle(ChatFormatting.RED)
+                            config.isCustomMainMenu() ? Component.translatable("menu.endlessexpansion.config.on").withStyle(ChatFormatting.GREEN) : Component.translatable("menu.endlessexpansion.config.off").withStyle(ChatFormatting.RED)
                     );
         }).width(100).build()).setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.custom_menu_switch")));
 
@@ -84,7 +86,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                     // Update the background name and button label
                     updateBackgroundName(config);
                     updateButtonLabelBackgroundSelector(button, config);
-                }).width(100).build());
+                }).width(100).build()).setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.background_note")));
 
         gridlayout$rowhelper.addChild(ConfigButton.builder(Component.translatable("menu.endlessexpansion.config.mod_sounds"), (button) -> {
                     {}
@@ -97,7 +99,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                     updateModSoundsName(config);
                     updateButtonLabelModSoundsSelector(button, config);
                     button.setTooltip(getTooltipForSounds(config));
-                }).width(100).build());
+                }).width(100).build()).setTooltip(getTooltipForSounds(config));
 
         gridlayout$rowhelper.addChild(ConfigButton.builder(CommonComponents.GUI_DONE, (button) -> {
             Minecraft.getInstance().setScreen(this.lastScreen);
@@ -116,7 +118,7 @@ public class EndlessExpansionMainMenuScreen extends Screen {
 
         this.addRenderableWidget(new PlainTextButton(x, y + 1, textWidth1, textHeight1, MADE_BY_TEXT, (button) -> {
             this.minecraft.setScreen(new ModCreditsScreen(Minecraft.getInstance().screen));
-        }, this.font));
+        }, this.font)).setTooltip(Tooltip.create(Component.translatable("menu.endlessexpansion.config.credits")));
 
         int textWidth2 = this.font.width(INSPIRED_TEXT);
         int textHeight2 = this.font.lineHeight;
@@ -150,6 +152,11 @@ public class EndlessExpansionMainMenuScreen extends Screen {
                 GITHUB_LOGO, 1f, (b) -> {
             Util.getPlatform().openUri("https://github.com/damqn4etoBG/Endless-Expansion");
         }, Tooltip.create(Component.literal("Github"))));
+
+        this.addRenderableWidget(new PlatformIconConfigButton(2 + 72, y2 - 12, buttonWidth, buttonHeight,
+                MIRAHEZE_LOGO, 1f, (b) -> {
+            Util.getPlatform().openUri("https://endlessexpansion.miraheze.org");
+        }, Tooltip.create(Component.literal("§eMiraheze Wiki"))));
     }
 
     @Override
@@ -245,7 +252,14 @@ public class EndlessExpansionMainMenuScreen extends Screen {
     private void updateButtonLabelBackgroundSelector(ConfigButton button, EndlessExpansionConfig config) {
         button.setMessage(Component.literal(config.getBackgroundName()).withStyle(getChatFormattingForBackground(config.getBackgroundName())));
     }
+
     private void updateButtonLabelModSoundsSelector(ConfigButton button, EndlessExpansionConfig config) {
-        button.setMessage(Component.literal(config.getModSounds()).withStyle(getChatFormattingForSounds(config.getModSounds())));
+        String currentString = config.getModSounds();
+         switch (currentString) {
+            case "ON" -> button.setMessage(Component.translatable("menu.endlessexpansion.config.on").withStyle(getChatFormattingForSounds(config.getModSounds())));
+            case "Partial" -> button.setMessage(Component.translatable("menu.endlessexpansion.config.partial").withStyle(getChatFormattingForSounds(config.getModSounds())));
+            case "OFF" -> button.setMessage(Component.translatable("menu.endlessexpansion.config.off").withStyle(getChatFormattingForSounds(config.getModSounds())));
+            default -> button.setMessage(Component.literal(currentString).withStyle(getChatFormattingForSounds(config.getModSounds())));
+        }
     }
 }

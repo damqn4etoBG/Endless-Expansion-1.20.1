@@ -20,6 +20,9 @@ public class ModMenuTypes{
     public static final RegistryObject<MenuType<InfuserMenu>> INFUSER_MENU =
             registerMenuType(InfuserMenu::new, "infuser_menu");
 
+    public static final RegistryObject<MenuType<MysticalCookieJarMenu>> MYSTICAL_COOKIE_JAR_MENU =
+            registerMenuType(MysticalCookieJarMenu::new, "mystical_cookie_jar_menu");
+
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
                                                                                                   String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

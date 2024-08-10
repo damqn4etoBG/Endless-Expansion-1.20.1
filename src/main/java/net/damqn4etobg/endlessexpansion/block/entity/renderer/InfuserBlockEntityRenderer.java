@@ -1,95 +1,70 @@
 package net.damqn4etobg.endlessexpansion.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.damqn4etobg.endlessexpansion.block.entity.InfuserBlockEntity;
+import net.damqn4etobg.endlessexpansion.util.renderer.BlockEntityFluidRenderer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidStack;
 
 public class InfuserBlockEntityRenderer implements BlockEntityRenderer<InfuserBlockEntity> {
-
+    private final BlockEntityRendererProvider.Context context;
     public InfuserBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-
+        this.context = context;
     }
+
     @Override
-    public void render(InfuserBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+    public void render(InfuserBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        ItemStack itemStackOutput = blockEntity.getRenderStackOutput();
+        ItemStack itemStackInput1 = blockEntity.getRenderStackInput1();
+        ItemStack itemStackInput2 = blockEntity.getRenderStackInput2();
+        ItemStack itemStackLuminite = blockEntity.getRenderStackLuminite();
+        Direction blockEntityFacing = blockEntity.getBlockState().getValue(BlockStateProperties.FACING);
+        FluidStack fluidStack = blockEntity.getFluidTank().getFluid();
+        Level level = blockEntity.getLevel();
+        BlockPos pos = blockEntity.getBlockPos();
 
-        ItemStack itemStackOutput = pBlockEntity.getRenderStackOutput();
-        ItemStack itemStackInput1 = pBlockEntity.getRenderStackInput1();
-        ItemStack itemStackInput2 = pBlockEntity.getRenderStackInput2();
-        ItemStack itemStackLuminite = pBlockEntity.getRenderStackLuminite();
-
-        Direction blockEnitityFacing = pBlockEntity.getBlockState().getValue(BlockStateProperties.FACING);
-
-        //pBlockEntity.getBlockPos().north();
-        //LUMINITE
-        pPoseStack.pushPose();
-        pPoseStack.translate(0.35f, 0.82f, 0.34f);
-        pPoseStack.scale(0.22f, 0.22f, 0.22f);
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(270));
-        pPoseStack.mulPose(Axis.ZP.rotationDegrees(blockEnitityFacing.getStepX() * 90));
-
-        itemRenderer.renderStatic(itemStackLuminite, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()),
-                OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
-        pPoseStack.popPose();
-        //IS1
-        pPoseStack.pushPose();
-        switch (blockEnitityFacing) {
-            case EAST:
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(90));
-            case WEST:
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(270));
-            case SOUTH:
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(180));
-            case NORTH:
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(0));
+        if(level == null) {
+            return;
         }
-        pPoseStack.translate(0.35f, 0.82f, 0.65f);
-        pPoseStack.scale(0.22f, 0.22f, 0.22f);
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(270));
-        //pPoseStack.mulPose(Axis.ZP.rotationDegrees(blockEnitityFacing.getStepX() * 90));
 
+        IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
+        ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(fluidStack);
 
-        itemRenderer.renderStatic(itemStackInput1, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()),
-                OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
-        pPoseStack.popPose();
-
-        //IS2
-        pPoseStack.pushPose();
-        switch (blockEnitityFacing) {
-            case EAST:
-                pPoseStack.translate(0.78f, 0.82f, 0.65f);
-
-            case WEST:
-                pPoseStack.translate(0.78f, 0.82f, 0.65f);
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(270));
-            case SOUTH:
-                pPoseStack.translate(0.78f, 0.82f, 0.65f);
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(0));
-            case NORTH:
-                pPoseStack.translate(0.78f, 0.82f, 0.65f);
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(180));
+        if(stillTexture == null) {
+            return;
         }
-        pPoseStack.scale(0.22f, 0.22f, 0.22f);
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(270));
 
-        itemRenderer.renderStatic(itemStackInput2, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()),
-                OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
-        pPoseStack.popPose();
+        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
 
+        int tintColor = fluidTypeExtensions.getTintColor(fluidStack.getFluid().defaultFluidState(), level, pos);
+        float height = (((float) blockEntity.getFluidTank().getFluidAmount() / blockEntity.getFluidTank().getCapacity()) * 0.37f);
+
+        VertexConsumer builder = buffer.getBuffer(ItemBlockRenderTypes.getRenderLayer(fluidStack.getFluid().defaultFluidState()));
+        
+        switch (blockEntityFacing) {
+            case NORTH -> BlockEntityFluidRenderer.drawCube(builder, poseStack, 0.1875f, 0.625f, 0.6875f, 0.125f, height, 0.125f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1(), getLightLevel(level, pos), tintColor);
+            case SOUTH -> BlockEntityFluidRenderer.drawCube(builder, poseStack, 0.6875f, 0.625f, 0.1875f, 0.125f, height, 0.125f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1(), getLightLevel(level, pos), tintColor);
+            case EAST -> BlockEntityFluidRenderer.drawCube(builder, poseStack, 0.1875f, 0.625f, 0.1875f, 0.125f, height, 0.125f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1(), getLightLevel(level, pos), tintColor);
+            case WEST -> BlockEntityFluidRenderer.drawCube(builder, poseStack, 0.6875f, 0.625f, 0.6875f, 0.125f, height, 0.125f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1(), getLightLevel(level, pos), tintColor);
+        }
     }
 
     private int getLightLevel(Level level, BlockPos pos) {

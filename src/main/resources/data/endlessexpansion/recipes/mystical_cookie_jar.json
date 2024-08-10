@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "GCG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "endlessexpansion:mystical_glass"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "C": {
+      "item": "endlessexpansion:mystical_cookie"
+    }
+  },
+  "result": {
+    "item": "endlessexpansion:mystical_cookie_jar"
+  }
+}

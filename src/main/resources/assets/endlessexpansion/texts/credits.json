@@ -1,22 +1,12 @@
 [
     {
-        "section": "Art",
+        "section": "Development",
         "titles": [
             {
-                "title": "Artist",
+                "title": "Developers",
                 "names": [
-                    "officer"
-                ]
-            }
-        ]
-    },
-    {
-        "section": "Programming",
-        "titles": [
-            {
-                "title": "Programmer",
-                "names": [
-                    "damqn4etoBG"
+                    "§eArt          Programming     Assets & Concepts",
+                    "officer     damqn4etoBG     MoonMatthew"
                 ]
             }
         ]
@@ -25,15 +15,9 @@
         "section": "Localization",
         "titles": [
             {
-                "title": "French Localization",
+                "title": "           §eFrench           Bulgarian  Czech",
                 "names": [
-                    "damqn4etoBG"
-                ]
-            },
-            {
-                "title": "Bulgarian Localization",
-                "names": [
-                    "officer"
+                    "damqn4etoBG    officer     MoonMatthew"
                 ]
             }
         ]
@@ -51,6 +35,7 @@
                     "Create Mod",
                     "Emendatus Enigmatica",
                     "Mekanism",
+                    "ElvenWhiskers' Starfall",
                     "           ",
                     "§7--------------------------------------------",
                     "           ",

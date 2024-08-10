@@ -1,5 +1,6 @@
 package net.damqn4etobg.endlessexpansion.block.custom;
 
+import net.damqn4etobg.endlessexpansion.EndlessExpansion;
 import net.damqn4etobg.endlessexpansion.dimension.portal.WorldBeyondPortalShape;
 import net.damqn4etobg.endlessexpansion.dimension.portal.WorldBeyondTeleporter;
 import net.damqn4etobg.endlessexpansion.particle.ModParticles;
@@ -76,9 +77,9 @@ public class WorldBeyondPortalBlock extends NetherPortalBlock {
         if (entity.canChangeDimensions() && !entity.level().isClientSide()) {
             if (entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
-            } else if (entity.level().dimension() != ResourceKey.create(Registries.DIMENSION, new ResourceLocation("endlessexpansion:world_beyond"))) {
+            } else if (entity.level().dimension() != ResourceKey.create(Registries.DIMENSION, new ResourceLocation(EndlessExpansion.MODID, "world_beyond"))) {
                 entity.setPortalCooldown();
-                teleportToDimension(entity, pos, ResourceKey.create(Registries.DIMENSION, new ResourceLocation("endlessexpansion:world_beyond")));
+                teleportToDimension(entity, pos, ResourceKey.create(Registries.DIMENSION, new ResourceLocation(EndlessExpansion.MODID, "world_beyond")));
                 entity.rotate(Rotation.CLOCKWISE_180);
             } else {
                 entity.setPortalCooldown();
@@ -88,6 +89,20 @@ public class WorldBeyondPortalBlock extends NetherPortalBlock {
     }
 
     private void teleportToDimension(Entity entity, BlockPos pos, ResourceKey<Level> destinationType) {
-        entity.changeDimension(entity.getServer().getLevel(destinationType), new WorldBeyondTeleporter(entity.getServer().getLevel(destinationType), pos));
+        ServerLevel destinationLevel = entity.getServer().getLevel(destinationType);
+        WorldBeyondTeleporter teleporter = new WorldBeyondTeleporter(destinationLevel, pos);
+        entity.changeDimension(destinationLevel, teleporter);
+
+        // Calculate the offset position
+        BlockPos offsetPos = getOffsetPosition(pos, entity);
+
+        // Set the entity's position to the offset position
+        entity.teleportTo(offsetPos.getX() + 0.5, offsetPos.getY(), offsetPos.getZ() + 0.5);
+    }
+
+    private BlockPos getOffsetPosition(BlockPos pos, Entity entity) {
+        Direction facing = entity.getDirection();
+        return pos.relative(facing);
     }
 }
+

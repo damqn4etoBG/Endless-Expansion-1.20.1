@@ -1,0 +1,50 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "endlessexpansion:block/mystical_cookie_jar",
+		"particle": "endlessexpansion:block/mystical_glass"
+	},
+	"render_type": "minecraft:translucent",
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 11, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 5.5], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 5.5], "texture": "#0"},
+				"south": {"uv": [0, 0, 4, 5.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 4, 5.5], "texture": "#0"},
+				"up": {"uv": [12, 4, 8, 0], "texture": "#0"},
+				"down": {"uv": [12, 4, 8, 8], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6, 11, 6],
+			"to": [10, 12, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 11, 8]},
+			"faces": {
+				"north": {"uv": [12, 0, 14, 0.5], "texture": "#0"},
+				"east": {"uv": [12, 0.5, 14, 1], "texture": "#0"},
+				"south": {"uv": [12, 1, 14, 1.5], "texture": "#0"},
+				"west": {"uv": [12, 1.5, 14, 2], "texture": "#0"},
+				"up": {"uv": [5, 13, 3, 11], "texture": "#0"},
+				"down": {"uv": [7, 11, 5, 13], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, 12, 5],
+			"to": [11, 13, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 12, 8]},
+			"faces": {
+				"north": {"uv": [9, 11, 12, 11.5], "texture": "#0"},
+				"east": {"uv": [11, 10, 14, 10.5], "texture": "#0"},
+				"south": {"uv": [11, 10.5, 14, 11], "texture": "#0"},
+				"west": {"uv": [9, 11.5, 12, 12], "texture": "#0"},
+				"up": {"uv": [11, 11, 8, 8], "texture": "#0"},
+				"down": {"uv": [3, 11, 0, 14], "texture": "#0"}
+			}
+		}
+	]
+}

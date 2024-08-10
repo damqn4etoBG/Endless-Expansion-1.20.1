@@ -1,7 +1,7 @@
 package net.damqn4etobg.endlessexpansion.networking.packet;
 
+import net.damqn4etobg.endlessexpansion.capability.freeze.PlayerFreezeProvider;
 import net.damqn4etobg.endlessexpansion.dimension.ModDimensions;
-import net.damqn4etobg.endlessexpansion.freeze.PlayerFreezeProvider;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
 import net.damqn4etobg.endlessexpansion.tag.ModTags;
 import net.minecraft.core.BlockPos;
@@ -55,7 +55,7 @@ public class FreezeC2SPacket {
                     } else {
                         freeze.subFreeze(1);
                     }
-                    if (freeze.getFreeze() == 10) {
+                    if (freeze.getFreeze() >= 10 && (player.getTicksFrozen() >= player.getTicksRequiredToFreeze())) {
                         player.hurt(player.level().damageSources().freeze(), 2.5f);
                     }
 
@@ -81,6 +81,7 @@ public class FreezeC2SPacket {
         });
         return true;
     }
+
     private boolean hasFireAroundPlayer(ServerPlayer player, ServerLevel level, int size) {
         return level.getBlockStates(player.getBoundingBox().inflate(size))
                 .filter(state -> state.is(Blocks.CAMPFIRE) || state.is(Blocks.FIRE)

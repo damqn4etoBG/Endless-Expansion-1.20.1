@@ -13,6 +13,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<InfuserRecipe>> INFUSER_SERIALIZER =
             SERIALIZERS.register("infusing", () -> InfuserRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<MysticalCookieRecipe>> MYSTICAL_COOKIE_GENERATING_SERIALIZER =
+            SERIALIZERS.register("mystical_cookie_generating", () -> MysticalCookieRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

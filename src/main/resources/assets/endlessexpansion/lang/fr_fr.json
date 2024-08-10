@@ -50,6 +50,10 @@
   "item.endlessexpansion.ice_wand": "Baguette Magique de Glace",
   "item.endlessexpansion.fire_core": "Noyau de feu",
   "item.endlessexpansion.glacial_crystal": "Cristal Glacial",
+  "item.endlessexpansion.raw_sapphire": "Saphir Cru",
+  "item.endlessexpansion.refined_sapphire": "§bSaphir Raffiné",
+  "item.endlessexpansion.glass_vial": "Flacon en Verre",
+  "item.endlessexpansion.mystical_cookie": "§bBiscuit Mystique",
 
   "block.endlessexpansion.uranium_block": "§aBloc d'Uranium",
   "block.endlessexpansion.radioactive_generator": "§dGénérateur Radioactif",
@@ -88,7 +92,10 @@
   "block.endlessexpansion.world_beyond_portal": "Portail du Monde Au-delà",
   "block.endlessexpansion.luminite_block": "Bloc de Luminite",
   "block.endlessexpansion.blackstone_pyronium_ore": "Minerai de Pyronium de Roche Noire",
-
+  "block.endlessexpansion.sapphire_cluster": "Amas de Saphir",
+  "block.endlessexpansion.mystical_cookie_jar": "§bPot à Biscuits Mystique",
+  "block.endlessexpansion.mystical_glass": "§bVerre Mystique",
+  "block.endlessexpansion.mystical_glass_pane": "§bVitre Mystique",
 
   "biome.endlessexpansion.titanic_forest": "La Forêt Titanesque",
   "biome.endlessexpansion.frozen_wastes": "Les Déchets Gelés",
@@ -96,6 +103,7 @@
   "biome.endlessexpansion.volcanic_wastes": "Les Déchets Volcaniques",
   "biome.endlessexpansion.scorched_wastes": "Les Déchets Brûlés",
   "biome.endlessexpansion.zerzura": "Zerzoura",
+  "biome.endlessexpansion.abyssal_ocean": "Océan Abyssal",
 
   "fluid_type.endlessexpansion.nuclear_waste_fluid": "Déchets Nucléaires",
   "fluid_type.endlessexpansion.luminite_essence_fluid": "§eEssence de Luminite",
@@ -125,10 +133,15 @@
   "tooltip.endlessexpansion.holdshift": "§7Maintenez §eSHIFT §7pour plus d'informations.",
   "tooltip.endlessexpansion.infuser": "Une station utilisée pour infuser des objets ensemble avec le pouvoir de la luminite.",
   "tooltip.endlessexpansion.blueorchid": "§d§oElle dégage une forte énergie magique",
-  "tooltip.endlessexpansion.glacier_bricks": "Utilisé pour le cadre du Portail du Monde Au-delà.",
+  "tooltip.endlessexpansion.glacier_bricks": "Utilisée pour le cadre du Portail du Monde Au-delà.",
   "tooltip.endlessexpansion.luminite_staff": "Utilisé pour allumer le Portail du Monde Au-delà.",
+  "tooltip.endlessexpansion.armor_set_bonus": "§eBonus d'ensemble d'armure:",
+  "tooltip.endlessexpansion.shadowsteel_bonus": "§7Accorde la capacité de se précipiter et augmente la vitesse de déplacement",
+  "tooltip.endlessexpansion.progress": "Progrès: ",
+  "tooltip.endlessexpansion.mystical_cookie_jar": "Un pot qui génère §bBiscuits Mystiques.",
 
   "displayname.endlessexpansion.radioactive_generator": "Générateur Radioactif",
+  "displayname.endlessexpansion.mystical_cookie_jar": "Pot à Biscuits Mystique",
 
   "container.radioactive_generator": "Générateur Radioactif",
 
@@ -138,17 +151,24 @@
   "menu.endlessexpansion.config.custom_menu_switch": "§eAvertissement ! Le jeu exige un redémarrage après avoir désactivé le menu personnalisé !",
   "menu.endlessexpansion.config.background_selector": "Sélectionner un arrière-plan",
   "menu.endlessexpansion.config.background_selector_desc": "Sélectionnez un arrière-plan personnalisé.",
-  "menu.endlessexpansion.config.mod_sounds": "Sons du Mod",
+  "menu.endlessexpansion.config.mod_sounds": "Sons de Mod",
   "menu.endlessexpansion.config.mod_sounds_desc": "Choisir comment les sons du mod sont joués.",
-  "menu.endlessexpansion.config.mod_sounds_on": "Tous le sons du mod seront joués.",
-  "menu.endlessexpansion.config.mod_sounds_partial": "Une quantité sélectionnée de sons du mod sera jouée.",
-  "menu.endlessexpansion.config.mod_sounds_off": "Aucun son du mod ne sera joué.",
+  "menu.endlessexpansion.config.mod_sounds_on": "Tous le sons de mod seront joués.",
+  "menu.endlessexpansion.config.mod_sounds_partial": "Une quantité sélectionnée de sons de mod sera jouée.",
+  "menu.endlessexpansion.config.mod_sounds_off": "Aucun son de mod ne sera joué.",
   "menu.endlessexpansion.credits.pressesc": "(Appuyez ESC pour retourner)",
-  "menu.endlessexpansion.config.ohawhewhe": "Faite par ohawhewhe",
+  "menu.endlessexpansion.config.ohawhewhe": "§7Faite par §rohawhewhe",
   "menu.endlessexpansion.config.madeby": "Faite par damqn4etoBG et officer",
   "menu.endlessexpansion.config.inspiredby": "Inspiré par The World Beyond The Ice Wall",
+  "menu.endlessexpansion.config.credits": "§7Ouvre les §rCrédits",
+  "menu.endlessexpansion.config.background_note": "§rRemarque: §7Ces arrière-plans proviennent de versions antérieures du mod.",
+  "menu.endlessexpansion.config.on": "Oui",
+  "menu.endlessexpansion.config.off": "Non",
+  "menu.endlessexpansion.config.partial": "Partiel",
+  "menu.endlessexpansion.credits.press_alt": "Maintenez ALT pour accélérer",
 
-  "recipetype.endlessexpansion.infuser": "Infuseur",
+  "recipetype.endlessexpansion.infuser": "Infuser",
+  "recipetype.endlessexpansion.mystical_cookie_generating": "Biscuit Mystique Génération",
 
   "advancements.endlessexpansion.root.title": "Endless Expansion",
   "advancements.endlessexpansion.root.desc": "Votre voyage commence ici",
@@ -201,6 +221,9 @@
   "key.endlessexpansion.dash": "Shadow Dash",
 
   "commands.endlessexpansion.tpWorldBeyond": "%s est téléporté(e) dans le Monde Au-Delà",
+  "commands.endlessexpansion.tpWorldBeyond_multiple": "%s joueurs téléportés dans le Monde Au-delà",
   "commands.endlessexpansion.freeze.add": "Ajout de %d gels à %s",
-  "commands.endlessexpansion.freeze.subtract": "Soustrait %d gels de %s"
+  "commands.endlessexpansion.freeze.add_multiple": "Ajout de %d gels à %s joueurs",
+  "commands.endlessexpansion.freeze.subtract": "Soustrait %d gels de %s",
+  "commands.endlessexpansion.freeze.subtract_multiple": "Soustrait %d gels de %s joueurs"
 }

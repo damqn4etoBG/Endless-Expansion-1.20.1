@@ -1,6 +1,7 @@
 package net.damqn4etobg.endlessexpansion.item.custom;
 
 import net.damqn4etobg.endlessexpansion.effect.ModMobEffects;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -17,6 +18,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import org.joml.Vector3f;
 
@@ -83,8 +86,19 @@ public class IceWandItem extends Item {
             super.onHitEntity(pResult);
             Entity entity = pResult.getEntity();
             if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(ModMobEffects.FREEZING.get(), 200, 1, false, false));
+                livingEntity.addEffect(new MobEffectInstance(ModMobEffects.FREEZING.get(), 200, 0, false, false, true));
             }
+        }
+
+        @Override
+        protected void onHitBlock(BlockHitResult pResult) {
+            BlockPos blockPos = pResult.getBlockPos();
+            BlockState blockState = this.level().getBlockState(blockPos);
+
+            if (blockState == Blocks.FIRE.defaultBlockState()) {
+                this.level().setBlock(blockPos, Blocks.AIR.defaultBlockState(), 3);
+            }
+            super.onHitBlock(pResult);
         }
     }
 }

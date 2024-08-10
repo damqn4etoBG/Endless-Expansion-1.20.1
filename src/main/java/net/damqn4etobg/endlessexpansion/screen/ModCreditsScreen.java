@@ -35,13 +35,15 @@ public class ModCreditsScreen extends Screen {
     private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
     private static final Component SECTION_HEADING = Component.literal("------------").withStyle(ChatFormatting.GRAY);
     private static final Component RETURN_MESSAGE = Component.translatable("menu.endlessexpansion.credits.pressesc").withStyle(ChatFormatting.GRAY);
+    private static final Component CONTROLS_TEXT = Component.translatable("menu.endlessexpansion.credits.press_alt").withStyle(ChatFormatting.GRAY);
     private float scroll;
     private final float unmodifiedScrollSpeed;
-    private final float scrollSpeed;
+    private float scrollSpeed;
     private final ModLogoRenderer logoRenderer = new ModLogoRenderer(true);
     private final Screen lastScreen;
     private boolean showReturnMessage;
     private float returnMessageAlpha;
+    private float controlsMessageAlpha;
 
     protected ModCreditsScreen(Screen screen) {
         super(GameNarrator.NO_TITLE);
@@ -50,6 +52,7 @@ public class ModCreditsScreen extends Screen {
         this.lastScreen = screen;
         this.showReturnMessage = false;
         this.returnMessageAlpha = 0.0f;
+        this.controlsMessageAlpha = 0.0f;
     }
 
     @Override
@@ -125,6 +128,12 @@ public class ModCreditsScreen extends Screen {
         this.logoRenderer.renderLogo(pGuiGraphics, this.width, 0.0F, j - 50);
         int k = j + 100; //org 100
 
+        if(Screen.hasAltDown()) {
+            this.scrollSpeed += 0.25F;
+        } else {
+            this.scrollSpeed = unmodifiedScrollSpeed;
+        }
+
         for (int l = 0; l < this.lines.size(); ++l) {
             if (l == this.lines.size() - 1) {
                 float f1 = (float) k + f - (float) (this.height / 2 - 6);
@@ -144,7 +153,6 @@ public class ModCreditsScreen extends Screen {
 
             k += 12;
         }
-
         pGuiGraphics.pose().popPose();
 
         // Show return message if the credits have scrolled off the screen
@@ -174,6 +182,18 @@ public class ModCreditsScreen extends Screen {
             pGuiGraphics.pose().popPose();
         }
 
+        if(!this.showReturnMessage) {
+            this.controlsMessageAlpha = Math.min(this.controlsMessageAlpha + pPartialTick * 0.05f, 1.0f);
+            int controlMessageColor = (int)(this.controlsMessageAlpha * 255.0f) << 24 | 0xFFFFFF;
+
+            pGuiGraphics.drawString(font, CONTROLS_TEXT, 2, this.height - this.font.lineHeight - 2, controlMessageColor);
+        } else {
+            if(controlsMessageAlpha > 0.0f) {
+                this.controlsMessageAlpha = Math.max(this.controlsMessageAlpha - pPartialTick * 0.05f, 0.0f);
+                int controlMessageColor = (int)(this.controlsMessageAlpha * 255.0f) << 24 | 0xFFFFFF;
+                pGuiGraphics.drawString(font, CONTROLS_TEXT, 2, this.height - this.font.lineHeight - 2, controlMessageColor);
+            }
+        }
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
     }
 

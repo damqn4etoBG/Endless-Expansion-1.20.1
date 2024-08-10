@@ -23,9 +23,9 @@ public class ModArmorItem extends ArmorItem {
     }
 
     @Override
-    public void onArmorTick(ItemStack stack, Level world, Player player) {
-        if(!world.isClientSide()) {
-            if(hasFullSuitOfArmorOn(player)) {
+    public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+        if (!level.isClientSide()) {
+            if (hasFullSuitOfArmorOn(player)) {
                 evaluateArmorEffects(player);
             }
         }
@@ -46,8 +46,16 @@ public class ModArmorItem extends ArmorItem {
                                             MobEffectInstance mapStatusEffect) {
         boolean hasPlayerEffect = player.hasEffect(mapStatusEffect.getEffect());
 
-        if(hasCorrectArmorOn(mapArmorMaterial, player) && !hasPlayerEffect) {
-            player.addEffect(new MobEffectInstance(mapStatusEffect));
+        if (hasCorrectArmorOn(mapArmorMaterial, player)) {
+            if (!hasPlayerEffect) {
+                player.addEffect(new MobEffectInstance(mapStatusEffect));
+            } else {
+                MobEffectInstance currentEffect = player.getEffect(mapStatusEffect.getEffect());
+                if (currentEffect != null && currentEffect.getDuration() <= 20) {  // 20 ticks = 1 second
+                    player.removeEffect(mapStatusEffect.getEffect());
+                    player.addEffect(new MobEffectInstance(mapStatusEffect));
+                }
+            }
         }
     }
 

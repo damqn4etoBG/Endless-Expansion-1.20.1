@@ -53,6 +53,10 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.LUMINITE_STAFF.get());
                         pOutput.accept(ModBlocks.MYSTICAL_EVERBLUE_OCRHID.get());
                         pOutput.accept(ModItems.MYSTICAL_EVERBLUE_POWDER.get());
+                        pOutput.accept(ModItems.MYSTICAL_COOKIE.get());
+                        pOutput.accept(ModBlocks.MYSTICAL_COOKIE_JAR.get());
+                        pOutput.accept(ModBlocks.MYSTICAL_GLASS.get());
+                        pOutput.accept(ModBlocks.MYSTICAL_GLASS_PANE.get());
                         pOutput.accept(ModBlocks.COBALT_ORE.get());
                         pOutput.accept(ModBlocks.DEEPSLATE_COBALT_ORE.get());
                         pOutput.accept(ModItems.RAW_COBALT.get());
@@ -69,7 +73,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.CELESTIAL_SWORD.get());
                         pOutput.accept(ModItems.CELESTIAL_PICKAXE.get());
                         pOutput.accept(ModItems.CELESTIAL_SHOVEL.get());
-                        pOutput.accept(ModItems.CELESTIALT_AXE.get());
+                        pOutput.accept(ModItems.CELESTIAL_AXE.get());
                         pOutput.accept(ModItems.CELESTIAL_HOE.get());
                         pOutput.accept(ModItems.CELESTIAL_PAXEL.get());
                         pOutput.accept(ModItems.COBALT_HELMET.get());
@@ -83,9 +87,10 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.PYRONIUM_ORE.get());
                         pOutput.accept(ModBlocks.BLACKSTONE_PYRONIUM_ORE.get());
                         pOutput.accept(ModItems.PYRONIUM.get());
+                        pOutput.accept(ModItems.PYRONIUM_INFUSED_COAL.get());
                         pOutput.accept(ModItems.FIRE_CORE.get());
                         pOutput.accept(ModBlocks.INFUSER.get());
-                        pOutput.accept(ModItems.PYRONIUM_INFUSED_COAL.get());
+                        pOutput.accept(ModItems.GLASS_VIAL.get());
                         pOutput.accept(ModBlocks.SMALL_RED_MUSHROOM.get());
                         pOutput.accept(ModBlocks.SMALL_BROWN_MUSHROOM.get());
                         pOutput.accept(ModBlocks.DEEPSLATE_BLACK_OPAL_ORE.get());
@@ -104,6 +109,9 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.SHADOWSTEEL_BOOTS.get());
                         pOutput.accept(ModItems.FLAME_WAND.get());
                         pOutput.accept(ModItems.ICE_WAND.get());
+                        pOutput.accept(ModBlocks.SAPPHIRE_CLUSTER.get());
+                        pOutput.accept(ModItems.RAW_SAPPHIRE.get());
+                        pOutput.accept(ModItems.REFINED_SAPPHIRE.get());
                     })
                     .build());
     public static void register(IEventBus eventBus) {

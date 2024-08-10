@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "endlessexpansion:block/sapphire_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "endlessexpansion:block/sapphire_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "endlessexpansion:block/sapphire_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "endlessexpansion:block/sapphire_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "endlessexpansion:block/sapphire_cluster"
+    },
+    "facing=west": {
+      "model": "endlessexpansion:block/sapphire_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

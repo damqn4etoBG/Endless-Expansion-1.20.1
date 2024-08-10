@@ -23,14 +23,20 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class InfuserBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
-    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 13, 16);
+    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 10.5, 16);
+    public static final VoxelShape SHAPE_NORTH = makeShapeNorth();
+    public static final VoxelShape SHAPE_SOUTH = makeShapeSouth();
+    public static final VoxelShape SHAPE_EAST = makeShapeEast();
+    public static final VoxelShape SHAPE_WEST = makeShapeWest();
     public InfuserBlock(Properties properties) {
         super(properties);
         registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
@@ -38,7 +44,18 @@ public class InfuserBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
+        Direction direction = pState.getValue(FACING);
+        switch (direction) {
+            case NORTH:
+            default:
+                return SHAPE_NORTH;
+            case SOUTH:
+                return SHAPE_SOUTH;
+            case EAST:
+                return SHAPE_EAST;
+            case WEST:
+                return SHAPE_WEST;
+        }
     }
 
     @Override
@@ -113,5 +130,37 @@ public class InfuserBlock extends BaseEntityBlock {
     @Override
     public BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    }
+
+    public static VoxelShape makeShapeNorth() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0, 1, 0.625, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.15625, 0.625, 0.65625, 0.34375, 1, 0.84375), BooleanOp.OR);
+
+        return shape;
+    }
+
+    public static VoxelShape makeShapeSouth() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0, 1, 0.625, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.65625, 0.625, 0.15625, 0.84375, 1, 0.34375), BooleanOp.OR);
+
+        return shape;
+    }
+
+    public static VoxelShape makeShapeEast() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0, 1, 0.625, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.15625, 0.625, 0.15625, 0.34375, 1, 0.34375), BooleanOp.OR);
+
+        return shape;
+    }
+
+    public static VoxelShape makeShapeWest() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0, 1, 0.625, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.65625, 0.625, 0.65625, 0.84375, 1, 0.84375), BooleanOp.OR);
+
+        return shape;
     }
 }

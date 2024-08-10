@@ -49,6 +49,7 @@ public class InfuserScreen extends AbstractContainerScreen<InfuserMenu> {
         this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2 + 2;
 
         guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
+        guiGraphics.drawString(this.font, playerInventoryTitle, inventoryLabelX, inventoryLabelY + 2, 4210752, false);
         renderFluidAreaTooltips(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluidStack(), 17, 16, renderer);
     }
 

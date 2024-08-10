@@ -112,6 +112,22 @@
           }
         ]
       }
+    },
+    "endlessexpansion:abyssal_ocean": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "endlessexpansion:abyssal_ocean"
+              }
+            }
+          }
+        ]
+      }
     }
   },
   "requirements": [
@@ -132,6 +148,9 @@
     ],
     [
       "endlessexpansion:zerzura"
+    ],
+    [
+      "endlessexpansion:abyssal_ocean"
     ]
   ],
   "rewards": {

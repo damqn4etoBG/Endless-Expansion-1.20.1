@@ -33,6 +33,8 @@
       "minecraft:kelp_warm"
     ],
     [
+      "minecraft:disk_sand",
+      "minecraft:ore_gravel",
       "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
       "minecraft:ore_diorite_upper",
@@ -55,7 +57,9 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "minecraft:underwater_magma"
+      "minecraft:underwater_magma",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ]
   ]
 }

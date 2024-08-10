@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "stained_glass_pane",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "endlessexpansion:mystical_glass"
+    }
+  },
+  "result": {
+    "item": "endlessexpansion:mystical_glass_pane",
+    "count": 16
+  }
+}

@@ -50,6 +50,10 @@
   "item.endlessexpansion.ice_wand": "Леден жезъл",
   "item.endlessexpansion.fire_core": "Огнено ядро",
   "item.endlessexpansion.glacial_crystal": "Глациялен кристал",
+  "item.endlessexpansion.raw_sapphire": "Суров сапфир",
+  "item.endlessexpansion.refined_sapphire": "§bРафиниран сапфир",
+  "item.endlessexpansion.glass_vial": "Glass Vial",
+  "item.endlessexpansion.mystical_cookie": "§bМистична бисквита",
 
   "block.endlessexpansion.uranium_block": "§aУраниев блок",
   "block.endlessexpansion.radioactive_generator": "§dРадиоактивен генератор",
@@ -88,7 +92,10 @@
   "block.endlessexpansion.world_beyond_portal": "Портал за света отвъд",
   "block.endlessexpansion.luminite_block": "Луминитен блок",
   "block.endlessexpansion.blackstone_pyronium_ore": "Чернокаменна пирониева руда",
-
+  "block.endlessexpansion.sapphire_cluster": "Сапфиров Клъстер",
+  "block.endlessexpansion.mystical_cookie_jar": "§bМистичен буркан за бисквити",
+  "block.endlessexpansion.mystical_glass": "§bМистично стъкло",
+  "block.endlessexpansion.mystical_glass_pane": "§bМистично стъклено пано",
 
   "biome.endlessexpansion.titanic_forest": "Титановата гора",
   "biome.endlessexpansion.frozen_wastes": "Замразената пустош",
@@ -96,13 +103,14 @@
   "biome.endlessexpansion.volcanic_wastes": "Волканичната пустош",
   "biome.endlessexpansion.scorched_wastes": "Обгорената пустош",
   "biome.endlessexpansion.zerzura": "Зерзура",
+  "biome.endlessexpansion.abyssal_ocean": "Безднен океан",
 
   "fluid_type.endlessexpansion.nuclear_waste_fluid": "Ядрен отпадък",
   "fluid_type.endlessexpansion.luminite_essence_fluid": "§eЛуминитена есенция",
 
   "creativemodetab.endless_expansion": "Endless Expansion",
 
-  "effect.endlessexpansion.growth_spurt": "Growth Spurt",
+  "effect.endlessexpansion.growth_spurt": "Ускорен растеж",
   "effect.endlessexpansion.freezing": "Замръзване",
   "effect.endlessexpansion.shadow_state": "Сенчесто състояние",
 
@@ -127,8 +135,13 @@
   "tooltip.endlessexpansion.blueorchid": "§d§oОтдава силна магическа енергия",
   "tooltip.endlessexpansion.glacier_bricks": "Използвано за рамката на портала за Света Отвъд.",
   "tooltip.endlessexpansion.luminite_staff": "Използвано за да се запали портала за Света Отвъд.",
+  "tooltip.endlessexpansion.armor_set_bonus": "§eArmor Set Bonus:",
+  "tooltip.endlessexpansion.shadowsteel_bonus": "§7Grants the ability to dash and provides increased movement speed",
+  "tooltip.endlessexpansion.progress": "Прогрес: ",
+  "tooltip.endlessexpansion.mystical_cookie_jar": "Буркан, който генерира §bМистични бисквити.",
 
   "displayname.endlessexpansion.radioactive_generator": "Радиоактивен генератор",
+  "displayname.endlessexpansion.mystical_cookie_jar": "Мистичен буркан за бисквити",
 
   "container.radioactive_generator": "Радиоактивен генератор",
 
@@ -144,11 +157,18 @@
   "menu.endlessexpansion.config.mod_sounds_partial": "Избран брой от звуците ще се чуват.",
   "menu.endlessexpansion.config.mod_sounds_off": "Няма да се чуват звуци от мода.",
   "menu.endlessexpansion.credits.pressesc": "(Натиснете ESC за да се върнете)",
-  "menu.endlessexpansion.config.ohawhewhe": "Направено от ohawhewhe",
+  "menu.endlessexpansion.config.ohawhewhe": "§7Направено от §rohawhewhe",
   "menu.endlessexpansion.config.madeby": "Направено от damqn4etoBG и officer",
   "menu.endlessexpansion.config.inspiredby": "Вдъхновено от The World Beyond The Ice Wall",
+  "menu.endlessexpansion.config.credits": "§7Отваря §rКредитите",
+  "menu.endlessexpansion.config.background_note": "§rЗабележка: §7Тези фонове са от по-ранни версии на мода.",
+  "menu.endlessexpansion.config.on": "Включено",
+  "menu.endlessexpansion.config.off": "Изключено",
+  "menu.endlessexpansion.config.partial": "Частично",
+  "menu.endlessexpansion.credits.press_alt": "Задръжте ALT за да ускорите",
 
   "recipetype.endlessexpansion.infuser": "Инфузира",
+  "recipetype.endlessexpansion.mystical_cookie_generating": "Генерация на мистични бисквити",
 
   "advancements.endlessexpansion.root.title": "Endless Expansion",
   "advancements.endlessexpansion.root.desc": "Вашето приключение започва тук",
@@ -198,9 +218,12 @@
   "sounds.endlessexpansion.dash_indicator": "Тласъкът е готов",
 
   "key.category.endlessexpansion.name": "Endless Expansion",
-  "key.endlessexpansion.dash": "Shadow Dash",
+  "key.endlessexpansion.dash": "Сенчест спринт",
 
   "commands.endlessexpansion.tpWorldBeyond": "Телепортиран %s до Света отвъд",
+  "commands.endlessexpansion.tpWorldBeyond_multiple": "Телепортирани %s играчи до Света отвъд",
   "commands.endlessexpansion.freeze.add": "Добавено %d замръзване към %s",
-  "commands.endlessexpansion.freeze.subtract": "Извадено %d замръзване от %s"
+  "commands.endlessexpansion.freeze.add_multiple": "Добавено %d замръзване към %s играчи",
+  "commands.endlessexpansion.freeze.subtract": "Извадено %d замръзване от %s",
+  "commands.endlessexpansion.freeze.subtract_multiple": "Извадено %d замръзване от %s играчи"
 }

@@ -1,0 +1,13 @@
+{
+  "feature": "endlessexpansion:vertical_water_line",
+  "placement": [
+    {
+      "type": "endlessexpansion:every_surface_block",
+      "biome": "endlessexpansion:abyssal_ocean",
+      "offset": 0
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

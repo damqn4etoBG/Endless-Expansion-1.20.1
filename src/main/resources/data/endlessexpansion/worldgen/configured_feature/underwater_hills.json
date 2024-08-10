@@ -1,0 +1,12 @@
+{
+  "type": "endlessexpansion:underwater_hills",
+  "config": {
+    "hill_block": {
+      "Name": "minecraft:gravel"
+    },
+    "min_radius": 6,
+    "max_radius": 12,
+    "min_height": 2,
+    "max_height": 5
+  }
+}
