@@ -182,7 +182,7 @@ public class ModCreditsScreen extends Screen {
             pGuiGraphics.pose().popPose();
         }
 
-        if(!this.showReturnMessage) {
+        if(k + f >= 0) {
             this.controlsMessageAlpha = Math.min(this.controlsMessageAlpha + pPartialTick * 0.05f, 1.0f);
             int controlMessageColor = (int)(this.controlsMessageAlpha * 255.0f) << 24 | 0xFFFFFF;
 

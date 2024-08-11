@@ -52,7 +52,7 @@ public class MysticalCookieJarBlockEntity extends BlockEntity implements MenuPro
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 99;
+    private int maxProgress = 100;
     private int tickCounter = 0;
     public MysticalCookieJarBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MYSTICAL_COOKIE_JAR.get(), pos, state);

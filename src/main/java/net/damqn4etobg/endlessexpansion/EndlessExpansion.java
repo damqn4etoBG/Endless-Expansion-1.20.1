@@ -108,7 +108,6 @@ public class EndlessExpansion {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_NUCLEAR_WASTE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_LUMINITE_ESSENCE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_LUMINITE_ESSENCE.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYSTICAL_GLASS_PANE.get(), RenderType.translucent());
 
             EntityRenderers.register(ModEntities.WRAITH.get(), WraithRenderer::new);
 

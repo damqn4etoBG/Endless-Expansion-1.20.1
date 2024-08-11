@@ -67,6 +67,12 @@ public class ModMessages {
                 .encoder(ProgressSyncS2CPacket::toBytes)
                 .consumerMainThread(ProgressSyncS2CPacket::handle)
                 .add();
+
+        net.messageBuilder(DashC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(DashC2SPacket::new)
+                .encoder(DashC2SPacket::toBytes)
+                .consumerMainThread(DashC2SPacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG message) {

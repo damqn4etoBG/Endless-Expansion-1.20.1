@@ -95,5 +95,4 @@ public class FreezeC2SPacket {
         }
         return true;
     }
-
 }

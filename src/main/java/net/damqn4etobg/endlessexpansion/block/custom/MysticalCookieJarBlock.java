@@ -66,19 +66,16 @@ public class MysticalCookieJarBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            LocalPlayer player = Minecraft.getInstance().player;
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof MysticalCookieJarBlockEntity) {
-                if (player.isCreative()) {
-                    ((MysticalCookieJarBlockEntity) blockEntity).dropsItems();
-                } else {
-                    ((MysticalCookieJarBlockEntity) blockEntity).drops();
-                }
+    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+        if (blockEntity instanceof MysticalCookieJarBlockEntity) {
+            if (pPlayer.isCreative()) {
+                ((MysticalCookieJarBlockEntity) blockEntity).dropsItems();
+            } else {
+                ((MysticalCookieJarBlockEntity) blockEntity).drops();
             }
         }
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 
     @Nullable

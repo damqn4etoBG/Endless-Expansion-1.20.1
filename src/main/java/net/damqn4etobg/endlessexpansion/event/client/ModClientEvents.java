@@ -6,6 +6,7 @@ import net.damqn4etobg.endlessexpansion.capability.dash.PlayerDashProvider;
 import net.damqn4etobg.endlessexpansion.dimension.ModDimensions;
 import net.damqn4etobg.endlessexpansion.effect.ModMobEffects;
 import net.damqn4etobg.endlessexpansion.networking.ModMessages;
+import net.damqn4etobg.endlessexpansion.networking.packet.DashC2SPacket;
 import net.damqn4etobg.endlessexpansion.networking.packet.FreezeC2SPacket;
 import net.damqn4etobg.endlessexpansion.particle.ModParticles;
 import net.damqn4etobg.endlessexpansion.screen.ModTitleScreen;
@@ -15,11 +16,8 @@ import net.damqn4etobg.endlessexpansion.util.KeyBinding;
 import net.damqn4etobg.endlessexpansion.worldgen.biome.ModBiomes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -43,62 +41,16 @@ public class ModClientEvents {
         if (event.phase == TickEvent.Phase.END) {
             Player player = event.player;
             Level world = player.level();
-
-            boolean inWater = player.isInWater();
-            boolean inWorldBeyond = world.dimension() == ModDimensions.WORLD_BEYOND_LEVEL_KEY;
-
-            BlockPos playerPos = player.blockPosition();
-            Holder<Biome> playerBiome = player.level().getBiome(playerPos);
             RandomSource random = RandomSource.create();
 
-            boolean inSpecificBiome = playerBiome == ModBiomes.FROZEN_WASTES;
-            if (inSpecificBiome && inWater && inWorldBeyond && player.getRandom().nextFloat() < 0.5f) {
-                ModMessages.sendToServer(new FreezeC2SPacket());
-            }
-
-            if (inSpecificBiome && inWorldBeyond && player.getRandom().nextFloat() < 0.15f) {
-                ModMessages.sendToServer(new FreezeC2SPacket());
-            }
-
-            if (!inSpecificBiome && inWorldBeyond && player.getRandom().nextFloat() < 0.005f) { // about 10 secs avg 10 sec = 0.005f
-                ModMessages.sendToServer(new FreezeC2SPacket());
-            }
-
-            if (ClientFreezeData.getPlayerFreeze() >= 10 && (!player.isCreative() && !player.isSpectator())) {
-                player.addEffect(new MobEffectInstance(ModMobEffects.FREEZING.get(), 100, 0, false, false));
-            } else {
-                if(player.hasEffect(ModMobEffects.FREEZING.get())) {
-                    player.removeEffect(ModMobEffects.FREEZING.get());
-                }
-            }
-
-            double x = player.getX() + random.nextDouble() - 0.5;
-            double y = player.getY() + random.nextDouble() + 0.5;
-            double z = player.getZ() + random.nextDouble() - 0.5;
-
             if (player.hasEffect(ModMobEffects.FREEZING.get())) {
-                if (random.nextFloat() < 0.25f) { // 25% chance
-                    world.addParticle(ModParticles.SNOWFLAKE.get(), x, y, z, 0d, 0.025d, 0d);
-                }
+                spawnFreezeParticles(player, world, random);
             }
 
-            if (player.hasEffect(ModMobEffects.SHADOW_STATE.get())) {
-                if (world.isClientSide) {
-                    if (!player.isInvisible()) {
-                        player.setInvisible(true);
-                    }
-                }
-                if (random.nextFloat() < 0.125f) {
-                    world.addParticle(ModParticles.SHADOW_ORB.get(), x, y, z, 0d, 0.025d, 0d);
-                }
-
-                if (random.nextFloat() < 0.125f) {
-                    world.addParticle(ModParticles.SHADOW_STRIP.get(), x, y, z, 0d, 0.025d, 0d);
-                }
-            }
-
+            handleFreezingEffect(player, player.level());
 
             if (player.hasEffect(ModMobEffects.SHADOW_STATE.get())) {
+                spawnShadowParticles(player, world, random);
                 player.getCapability(PlayerDashProvider.PLAYER_DASH).ifPresent(dash -> {
                     dash.incrementDashTicks();
 
@@ -112,16 +64,34 @@ public class ModClientEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void onKeyInput(InputEvent.Key event) {
-        if (Minecraft.getInstance().level == null) {
-            return; // Client-side safety check
+    private static void spawnFreezeParticles(Player player, Level world, RandomSource random) {
+        if (random.nextFloat() < 0.25f) {
+            double x = player.getX() + random.nextDouble() - 0.5;
+            double y = player.getY() + random.nextDouble() + 0.5;
+            double z = player.getZ() + random.nextDouble() - 0.5;
+            world.addParticle(ModParticles.SNOWFLAKE.get(), x, y, z, 0d, 0.025d, 0d);
+        }
+    }
+
+    private static void spawnShadowParticles(Player player, Level world, RandomSource random) {
+        double x = player.getX() + random.nextDouble() - 0.5;
+        double y = player.getY() + random.nextDouble() + 0.5;
+        double z = player.getZ() + random.nextDouble() - 0.5;
+
+        if (random.nextFloat() < 0.125f) {
+            world.addParticle(ModParticles.SHADOW_ORB.get(), x, y, z, 0d, 0.025d, 0d);
         }
 
-        Player player = Minecraft.getInstance().player;
+        if (random.nextFloat() < 0.125f) {
+            world.addParticle(ModParticles.SHADOW_STRIP.get(), x, y, z, 0d, 0.025d, 0d);
+        }
+    }
 
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.Key event) {
+        Minecraft minecraft = Minecraft.getInstance();
+        Player player = minecraft.player;
         if (player != null && player.hasEffect(ModMobEffects.SHADOW_STATE.get()) && KeyBinding.DASHING_KEY.consumeClick()) {
-            Level world = player.level();
             player.getCapability(PlayerDashProvider.PLAYER_DASH).ifPresent(dash -> {
                 if (dash.canDash()) {
                     dash.resetDashTicks();
@@ -132,17 +102,47 @@ public class ModClientEvents {
                     double dz = Math.cos(Math.toRadians(lookAngle)) * speed;
 
                     player.setDeltaMovement(dx, player.getDeltaMovement().y, dz);
-
-                    if (!ModSoundOptions.OFF()) {
-                        world.playSound(player, player.getX(), player.getY(), player.getZ(), ModSounds.DASH.get(), SoundSource.NEUTRAL, 1f, 1f);
-                    }
-
-                    RandomSource random = RandomSource.create();
-                    for (int i = 0; i < 10; i++) {
-                        world.addParticle(ModParticles.SHADOW_SMOKE.get(), player.getX(), player.getY(), player.getZ(), random.nextGaussian() * 0.15, random.nextGaussian() * 0.1, random.nextGaussian() * 0.15);
-                    }
+                    spawnDashParticles(player, player.level());
+                    ModMessages.sendToServer(new DashC2SPacket());
                 }
             });
+        }
+    }
+
+    private static void spawnDashParticles(Player player, Level world) {
+        RandomSource random = RandomSource.create();
+        for (int i = 0; i < 10; i++) {
+            double x = player.getX() + random.nextGaussian() * 0.15;
+            double y = player.getY() + random.nextGaussian() * 0.15;
+            double z = player.getZ() + random.nextGaussian() * 0.15;
+            world.addParticle(ModParticles.SHADOW_SMOKE.get(), x, y, z,
+                    random.nextGaussian() * 0.05, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05);
+        }
+    }
+
+    private static void handleFreezingEffect(Player player, Level world) {
+        boolean inWater = player.isInWater();
+        boolean inWorldBeyond = world.dimension() == ModDimensions.WORLD_BEYOND_LEVEL_KEY;
+        BlockPos playerPos = player.blockPosition();
+        Holder<Biome> playerBiome = world.getBiome(playerPos);
+        boolean inSpecificBiome = playerBiome == ModBiomes.FROZEN_WASTES;
+
+        if (inSpecificBiome && inWater && inWorldBeyond && player.getRandom().nextFloat() < 0.5f) {
+            ModMessages.sendToServer(new FreezeC2SPacket());
+        }
+
+        if (inSpecificBiome && inWorldBeyond && player.getRandom().nextFloat() < 0.15f) {
+            ModMessages.sendToServer(new FreezeC2SPacket());
+        }
+
+        if (!inSpecificBiome && inWorldBeyond && player.getRandom().nextFloat() < 0.005f) { // about 10 secs avg 10 sec = 0.005f
+            ModMessages.sendToServer(new FreezeC2SPacket());
+        }
+
+        if(world.isClientSide()) {
+            if (ClientFreezeData.getPlayerFreeze() >= 10 && (!player.isCreative() && !player.isSpectator())) {
+                player.addEffect(new MobEffectInstance(ModMobEffects.FREEZING.get(), 100, 0, false, false, true));
+            }
         }
     }
 
